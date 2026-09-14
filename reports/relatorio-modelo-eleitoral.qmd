@@ -1,0 +1,908 @@
+---
+title: "Modelo de previsao eleitoral presidencial"
+subtitle: "Base, variaveis, analise exploratoria e trilha de modelagem para 2026"
+author: "Codex"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    theme: cosmo
+    code-fold: true
+execute:
+  warning: false
+  message: false
+---
+
+```{python}
+#| label: setup
+from pathlib import Path
+import math
+from html import escape
+
+import matplotlib.pyplot as plt
+import pandas as pd
+from IPython.display import HTML, display
+
+ROOT = Path("..")
+RAW = ROOT / "data" / "raw"
+PROCESSED = ROOT / "data" / "processed"
+
+plt.rcParams.update({
+    "figure.figsize": (9, 5),
+    "axes.spines.top": False,
+    "axes.spines.right": False,
+    "axes.grid": True,
+    "grid.alpha": 0.2,
+})
+
+BLUE = "#2F6F9F"
+GREEN = "#2F6F5E"
+ORANGE = "#C96F2D"
+GRAY = "#A0A7B3"
+DARK = "#1F2933"
+
+display(HTML("""
+<style>
+.executive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 1rem 0 1.2rem;
+}
+.metric-card {
+  border-left: 4px solid #2F6F9F;
+  background: #f7f9fb;
+  padding: 0.8rem 0.9rem;
+}
+.metric-label {
+  color: #5b6770;
+  font-size: 0.86rem;
+  margin-bottom: 0.2rem;
+}
+.metric-value {
+  color: #1F2933;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.metric-note {
+  color: #5b6770;
+  font-size: 0.82rem;
+  margin-top: 0.25rem;
+}
+.callout-box {
+  border-left: 4px solid #C96F2D;
+  background: #fff8f2;
+  padding: 0.9rem 1rem;
+  margin: 1rem 0;
+}
+.callout-box strong {
+  color: #1F2933;
+}
+</style>
+"""))
+
+def read_csv(path):
+    return pd.read_csv(path) if path.exists() else pd.DataFrame()
+
+def pct(value):
+    return f"{float(value):.1f}%".replace(".", ",")
+
+def metric_card(label, value, note=""):
+    return f"""
+    <div class="metric-card">
+      <div class="metric-label">{escape(str(label))}</div>
+      <div class="metric-value">{escape(str(value))}</div>
+      <div class="metric-note">{escape(str(note))}</div>
+    </div>
+    """
+
+def current_scenario(data):
+    if data.empty or "cenario" not in data:
+        return data
+    recent = data[data["cenario"].astype(str).str.contains("agosto/setembro", na=False)].copy()
+    return recent if not recent.empty else data.copy()
+
+polls = read_csv(PROCESSED / "pesquisas_validos.csv")
+raw_polls = read_csv(RAW / "pesquisas.csv")
+elections = read_csv(RAW / "eleicoes.csv")
+fundamentals = read_csv(RAW / "fundamentos_eleicao.csv")
+forecasts = read_csv(PROCESSED / "previsoes.csv")
+ensemble_forecast = read_csv(PROCESSED / "previsao_ensemble.csv")
+forecast_history = read_csv(PROCESSED / "previsoes_historico.csv")
+bayesian_forecast = read_csv(PROCESSED / "previsao_bayesiana_dinamica.csv")
+backtest = read_csv(PROCESSED / "backtest_modelos.csv")
+backtest_janelas = read_csv(PROCESSED / "backtest_janelas.csv")
+backtest_vivo = read_csv(PROCESSED / "backtest_previsao_viva.csv")
+rolling = read_csv(PROCESSED / "rolling_comparacao.csv")
+rolling_summary = read_csv(PROCESSED / "rolling_resumo_modelos.csv")
+rolling_2026 = read_csv(PROCESSED / "rolling_previsao_2026.csv")
+quality = read_csv(PROCESSED / "qualidade_institutos.csv")
+house_effect = read_csv(PROCESSED / "efeito_casa_instituto_candidato.csv")
+source_audit = read_csv(PROCESSED / "auditoria_fontes.csv")
+recent_audit = read_csv(RAW / "auditoria_2026_recente.csv")
+```
+
+## Leitura executiva
+
+Este projeto deve funcionar como um nowcast eleitoral: a cada nova pesquisa, o modelo atualiza a estimativa do primeiro turno em votos validos e preserva a previsao antiga para acompanhar a evolucao da corrida.
+
+A primeira versao deve privilegiar clareza e backtest. Modelos sofisticados entram apenas depois de a base historica estar limpa e de vencerem um baseline simples.
+
+O teste mais importante nesta versao e cronologico: treinar apenas com eleicoes anteriores, prever a proxima e comparar com o resultado real. Assim, a avaliacao imita melhor o que aconteceria antes de uma eleicao nova.
+
+```{python}
+#| label: resumo-executivo
+cards = []
+if not polls.empty:
+    unique_polls = polls.drop_duplicates(["ano_eleicao", "instituto", "data_publicacao", "cenario"]).shape[0]
+    latest_date = pd.to_datetime(polls["data_publicacao"], errors="coerce").max()
+    cards.append(metric_card("Base processada", f"{len(polls):,}".replace(",", "."), f"{unique_polls} pesquisas/cenarios"))
+    cards.append(metric_card("Cobertura historica", f"{polls['ano_eleicao'].nunique()} eleicoes", f"{int(polls['ano_eleicao'].min())}-{int(polls['ano_eleicao'].max())}"))
+    cards.append(metric_card("Ultima pesquisa", latest_date.strftime("%d/%m/%Y"), "data de publicacao mais recente"))
+if not ensemble_forecast.empty:
+    principal = ensemble_forecast[ensemble_forecast["cenario"].str.contains("agosto/setembro", na=False)].copy()
+    if principal.empty:
+        principal = ensemble_forecast.copy()
+    principal["voto_valido_estimado"] = pd.to_numeric(principal["voto_valido_estimado"])
+    principal["probabilidade_liderar"] = pd.to_numeric(principal["probabilidade_liderar"])
+    leader = principal.sort_values("voto_valido_estimado", ascending=False).iloc[0]
+    runner = principal.sort_values("voto_valido_estimado", ascending=False).iloc[1]
+    margin = leader["voto_valido_estimado"] - runner["voto_valido_estimado"]
+    cards.append(metric_card("Lideranca atual", leader["candidato"], f"{pct(leader['voto_valido_estimado'])} dos validos"))
+    cards.append(metric_card("Margem estimada", pct(margin), f"liderar: {pct(100 * leader['probabilidade_liderar'])}"))
+if cards:
+    display(HTML('<div class="executive-grid">' + "".join(cards) + "</div>"))
+```
+
+## Resultado atual
+
+O cenario operacional de agora e o de agosto/setembro sem Pablo Marcal. Ele incorpora as pesquisas recentes com Renan Santos e candidatos menores, mas deixa cenarios com Marcal como alternativa, porque as fontes recentes citam inelegibilidade.
+
+```{python}
+#| label: resultado-atual-tabela
+if not ensemble_forecast.empty:
+    view = current_scenario(ensemble_forecast)
+    view = view.copy()
+    view["voto_valido_estimado"] = pd.to_numeric(view["voto_valido_estimado"]).round(2)
+    view["probabilidade_liderar"] = (pd.to_numeric(view["probabilidade_liderar"]) * 100).round(1)
+    display(view[["cenario", "candidato", "voto_valido_estimado", "probabilidade_liderar", "modelo"]].sort_values("voto_valido_estimado", ascending=False).head(10))
+```
+
+```{python}
+#| label: resultado-atual-grafico
+#| fig-cap: "Nowcast principal: ensemble disciplinado"
+if not ensemble_forecast.empty:
+    plot = current_scenario(ensemble_forecast)
+    plot = plot.copy()
+    plot["voto_valido_estimado"] = pd.to_numeric(plot["voto_valido_estimado"])
+    plot["probabilidade_liderar"] = pd.to_numeric(plot["probabilidade_liderar"])
+    group = plot.sort_values("voto_valido_estimado", ascending=False).head(8).sort_values("voto_valido_estimado")
+    fig, ax = plt.subplots(figsize=(9, 4.8))
+    colors = [ORANGE if i >= len(group) - 2 else GREEN for i in range(len(group))]
+    ax.barh(group["candidato"], group["voto_valido_estimado"], color=colors)
+    ax.set_title("Lula e Flavio seguem destacados; Renan aparece melhor apos a coleta recente")
+    ax.set_xlabel("Votos validos estimados (%)")
+    ax.set_ylabel("")
+    for i, row in enumerate(group.itertuples()):
+        label = f"{row.voto_valido_estimado:.1f}%"
+        if row.probabilidade_liderar > 0:
+            label += f" | lidera {row.probabilidade_liderar:.0%}"
+        ax.text(row.voto_valido_estimado + 0.4, i, label, va="center", fontsize=9)
+    plt.tight_layout()
+```
+
+## Cenarios de 2026
+
+```{python}
+#| label: cenarios-2026
+scenarios_path = RAW / "cenarios.csv"
+scenarios = read_csv(scenarios_path)
+if not scenarios.empty:
+    view = scenarios[scenarios["ano_eleicao"].eq(2026)].copy()
+    view["uso"] = view["usar_previsao_principal"].map({1: "principal", 0: "alternativo"}).fillna(view["usar_previsao_principal"])
+    display(view[["rotulo", "uso", "prioridade", "observacao"]].sort_values(["uso", "prioridade", "rotulo"]))
+```
+
+```{python}
+#| label: cenarios-2026-leitura
+display(HTML("""
+<div class="callout-box">
+  <strong>Leitura:</strong> o relatorio separa cenario operacional e cenarios alternativos.
+  Isso evita misturar candidatos inelegiveis ou listas antigas com a previsao principal.
+</div>
+"""))
+```
+
+## O que mudou com as pesquisas novas
+
+A coleta recente nao muda so o tamanho da base. Ela troca uma fotografia mais estreita da disputa por um cenario com Renan Santos e candidatos menores, que antes ficavam ausentes ou pouco visiveis na coleta automatica.
+
+```{python}
+#| label: impacto-coleta-recente
+if not ensemble_forecast.empty:
+    view = ensemble_forecast.copy()
+    view["voto_valido_estimado"] = pd.to_numeric(view["voto_valido_estimado"])
+    view["probabilidade_liderar"] = pd.to_numeric(view["probabilidade_liderar"])
+    old = view[view["cenario"].eq("Primeiro turno 2026 - Lula vs Flavio")]
+    new = view[view["cenario"].str.contains("agosto/setembro", na=False)]
+    rows = []
+    for candidate in sorted(set(old["candidato"]) | set(new["candidato"])):
+        old_value = old.loc[old["candidato"].eq(candidate), "voto_valido_estimado"]
+        new_value = new.loc[new["candidato"].eq(candidate), "voto_valido_estimado"]
+        rows.append({
+            "candidato": candidate,
+            "cenario_anterior": round(float(old_value.iloc[0]), 2) if not old_value.empty else None,
+            "cenario_recente": round(float(new_value.iloc[0]), 2) if not new_value.empty else None,
+            "mudanca": round(float(new_value.iloc[0] - old_value.iloc[0]), 2) if not old_value.empty and not new_value.empty else None,
+        })
+    impact = pd.DataFrame(rows)
+    display(impact.sort_values("cenario_recente", ascending=False, na_position="last").head(12))
+```
+
+```{python}
+#| label: impacto-coleta-recente-grafico
+#| fig-cap: "Impacto da coleta recente no cenario principal"
+if not ensemble_forecast.empty:
+    view = ensemble_forecast.copy()
+    view["voto_valido_estimado"] = pd.to_numeric(view["voto_valido_estimado"])
+    old = view[view["cenario"].eq("Primeiro turno 2026 - Lula vs Flavio")]
+    new = view[view["cenario"].str.contains("agosto/setembro", na=False)]
+    focus = ["Lula", "Flávio Bolsonaro", "Augusto Cury", "Renan Santos", "Ronaldo Caiado", "Romeu Zema"]
+    rows = []
+    for candidate in focus:
+        old_value = old.loc[old["candidato"].eq(candidate), "voto_valido_estimado"]
+        new_value = new.loc[new["candidato"].eq(candidate), "voto_valido_estimado"]
+        rows.append({
+            "candidato": candidate,
+            "anterior": float(old_value.iloc[0]) if not old_value.empty else 0,
+            "recente": float(new_value.iloc[0]) if not new_value.empty else 0,
+        })
+    plot = pd.DataFrame(rows).sort_values("recente")
+    y = range(len(plot))
+    fig, ax = plt.subplots(figsize=(9, 4.4))
+    ax.scatter(plot["anterior"], y, color=GRAY, s=55, label="cenario anterior")
+    ax.scatter(plot["recente"], y, color=ORANGE, s=70, label="agosto/setembro")
+    for i, row in enumerate(plot.itertuples()):
+        ax.plot([row.anterior, row.recente], [i, i], color=GRAY, alpha=0.45)
+        ax.text(row.recente + 0.35, i, f"{row.recente:.1f}", va="center", fontsize=9)
+    ax.set_yticks(list(y))
+    ax.set_yticklabels(plot["candidato"])
+    ax.set_xlabel("Votos validos estimados (%)")
+    ax.set_title("Renan passa a aparecer explicitamente; a margem Lula-Flavio fica menor")
+    ax.legend()
+    plt.tight_layout()
+```
+
+```{python}
+#| label: impacto-coleta-recente-resumo
+recent_raw = read_csv(RAW / "pesquisas_2026_agosto_setembro_manual.csv")
+if not recent_raw.empty:
+    principal = recent_raw[recent_raw["cenario"].eq("agosto_setembro_2026_sem_marcal")]
+    alternativo = recent_raw[recent_raw["cenario"].eq("agosto_setembro_2026_com_marcal")]
+    display(HTML(f"""
+    <div class="callout-box">
+      <strong>Coleta adicionada:</strong> {len(recent_raw)} linhas manuais auditadas,
+      com {principal.drop_duplicates(['instituto', 'data_publicacao', 'cenario']).shape[0]} pesquisas/cenarios no cenario principal
+      sem Marcal e {alternativo.drop_duplicates(['instituto', 'data_publicacao', 'cenario']).shape[0]} no cenario alternativo com Marcal.
+    </div>
+    """))
+```
+
+## Historico de previsoes
+
+Cada execucao do nowcast pode ser registrada como snapshot. Isso permite acompanhar como a previsao muda conforme novas pesquisas entram ou a base historica e revisada.
+
+```{python}
+#| label: historico-previsoes-resumo
+if not forecast_history.empty:
+    view = forecast_history.copy()
+    snapshots = view[["data_registro", "data_previsao"]].drop_duplicates().sort_values("data_registro")
+    display(snapshots)
+```
+
+```{python}
+#| label: historico-previsoes-grafico
+#| fig-cap: "Evolucao registrada do nowcast por snapshot"
+if not forecast_history.empty:
+    hist = forecast_history.copy()
+    hist = current_scenario(hist)
+    hist["data_registro"] = pd.to_datetime(hist["data_registro"], errors="coerce")
+    hist["voto_valido_estimado"] = pd.to_numeric(hist["voto_valido_estimado"], errors="coerce")
+    focus = hist.groupby("candidato")["voto_valido_estimado"].mean().sort_values(ascending=False).head(6).index
+    hist = hist[hist["candidato"].isin(focus)]
+    fig, ax = plt.subplots(figsize=(9, 4.4))
+    for candidate, group in hist.groupby("candidato"):
+        series = group.groupby("data_registro")["voto_valido_estimado"].mean().sort_index()
+        ax.plot(series.index, series.values, marker="o", label=candidate)
+    ax.set_title("Historico comeca agora; proximas pesquisas criam a serie viva")
+    ax.set_xlabel("Data de registro da rodada")
+    ax.set_ylabel("Votos validos estimados (%)")
+    ax.legend()
+    plt.tight_layout()
+```
+
+## Fontes e referencias
+
+As fontes entram em tres camadas:
+
+1. **Resultado oficial:** Dados Abertos do TSE, para votos validos do primeiro turno.
+2. **Pesquisas registradas:** PesqEle/TSE e fontes primarias dos institutos, para pesquisas atuais e historicas.
+3. **Fundamentos objetivos:** variaveis politicas e economicas usadas na literatura de previsao eleitoral.
+
+Referencias uteis para desenho do modelo:
+
+- FiveThirtyEight/538: uso de medias de pesquisas, ajuste por qualidade do instituto, incerteza e simulacoes.
+- The Economist: combinacao de pesquisas, fundamentos, estrutura hierarquica e simulacoes probabilisticas.
+- Alan Abramowitz, *Time-for-Change*: aprovacao presidencial, crescimento economico e tempo do partido no poder.
+- Douglas Hibbs, *Bread and Peace*: renda real e custo politico de guerras como explicadores do voto governista nos EUA.
+- Cole Nussbaumer Knaflic, *Storytelling with Data*: foco em mensagem, remocao de ruido visual e destaque explicito do que importa.
+
+## Variaveis do primeiro modelo
+
+O baseline usa variaveis que saem diretamente das pesquisas ou de calendario:
+
+- voto total do candidato na pesquisa;
+- brancos, nulos e indecisos;
+- voto valido estimado;
+- instituto;
+- tamanho da amostra;
+- data de campo;
+- data de publicacao;
+- dias entre fim do campo e primeiro turno;
+- dias entre publicacao e primeiro turno;
+- ordem da pesquisa dentro do instituto e cenario;
+- ordem geral da pesquisa na campanha.
+- ajuste por vies historico do instituto, quando ha dados suficientes;
+- efeito casa por instituto e candidato, quando ha dados suficientes;
+- peso por qualidade historica do instituto.
+
+```{python}
+#| label: cobertura-eleicoes
+#| fig-cap: "Eleicoes cadastradas no projeto"
+if elections.empty:
+    fig, ax = plt.subplots()
+    ax.text(0.5, 0.5, "Nenhuma eleicao cadastrada ainda", ha="center", va="center", fontsize=14)
+    ax.axis("off")
+else:
+    plot = elections.assign(ano_eleicao=elections["ano_eleicao"].astype(str))
+    fig, ax = plt.subplots(figsize=(9, 2.8))
+    ax.barh(plot["ano_eleicao"], [1] * len(plot), color=BLUE)
+    ax.set_xlabel("Cadastro da eleicao")
+    ax.set_ylabel("Ano")
+    ax.set_xticks([])
+    ax.set_title("Calendario historico para calcular distancia ate a eleicao")
+    for y, obs in enumerate(plot["observacao"].fillna("")):
+        ax.text(1.02, y, obs[:70], va="center", fontsize=8)
+    ax.set_xlim(0, 2.4)
+    plt.tight_layout()
+```
+
+```{python}
+#| label: cobertura-por-ano
+#| fig-cap: "Tamanho da base por eleicao"
+if not polls.empty:
+    counts = polls.groupby("ano_eleicao").size().reset_index(name="linhas")
+    fig, ax = plt.subplots(figsize=(9, 3.8))
+    colors = [ORANGE if year == 2026 else BLUE for year in counts["ano_eleicao"]]
+    ax.bar(counts["ano_eleicao"].astype(str), counts["linhas"], color=colors)
+    ax.set_title("A base cresceu, mas ainda e desigual entre eleicoes")
+    ax.set_xlabel("Ano da eleicao")
+    ax.set_ylabel("Linhas candidato-pesquisa")
+    for i, row in enumerate(counts.itertuples()):
+        ax.text(i, row.linhas + counts["linhas"].max() * 0.02, f"{row.linhas}", ha="center", fontsize=9)
+    plt.tight_layout()
+```
+
+## Variaveis objetivas para incluir logo
+
+A literatura e modelos profissionais costumam combinar pesquisas com fundamentos. Para o Brasil, algumas variaveis sao objetivas o suficiente para entrar cedo, desde que a fonte seja consistente:
+
+- **incumbencia:** se o candidato e presidente tentando reeleicao;
+- **sucessor governista:** candidato apoiado pelo presidente quando o presidente nao disputa;
+- **tempo do grupo no poder:** quantos mandatos consecutivos o campo governista esta no governo;
+- **aprovacao do governo:** percentual de otimo/bom, regular, ruim/pessimo ou aprovacao/desaprovacao;
+- **economia:** inflacao, desemprego, crescimento do PIB, renda real e indicadores de percepcao economica;
+- **rejeicao:** percentual que declara nao votar no candidato;
+- **conhecimento do candidato:** quando disponivel em pesquisas;
+- **metodo da pesquisa:** presencial, telefone, online ou misto;
+- **qualidade historica do instituto:** erro medio passado e frequencia de pesquisas.
+
+Essas variaveis devem ser comparadas por backtest. Se nao melhorarem a previsao fora da amostra, ficam como explicacao, nao como motor do modelo final.
+
+```{python}
+#| label: fundamentos-economicos
+if not fundamentals.empty:
+    view = fundamentals.copy()
+    for col in ["pib_crescimento", "inflacao", "desemprego"]:
+        view[col] = pd.to_numeric(view[col], errors="coerce").round(2)
+    display(view[["ano_eleicao", "fundamentos_ano_referencia", "pib_crescimento", "inflacao", "desemprego", "fundamentos_defasagem_max"]])
+```
+
+## Organizacao dos dados
+
+```{python}
+#| label: schema-visual
+#| fig-cap: "Fluxo dos dados ate a previsao"
+fig, ax = plt.subplots(figsize=(10, 4))
+ax.axis("off")
+steps = [
+    ("Pesquisas", "CSV bruto\\npor candidato"),
+    ("Resultados", "TSE\\nvotos validos"),
+    ("Preparacao", "validos, dias,\\nordem, erro"),
+    ("Modelos", "baseline, inferencia,\\nML, IA"),
+    ("Saida", "previsao datada\\n+ incerteza"),
+]
+xs = [0.08, 0.29, 0.50, 0.71, 0.92]
+for i, ((title, body), x) in enumerate(zip(steps, xs)):
+    ax.scatter([x], [0.6], s=1700, color="#4C78A8")
+    ax.text(x, 0.64, title, ha="center", va="center", color="white", weight="bold")
+    ax.text(x, 0.33, body, ha="center", va="center", fontsize=9)
+    if i < len(xs) - 1:
+        ax.annotate("", xy=(xs[i+1]-0.06, 0.6), xytext=(x+0.06, 0.6), arrowprops={"arrowstyle": "->", "lw": 1.5})
+ax.set_title("Do dado bruto ao nowcast eleitoral")
+plt.tight_layout()
+```
+
+## Auditoria da base
+
+O gargalo atual nao e algoritmo: e confiabilidade das series antigas. A base ja separa fonte, instituto, amostra imputada e cenario para permitir auditoria incremental. A busca mais recente confirmou uma fonte primaria promissora para 2002 no CESOP/Datafolha; 1998 e 1994 ainda precisam de URLs diretas ou tabelas extraiveis antes de entrar no treino.
+
+```{python}
+#| label: auditoria-recente-2026-resumo
+if not recent_audit.empty:
+    summary = recent_audit.groupby("status_auditoria", as_index=False).size().rename(columns={"size": "pesquisas_cenarios"})
+    display(summary.sort_values("pesquisas_cenarios", ascending=False))
+```
+
+```{python}
+#| label: auditoria-recente-2026-detalhe
+if not recent_audit.empty:
+    view = recent_audit.copy()
+    display(view[["instituto", "data_publicacao", "cenario", "registro_tse", "status_auditoria", "observacao_auditoria"]].sort_values(["status_auditoria", "instituto", "data_publicacao"]))
+```
+
+```{python}
+#| label: auditoria-fontes
+if not source_audit.empty:
+    view = source_audit.copy()
+    display(view[["ano_eleicao", "fonte", "linhas", "pesquisas_unicas", "institutos", "amostra_imputada", "valor_fora_0_100", "primeira_publicacao", "ultima_publicacao"]])
+```
+
+## Analise exploratoria planejada
+
+Assim que a base de pesquisas estiver preenchida, os primeiros graficos devem responder:
+
+- quais institutos aparecem por ano;
+- quantas pesquisas existem por semana de campanha;
+- como cada candidato evolui em votos validos estimados;
+- como o erro historico muda conforme a eleicao se aproxima;
+- se algum instituto tem viés medio recorrente;
+- se pesquisas online, presenciais e telefonicas se comportam diferente;
+- se rejeicao, aprovacao do governo e economia ajudam alem das pesquisas.
+
+```{python}
+#| label: pesquisas-por-instituto
+#| fig-cap: "Cobertura atual de pesquisas por instituto"
+data = polls if not polls.empty else raw_polls
+if data.empty or "instituto" not in data:
+    fig, ax = plt.subplots()
+    ax.text(0.5, 0.5, "Base de pesquisas ainda vazia", ha="center", va="center", fontsize=14)
+    ax.text(0.5, 0.40, "Ao adicionar linhas em data/raw/pesquisas.csv, este grafico passa a mostrar cobertura por instituto.", ha="center", va="center", fontsize=9)
+    ax.axis("off")
+else:
+    counts = data.drop_duplicates(["ano_eleicao", "instituto", "data_publicacao", "cenario"]).groupby("instituto").size().sort_values().tail(25)
+    fig, ax = plt.subplots()
+    counts.plot(kind="barh", ax=ax, color=BLUE)
+    ax.set_xlabel("Pesquisas")
+    ax.set_ylabel("Instituto")
+    ax.set_title("Institutos com maior cobertura na base")
+    plt.tight_layout()
+```
+
+```{python}
+#| label: previsao-atual
+#| fig-cap: "Previsao atual por cenario principal de 2026"
+if forecasts.empty:
+    fig, ax = plt.subplots()
+    ax.text(0.5, 0.5, "Sem previsao atual", ha="center", va="center", fontsize=14)
+    ax.axis("off")
+else:
+    tmp = forecasts.copy()
+    tmp["voto_valido_estimado"] = pd.to_numeric(tmp["voto_valido_estimado"])
+    tmp["intervalo_baixo"] = pd.to_numeric(tmp["intervalo_baixo"])
+    tmp["intervalo_alto"] = pd.to_numeric(tmp["intervalo_alto"])
+    tmp["probabilidade_liderar"] = pd.to_numeric(tmp["probabilidade_liderar"])
+    tmp["modelo"] = tmp.get("modelo", "baseline_pesquisa")
+    tmp = tmp.sort_values(["cenario", "modelo", "voto_valido_estimado"], ascending=[True, True, False])
+    panels = tmp[["cenario", "modelo"]].drop_duplicates().itertuples(index=False)
+    panels = list(panels)
+    fig, axes = plt.subplots(len(panels), 1, figsize=(9, max(3, 2.6 * len(panels))), squeeze=False)
+    for ax, panel in zip(axes.flat, panels):
+        group = tmp[(tmp["cenario"] == panel.cenario) & (tmp["modelo"] == panel.modelo)].head(6).sort_values("voto_valido_estimado")
+        lower = group["voto_valido_estimado"] - group["intervalo_baixo"]
+        upper = group["intervalo_alto"] - group["voto_valido_estimado"]
+        colors = [ORANGE if i >= len(group) - 2 else BLUE for i in range(len(group))]
+        ax.barh(group["candidato"], group["voto_valido_estimado"], xerr=[lower, upper], color=colors, ecolor=DARK, capsize=3)
+        ax.set_title(f"{panel.cenario} | {panel.modelo}")
+        ax.set_xlabel("Votos validos estimados (%)")
+        for i, row in enumerate(group.itertuples()):
+            ax.text(row.intervalo_alto + 0.5, i, f"{row.voto_valido_estimado:.1f} | lidera {row.probabilidade_liderar:.0%}", va="center", fontsize=9)
+    plt.tight_layout()
+```
+
+```{python}
+#| label: evolucao-candidatos
+#| fig-cap: "Evolucao de votos validos estimados"
+if polls.empty or "voto_valido_estimado" not in polls:
+    fig, ax = plt.subplots()
+    ax.text(0.5, 0.5, "Sem serie temporal ainda", ha="center", va="center", fontsize=14)
+    ax.text(0.5, 0.40, "Quando houver pesquisas processadas, as linhas mostram a trajetoria por candidato.", ha="center", va="center", fontsize=9)
+    ax.axis("off")
+else:
+    tmp = polls.copy()
+    tmp["data_publicacao"] = pd.to_datetime(tmp["data_publicacao"])
+    tmp["voto_valido_estimado"] = pd.to_numeric(tmp["voto_valido_estimado"])
+    latest_year = tmp["ano_eleicao"].max()
+    tmp = tmp[tmp["ano_eleicao"] == latest_year]
+    fig, ax = plt.subplots()
+    top_candidates = tmp.groupby("candidato")["voto_valido_estimado"].mean().sort_values(ascending=False).head(8).index
+    tmp = tmp[tmp["candidato"].isin(top_candidates)]
+    for candidate, group in tmp.groupby("candidato"):
+        series = group.groupby("data_publicacao")["voto_valido_estimado"].mean().sort_index()
+        ax.plot(series.index, series.values, marker="o", label=candidate)
+    ax.set_ylabel("Votos validos estimados (%)")
+    ax.set_xlabel("Data de publicacao")
+    ax.set_title(f"Evolucao das pesquisas em {latest_year}")
+    ax.legend()
+    plt.tight_layout()
+```
+
+```{python}
+#| label: previsao-ensemble
+#| fig-cap: "Previsao final do ensemble disciplinado"
+if ensemble_forecast.empty:
+    fig, ax = plt.subplots()
+    ax.text(0.5, 0.5, "Sem previsao ensemble ainda", ha="center", va="center", fontsize=14)
+    ax.axis("off")
+else:
+    tmp = ensemble_forecast.copy()
+    tmp["voto_valido_estimado"] = pd.to_numeric(tmp["voto_valido_estimado"])
+    tmp["probabilidade_liderar"] = pd.to_numeric(tmp["probabilidade_liderar"])
+    scenarios = list(tmp["cenario"].drop_duplicates())
+    fig, axes = plt.subplots(len(scenarios), 1, figsize=(9, max(3, 2.7 * len(scenarios))), squeeze=False)
+    for ax, scenario in zip(axes.flat, scenarios):
+        group = tmp[tmp["cenario"] == scenario].head(6).sort_values("voto_valido_estimado")
+        colors = [ORANGE if i >= len(group) - 2 else GREEN for i in range(len(group))]
+        ax.barh(group["candidato"], group["voto_valido_estimado"], color=colors)
+        ax.set_title(scenario)
+        ax.set_xlabel("Votos validos estimados (%)")
+        for i, row in enumerate(group.itertuples()):
+            ax.text(row.voto_valido_estimado + 0.5, i, f"{row.voto_valido_estimado:.1f} | lidera {row.probabilidade_liderar:.0%}", va="center", fontsize=9)
+    plt.tight_layout()
+```
+
+## Modelos
+
+Uma revisao mais completa da literatura esta em `docs/revisao-literatura-metodos.md`. A leitura principal e simples: pesquisas dominam perto da eleicao; fundamentos ajudam longe da eleicao; modelos Bayesianos dinamicos sao a evolucao estatistica mais natural; ML, redes neurais e ensembles entram como desafiantes do baseline, nao como substitutos automaticos.
+
+```{python}
+#| label: modelos-operacionais
+rows = [
+    ["ensemble_disciplinado", "Producao", "Combina baseline e Bayesiano dinamico com pesos por backtest vivo."],
+    ["baseline_pesquisa", "Referencia", "Media ponderada por pesquisas; e o rival minimo a ser vencido."],
+    ["bayesiano_dinamico_kalman", "Producao assistida", "Estado latente temporal; melhora incerteza e leitura da corrida."],
+    ["random_forest_07_600 / gradient_boosting", "Experimental", "ML tabular competitivo, mas ainda instavel entre eleicoes."],
+    ["mlp_pequena", "Experimental", "Deep learning pequeno; mantido como teste, nao como decisor."],
+    ["voting_ia / stacking_ia", "Experimental", "IA/ensemble supervisionado; so entra se vencer fora da amostra."],
+]
+display(pd.DataFrame(rows, columns=["modelo", "status", "papel no relatorio"]))
+```
+
+```{python}
+#| label: comparacao-curta-modelos
+if not backtest.empty:
+    view = backtest.copy()
+    view["mae"] = pd.to_numeric(view["mae"])
+    resumo = view.groupby("modelo", as_index=False)["mae"].mean().sort_values("mae")
+    resumo["mae"] = resumo["mae"].round(2)
+    display(resumo.head(8))
+```
+
+### Baseline
+
+Media ponderada por recencia e amostra. Tambem ha versoes com qualidade historica do instituto e efeito casa por instituto-candidato. O baseline puro continua sendo o primeiro rival a ser batido.
+
+### Inferencia
+
+Modelo para explicar erro historico:
+
+```text
+erro ~ dias_ate_eleicao + incumbente + sucessor_governo + aprovacao_governo + economia + metodo + instituto
+```
+
+### Machine learning
+
+Modelos candidatos:
+
+- regressao regularizada;
+- random forest;
+- gradient boosting;
+- ensemble simples.
+
+### IA e deep learning
+
+So entram depois de backtest suficiente. A base presidencial brasileira e pequena, entao uma rede neural deve ser pequena e tratada como experimento, nao como previsao principal.
+
+```{python}
+#| label: literatura-modelos-tabela
+modelos_literatura = pd.DataFrame([
+    ["Media de pesquisas", "Agregacao de pesquisas recentes", "baseline_pesquisa", "Referencia principal"],
+    ["Inferencia", "Regressao explicavel para erro e variaveis politicas", "inferencial_ols", "Diagnostico"],
+    ["ML tabular", "Regularizacao, margem, arvores e boosting", "ridge, elastic_net, huber, svr_rbf, random_forest com ntree/mtry", "Desafiantes"],
+    ["Deep learning", "MLP tabular pequena/media/profunda", "mlp_pequena, mlp_media, mlp_profunda", "Experimental"],
+    ["Efeito casa", "Correcao por vies historico de instituto-candidato", "baseline_efeito_casa", "Melhor baseline atual"],
+    ["IA / ensemble", "Combinacao disciplinada de modelos", "voting_ia, stacking_ia, ensemble_pesos", "Auxiliar"],
+    ["Bayesiano dinamico", "Estado latente da corrida no tempo", "bayesiano_dinamico_kalman", "Nowcast robusto em teste"],
+], columns=["familia", "referencia conceitual", "modelo no projeto", "papel"])
+display(modelos_literatura)
+```
+
+### Bayesiano dinamico
+
+O `bayesiano_dinamico_kalman` trata a corrida como estado latente diario. Cada pesquisa e uma observacao ruidosa dessa trajetoria; o filtro de Kalman estima o nivel atual e projeta ate o primeiro turno com intervalo de incerteza. E mais honesto que a tendencia linear simples porque separa ruido observado de movimento temporal estimado.
+
+No backtest vivo inicial, ele quase empata com o `baseline_temporal` e supera os baselines nao temporais. Por isso, entra no ensemble disciplinado com peso condicionado ao desempenho na previsao viva.
+
+```{python}
+#| label: previsao-bayesiana-dinamica
+#| fig-cap: "Previsao 2026 pelo estado latente dinamico"
+if bayesian_forecast.empty:
+    fig, ax = plt.subplots()
+    ax.text(0.5, 0.5, "Sem previsao bayesiana dinamica ainda", ha="center", va="center", fontsize=14)
+    ax.axis("off")
+else:
+    tmp = bayesian_forecast.copy()
+    for col in ["voto_valido_estimado", "intervalo_baixo", "intervalo_alto", "probabilidade_liderar"]:
+        tmp[col] = pd.to_numeric(tmp[col])
+    scenarios = list(tmp["cenario"].drop_duplicates())
+    fig, axes = plt.subplots(len(scenarios), 1, figsize=(9, max(3, 2.8 * len(scenarios))), squeeze=False)
+    for ax, scenario in zip(axes.flat, scenarios):
+        group = tmp[tmp["cenario"] == scenario].head(6).sort_values("voto_valido_estimado")
+        lower = group["voto_valido_estimado"] - group["intervalo_baixo"]
+        upper = group["intervalo_alto"] - group["voto_valido_estimado"]
+        ax.barh(group["candidato"], group["voto_valido_estimado"], xerr=[lower, upper], color="#6B6ECF", ecolor="#333333", capsize=3)
+        ax.set_title(scenario)
+        ax.set_xlabel("Votos validos estimados (%)")
+        for i, row in enumerate(group.itertuples()):
+            ax.text(row.intervalo_alto + 0.5, i, f"{row.voto_valido_estimado:.1f} | lidera {row.probabilidade_liderar:.0%}", va="center", fontsize=9)
+    plt.tight_layout()
+```
+
+```{python}
+#| label: tabela-bayesiana-dinamica
+if not bayesian_forecast.empty:
+    view = bayesian_forecast.copy()
+    for col in ["voto_valido_estimado", "intervalo_baixo", "intervalo_alto", "probabilidade_liderar", "probabilidade_ir_ao_segundo_turno"]:
+        view[col] = pd.to_numeric(view[col]).round(4)
+    display(view[["cenario", "candidato", "voto_valido_estimado", "intervalo_baixo", "intervalo_alto", "probabilidade_liderar", "probabilidade_ir_ao_segundo_turno", "metodo_estado_latente"]])
+```
+
+```{python}
+#| label: qualidade-institutos
+if not quality.empty:
+    view = quality.copy()
+    view["mae"] = pd.to_numeric(view["mae"]).round(2)
+    view["vies_medio"] = pd.to_numeric(view["vies_medio"]).round(2)
+    display(view[["instituto", "linhas", "vies_medio", "mae"]].sort_values(["mae", "linhas"], ascending=[True, False]).head(20))
+```
+
+```{python}
+#| label: efeito-casa
+if not house_effect.empty:
+    view = house_effect.copy()
+    view["mae"] = pd.to_numeric(view["mae"]).round(2)
+    view["vies_medio"] = pd.to_numeric(view["vies_medio"]).round(2)
+    display(view[["instituto", "candidato", "linhas", "vies_medio", "mae"]].sort_values(["mae", "linhas"], ascending=[True, False]).head(20))
+```
+
+## Criterio de comparacao
+
+Cada modelo deve ser avaliado por backtest historico:
+
+- erro medio absoluto por candidato;
+- acerto dos dois candidatos no segundo turno;
+- erro do primeiro colocado;
+- calibracao dos intervalos;
+- estabilidade da previsao ao adicionar novas pesquisas.
+
+## Avaliacao cronologica
+
+Esta avaliacao responde diretamente: se o projeto existisse antes de cada eleicao historica, o que ele teria previsto usando apenas eleicoes anteriores? Com a coleta de 2006, agora tambem entram testes para 2010 e 2014, antes dos testes principais de 2018 e 2022.
+
+```{python}
+#| label: rolling-modelos
+#| fig-cap: "Backtest cronologico: treina no passado e prevê a eleicao seguinte"
+if rolling_summary.empty:
+    fig, ax = plt.subplots()
+    ax.text(0.5, 0.5, "Sem avaliacao cronologica ainda", ha="center", va="center", fontsize=14)
+    ax.axis("off")
+else:
+    tmp = rolling_summary.copy()
+    tmp["ano_teste"] = pd.to_numeric(tmp["ano_teste"])
+    tmp["mae"] = pd.to_numeric(tmp["mae"])
+    years = list(tmp["ano_teste"].drop_duplicates())
+    fig, axes = plt.subplots(1, len(years), figsize=(5 * len(years), 4), squeeze=False)
+    for ax, year in zip(axes.flat, years):
+        group = tmp[tmp["ano_teste"] == year].sort_values("mae", ascending=False)
+        colors = ["#4C78A8" if model == "baseline_pesquisa" else "#A0A7B3" for model in group["modelo"]]
+        ax.barh(group["modelo"], group["mae"], color=colors)
+        ax.set_title(f"Previsao de {year}")
+        ax.set_xlabel("Erro medio absoluto")
+        ax.set_ylabel("")
+        for i, row in enumerate(group.itertuples()):
+            ax.text(row.mae + 0.25, i, f"{row.mae:.1f}", va="center", fontsize=9)
+    plt.tight_layout()
+```
+
+```{python}
+#| label: rolling-tabela
+if not rolling.empty:
+    view = rolling.copy()
+    view["previsto"] = pd.to_numeric(view["previsto"]).round(2)
+    view["resultado_real_validos"] = pd.to_numeric(view["resultado_real_validos"]).round(2)
+    view["erro_abs"] = pd.to_numeric(view["erro_abs"]).round(2)
+    display(view[["ano_eleicao", "ano_treino_max", "modelo", "cenario_rotulo", "candidato", "previsto", "resultado_real_validos", "erro_abs"]].sort_values(["ano_eleicao", "modelo", "erro_abs"]).head(60))
+```
+
+## Previsao de 2026 por modelo
+
+Depois da avaliacao historica, os mesmos modelos sao treinados com todas as eleicoes disponiveis ate 2022 e aplicados aos cenarios principais de 2026.
+
+```{python}
+#| label: rolling-2026-modelos
+#| fig-cap: "Previsao de 2026 por modelo, treinada com eleicoes ate 2022"
+if rolling_2026.empty:
+    fig, ax = plt.subplots()
+    ax.text(0.5, 0.5, "Sem previsao 2026 por modelo ainda", ha="center", va="center", fontsize=14)
+    ax.axis("off")
+else:
+    tmp = rolling_2026.copy()
+    tmp["previsto"] = pd.to_numeric(tmp["previsto"])
+    scenario_options = tmp["cenario_rotulo"].drop_duplicates()
+    recent = [s for s in scenario_options if "agosto/setembro" in str(s)]
+    first_scenario = recent[0] if recent else scenario_options.iloc[0]
+    plot = tmp[tmp["cenario_rotulo"] == first_scenario]
+    pivot = plot.pivot_table(index="candidato", columns="modelo", values="previsto", aggfunc="mean")
+    if "baseline_pesquisa" in pivot.columns:
+        order_candidates = pivot["baseline_pesquisa"].sort_values(ascending=False).head(8).index
+        pivot = pivot.loc[order_candidates]
+    keep_models = [m for m in ["baseline_pesquisa", "random_forest_07_600", "gradient_boosting", "voting_ia", "mlp_pequena"] if m in pivot.columns]
+    if keep_models:
+        pivot = pivot[keep_models]
+    order = pivot.get("baseline_pesquisa", pivot.mean(axis=1)).sort_values(ascending=True).index
+    pivot = pivot.loc[order]
+    ax = pivot.plot(kind="barh", figsize=(10, 6))
+    ax.set_title(first_scenario)
+    ax.set_xlabel("Votos validos estimados (%)")
+    ax.set_ylabel("")
+    ax.legend(title="Modelo", bbox_to_anchor=(1.02, 1), loc="upper left")
+    plt.tight_layout()
+```
+
+```{python}
+#| label: rolling-2026-tabela
+if not rolling_2026.empty:
+    view = rolling_2026.copy()
+    view["previsto"] = pd.to_numeric(view["previsto"]).round(2)
+    scenario_options = view["cenario_rotulo"].drop_duplicates()
+    recent = [s for s in scenario_options if "agosto/setembro" in str(s)]
+    first_scenario = recent[0] if recent else scenario_options.iloc[0]
+    focus = view[view["cenario_rotulo"].eq(first_scenario)].copy()
+    top_candidates = (
+        focus[focus["modelo"].eq("baseline_pesquisa")]
+        .sort_values("previsto", ascending=False)
+        .head(8)["candidato"]
+    )
+    focus = focus[focus["candidato"].isin(top_candidates)]
+    keep_models = ["baseline_pesquisa", "random_forest_07_600", "gradient_boosting", "voting_ia", "mlp_pequena"]
+    focus = focus[focus["modelo"].isin(keep_models)]
+    display(focus[["modelo", "cenario_rotulo", "candidato", "previsto", "ano_treino_max"]].sort_values(["candidato", "modelo"]))
+```
+
+```{python}
+#| label: comparacao-modelos
+#| fig-cap: "Erro medio absoluto no backtest por eleicao"
+if backtest.empty:
+    modelos = pd.DataFrame({
+        "modelo": ["Baseline", "Inferencial", "ML tradicional", "IA/rede neural", "Ensemble"],
+        "entra_agora": ["Sim", "Parcial", "Depois", "Depois", "Depois"],
+        "papel": [
+            "Primeira previsao viva",
+            "Entender impacto das variaveis",
+            "Tentar reduzir erro fora da amostra",
+            "Capturar interacoes se houver dados",
+            "Combinar apenas modelos aprovados",
+        ],
+    })
+    display(modelos)
+else:
+    tmp = backtest.copy()
+    tmp["mae"] = pd.to_numeric(tmp["mae"])
+    summary = tmp.groupby("modelo", as_index=False)["mae"].mean().sort_values("mae")
+    fig, ax = plt.subplots()
+    ax.barh(summary["modelo"], summary["mae"], color="#4C78A8")
+    ax.invert_yaxis()
+    ax.set_xlabel("Erro medio absoluto")
+    ax.set_ylabel("Modelo")
+    ax.set_title("Backtest: menor erro e melhor")
+    for i, row in enumerate(summary.itertuples()):
+        ax.text(row.mae + 0.15, i, f"{row.mae:.2f}", va="center", fontsize=9)
+    plt.tight_layout()
+```
+
+```{python}
+#| label: tabela-backtest
+if not backtest.empty:
+    view = backtest.copy()
+    view["mae"] = pd.to_numeric(view["mae"])
+    top = view.groupby("modelo")["mae"].mean().sort_values().head(8).index
+    display(view[view["modelo"].isin(top)].sort_values(["ano_teste", "mae"]))
+```
+
+```{python}
+#| label: backtest-janelas
+#| fig-cap: "Erro do baseline por dias antes da eleicao"
+if backtest_janelas.empty:
+    fig, ax = plt.subplots()
+    ax.text(0.5, 0.5, "Sem backtest por janela ainda", ha="center", va="center", fontsize=14)
+    ax.axis("off")
+else:
+    tmp = backtest_janelas.copy()
+    tmp["dias_antes_eleicao"] = pd.to_numeric(tmp["dias_antes_eleicao"])
+    tmp["mae"] = pd.to_numeric(tmp["mae"])
+    tmp["modelo"] = tmp.get("modelo", "baseline_pesquisa")
+    summary = tmp.groupby(["modelo", "dias_antes_eleicao"], as_index=False)["mae"].mean().sort_values("dias_antes_eleicao")
+    fig, ax = plt.subplots()
+    for model, group in summary.groupby("modelo"):
+        ax.plot(group["dias_antes_eleicao"], group["mae"], marker="o", label=model)
+    ax.invert_xaxis()
+    ax.set_xlabel("Dias antes da eleicao")
+    ax.set_ylabel("Erro medio absoluto")
+    ax.set_title("Quanto mais perto da eleicao, menor tende a ser o erro")
+    ax.legend()
+    plt.tight_layout()
+```
+
+```{python}
+#| label: backtest-previsao-viva
+#| fig-cap: "Simulacao de previsao viva: usa apenas pesquisas publicadas ate cada corte"
+if backtest_vivo.empty:
+    fig, ax = plt.subplots()
+    ax.text(0.5, 0.5, "Sem backtest de previsao viva ainda", ha="center", va="center", fontsize=14)
+    ax.axis("off")
+else:
+    tmp = backtest_vivo.copy()
+    tmp["dias_antes_eleicao"] = pd.to_numeric(tmp["dias_antes_eleicao"])
+    tmp["mae"] = pd.to_numeric(tmp["mae"])
+    tmp["modelo"] = tmp.get("modelo", "baseline_pesquisa")
+    summary = tmp.groupby(["modelo", "dias_antes_eleicao"], as_index=False)["mae"].mean().sort_values("dias_antes_eleicao")
+    fig, ax = plt.subplots()
+    for model, group in summary.groupby("modelo"):
+        ax.plot(group["dias_antes_eleicao"], group["mae"], marker="o", label=model)
+    ax.invert_xaxis()
+    ax.set_xlabel("Dias antes da eleicao")
+    ax.set_ylabel("Erro medio absoluto")
+    ax.set_title("Previsao viva melhora conforme novas pesquisas ficam disponiveis")
+    ax.legend()
+    plt.tight_layout()
+```
+
+## Proximas entregas
+
+1. Auditar amostra das pesquisas extraidas automaticamente.
+2. Buscar series completas de 2002, 1998 e 1994 no Banco de Dados Datafolha/CESOP ou em acervos dos institutos.
+3. Melhorar o Bayesiano dinamico com efeito de instituto e fundamentos como prior.
+4. Buscar series nacionais equivalentes para 1998 e 1994.
+5. Adicionar aprovacao do governo, rejeicao e renda real.

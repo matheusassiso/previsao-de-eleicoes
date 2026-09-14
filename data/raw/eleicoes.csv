@@ -1,0 +1,10 @@
+ano_eleicao,data_primeiro_turno,presidente_incumbente,partido_governo,reeleicao_permitida,observacao
+1994,1994-10-03,Itamar Franco,PMDB,0,Eleicao apos Plano Real; presidente incumbente nao disputou
+1998,1998-10-04,Fernando Henrique Cardoso,PSDB,1,Presidente incumbente disputou reeleicao
+2002,2002-10-06,Fernando Henrique Cardoso,PSDB,0,Presidente incumbente nao podia disputar; Serra foi candidato governista
+2006,2006-10-01,Lula,PT,1,Presidente incumbente disputou reeleicao
+2010,2010-10-03,Lula,PT,0,Presidente incumbente nao podia disputar; Dilma foi candidata governista
+2014,2014-10-05,Dilma Rousseff,PT,1,Presidente incumbente disputou reeleicao
+2018,2018-10-07,Michel Temer,MDB,1,Presidente incumbente nao foi candidato competitivo
+2022,2022-10-02,Jair Bolsonaro,PL,1,Presidente incumbente disputou reeleicao
+2026,2026-10-04,Lula,PT,1,Classificar cenarios conforme candidaturas registradas

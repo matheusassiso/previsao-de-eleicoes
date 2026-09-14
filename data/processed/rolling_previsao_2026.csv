@@ -1,0 +1,553 @@
+ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,28.409099999999995,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,38.6364,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,4.5455,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,6.818200000000001,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,6.822960944525297,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,37.76533082210649,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Lula,43.04077311344785,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,1.4929822588819446,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,4.621305784604936,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,2.439,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,37.8049,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,46.3415,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,2.439,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,4.878,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,8.303543774138907,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,0.17074302304957634,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,1.0417,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,37.65654261321178,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,1.0417,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,41.753370566877614,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,1.4785428635748996,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,5.063863100352069,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,1.6500072388845466,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,1.535457204591425,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,0.45469337587213304,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,0.5691997609979441,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,0.0,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,6.666699999999999,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,1.1111,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,1.1111,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,38.8889,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,0.1065,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,43.3333,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,3.3333,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,2.2222,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,4.4444,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,1.1111,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,1.1111,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,0.3195,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,42.9545,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,46.9318,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,3.4090999999999996,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,4.0909,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - cenario reduzido,Lula,46.6173,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,1.4799,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,4.9683,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,28.409099999999995,baseline_ajustado,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,38.6364,baseline_ajustado,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,4.5455,baseline_ajustado,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,6.818200000000001,baseline_ajustado,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,7.444561838982808,baseline_ajustado,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,38.386931716564,baseline_ajustado,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Lula,43.662374007905356,baseline_ajustado,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,2.1145831533394546,baseline_ajustado,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,5.242906679062446,baseline_ajustado,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,2.439,baseline_ajustado,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,37.8049,baseline_ajustado,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,46.3415,baseline_ajustado,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,2.439,baseline_ajustado,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,4.878,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,8.303543774138907,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,0.17074302304957634,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,1.0417,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,37.65654261321178,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,1.0417,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,41.753370566877614,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,1.4785428635748996,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,5.063863100352069,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,1.6500072388845466,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,1.535457204591425,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,0.45469337587213304,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,0.5691997609979441,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,0.0,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,7.909591221374045,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,2.353991221374045,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,2.353991221374045,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,40.131791221374044,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,0.1065,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,44.576191221374046,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,4.576191221374045,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,3.465091221374046,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,5.687291221374045,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,2.353991221374045,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,2.353991221374045,baseline_ajustado,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,0.3195,baseline_ajustado,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,44.276190322580646,baseline_ajustado,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,48.253490322580646,baseline_ajustado,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,4.730790322580646,baseline_ajustado,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,5.412590322580646,baseline_ajustado,2022
+2026,Primeiro turno 2026 - cenario reduzido,Lula,46.6173,baseline_ajustado,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,1.4799,baseline_ajustado,2022
+2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,4.9683,baseline_ajustado,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,28.409099999999995,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,38.6364,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,4.5455,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,6.818200000000001,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,7.444561838982808,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,38.386931716564,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Lula,45.07298337149709,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,2.1145831533394546,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,5.242906679062446,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,2.439,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,37.8049,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,46.3415,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,2.439,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,4.878,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,8.303543774138907,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,0.17074302304957634,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,1.0417,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,37.65654261321178,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,1.0417,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,41.753370566877614,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,1.4785428635748996,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,5.063863100352069,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,1.6500072388845466,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,1.535457204591425,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,0.45469337587213304,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,0.5691997609979441,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,0.0,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,7.909591221374045,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,2.353991221374045,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,2.353991221374045,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,40.131791221374044,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,0.1065,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,47.39670517241379,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,4.576191221374045,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,3.465091221374046,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,5.687291221374045,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,2.353991221374045,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,2.353991221374045,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,0.3195,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,44.276190322580646,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,50.753144444444445,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,4.730790322580646,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,5.412590322580646,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - cenario reduzido,Lula,46.6173,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,1.4799,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,4.9683,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,30.654651631933923,inferencial_ols,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,48.533597440255555,inferencial_ols,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,10.40163346527866,inferencial_ols,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,12.3304721311697,inferencial_ols,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,6.171275076348288,inferencial_ols,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,32.432039556561605,inferencial_ols,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Lula,46.10834770199267,inferencial_ols,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,1.6477264437773356,inferencial_ols,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,4.302732109211001,inferencial_ols,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,3.07983170996434,inferencial_ols,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,33.094842654671496,inferencial_ols,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,49.53889272997865,inferencial_ols,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,3.07983170996434,inferencial_ols,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,5.149809052380078,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,7.039701361578237,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,0.13739989165752847,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,1.0942615085173066,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,31.951567917066676,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,1.0942615085173066,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,44.627587020089095,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,1.2473285666482357,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,4.290186973959989,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,1.3928502443532118,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,1.2956317221885105,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,0.47763603666570703,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,0.4755698053459279,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,0.0917381335079219,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,6.038463438306603,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,1.3234301773287953,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,1.3234301773287953,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,33.385418716202615,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,0.6736490270512601,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,46.356421935981416,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,3.209409533752023,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,2.266419855540409,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,4.152399211963637,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,1.3234301773287953,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,1.3234301773287953,inferencial_ols,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,0.8544219560937166,inferencial_ols,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,40.554639882776435,inferencial_ols,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,53.129215707457895,inferencial_ols,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,6.992490642609435,inferencial_ols,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,7.571133755384772,inferencial_ols,2022
+2026,Primeiro turno 2026 - cenario reduzido,Lula,59.364684031350855,inferencial_ols,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,11.857564372488998,inferencial_ols,2022
+2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,14.818166652637855,inferencial_ols,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,22.38035221069265,ridge,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,47.287316439990676,ridge,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,5.331984358545775,ridge,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,6.955621429967281,ridge,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,3.193895235008388,ridge,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,25.299399177841526,ridge,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Lula,46.66871226612555,ridge,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,0.07936180665660655,ridge,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,1.6210132285257222,ridge,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,0.49805421009654793,ridge,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,25.76376737249623,ridge,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,49.46288050105402,ridge,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,0.49805421009654793,ridge,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,2.2404974789824763,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,4.041483820060095,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,0.0,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,0.0,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,25.0115269724828,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,0.0,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,45.53882750673027,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,0.0,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,1.7270271643078625,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,0.0,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,0.0,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,0.0,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,0.0,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,0.0,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,3.3338742485596846,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,0.0,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,0.0,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,26.35370020128462,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,0.0,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,47.12930929337871,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,0.9524636735271521,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,0.1586839621457834,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,1.7462433849085137,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,0.0,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,0.0,ridge,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,0.0,ridge,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,31.356534446028544,ridge,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,51.798443148251096,ridge,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,3.104949351562958,ridge,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,3.5920333289005626,ridge,2022
+2026,Primeiro turno 2026 - cenario reduzido,Lula,55.96599071014657,ridge,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,6.1189408879274225,ridge,2022
+2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,8.611084840031431,ridge,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,16.721995467282568,huber,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,44.69973818282859,huber,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,2.6939233274399115,huber,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,4.029916201617347,huber,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,5.468750199842156,huber,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,23.658034164558423,huber,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Lula,48.72485743947943,huber,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,2.3355546423391518,huber,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,4.174520602865187,huber,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,3.2261930486045642,huber,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,24.01582229525894,huber,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,50.99969729734882,huber,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,3.2261930486045642,huber,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,4.659944366472629,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,6.056279299532165,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,1.2754618354761278,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,1.763342643958083,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,23.311261164599962,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,1.763342643958083,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,47.68524316854906,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,2.044244018690896,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,4.151852716705774,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,2.1450383090015275,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,2.0777007679479826,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,1.4423803236140686,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,1.5096922057700533,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,1.1750915877048649,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,5.7009912110788825,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,2.43516553598754,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,2.43516553598754,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,24.64261553031143,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,1.1597412474031117,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,49.22091564803081,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,3.7414722922673285,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,3.0883189141274308,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,4.394625670407219,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,2.43516553598754,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,2.43516553598754,huber,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,1.284952002100077,huber,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,26.51942395226502,huber,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,50.82314217552922,huber,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,3.2729010471319455,huber,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,3.6736930309459903,huber,2022
+2026,Primeiro turno 2026 - cenario reduzido,Lula,48.62700199185288,huber,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,0.12756928782561516,huber,2022
+2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,2.178204014045761,huber,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,40.582599999999815,random_forest_07_600,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,41.54071666666687,random_forest_07_600,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,11.568633333333368,random_forest_07_600,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,13.050733333333387,random_forest_07_600,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,12.776275206144918,random_forest_07_600,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,35.62216816799893,random_forest_07_600,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Lula,42.95072612652033,random_forest_07_600,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,11.231393061802024,random_forest_07_600,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,11.346239440696207,random_forest_07_600,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,11.552266666666693,random_forest_07_600,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,35.261500000000034,random_forest_07_600,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,43.50808333333348,random_forest_07_600,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,11.552266666666693,random_forest_07_600,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,11.68778333333337,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,16.481118000454146,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,11.17410038625421,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,11.161983333333362,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,35.582967701830704,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,11.161983333333362,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,42.88372872241791,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,11.162715228447423,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,11.877545566702699,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,11.15395333967509,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,11.148148538197155,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,11.168651515201633,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,11.17410038625421,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,11.17410038625421,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,12.64373333333339,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,11.203866666666693,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,11.203866666666693,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,35.594833333333355,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,11.379216666666695,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,42.95523333333352,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,11.206433333333358,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,11.203633333333359,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,11.337333333333362,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,11.203866666666693,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,11.203866666666693,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,11.379216666666695,random_forest_07_600,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,35.066200000000045,random_forest_07_600,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,43.51180000000015,random_forest_07_600,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,11.27538333333336,random_forest_07_600,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,11.296616666666694,random_forest_07_600,2022
+2026,Primeiro turno 2026 - cenario reduzido,Lula,41.31321666666688,random_forest_07_600,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,12.785583333333372,random_forest_07_600,2022
+2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,13.389466666666708,random_forest_07_600,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,38.772319999999986,extra_trees,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,44.820200000000085,extra_trees,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,8.209840000000026,extra_trees,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,9.893719999999998,extra_trees,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,9.582156281855092,extra_trees,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,38.139114127939386,extra_trees,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Lula,45.03066270364844,extra_trees,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,7.633407696151175,extra_trees,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,7.8976825787095795,extra_trees,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,8.035560000000022,extra_trees,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,37.897959999999976,extra_trees,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,45.16916000000008,extra_trees,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,8.035560000000022,extra_trees,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,8.33272000000002,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,10.481669365533264,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,7.584933244204563,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,7.632020000000018,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,37.7944405113054,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,7.632020000000018,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,45.01516828194539,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,7.583763446520646,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,8.456819893410726,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,7.583423041888482,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,7.583763446520646,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,7.584933244204563,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,7.584933244204563,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,7.584933244204563,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,9.327220000000004,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,7.58886000000002,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,7.58886000000002,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,38.35567999999997,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,7.87114000000002,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,45.04148000000009,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,7.647300000000018,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,7.584180000000019,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,7.827980000000022,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,7.58886000000002,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,7.58886000000002,extra_trees,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,7.87114000000002,extra_trees,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,37.27215999999998,extra_trees,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,45.20860000000009,extra_trees,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,7.8204400000000245,extra_trees,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,7.8470000000000235,extra_trees,2022
+2026,Primeiro turno 2026 - cenario reduzido,Lula,45.02976000000009,extra_trees,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,8.017280000000024,extra_trees,2022
+2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,8.185440000000026,extra_trees,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,36.506588777686474,gradient_boosting,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,37.147485416177865,gradient_boosting,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,10.242939990386187,gradient_boosting,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,10.68799859790887,gradient_boosting,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,9.941439184022038,gradient_boosting,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,39.60208294027163,gradient_boosting,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Lula,41.38123580414092,gradient_boosting,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,9.496380576499355,gradient_boosting,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,9.231038983987212,gradient_boosting,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,38.85805875599294,gradient_boosting,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,42.691700158074944,gradient_boosting,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,9.231038983987212,gradient_boosting,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,9.392415820126626,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,12.624697628617097,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,39.50546836782554,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,41.15076363951499,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,9.658858657236074,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,9.941439184022038,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,39.69864924163179,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,41.381235804140914,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,9.496380576499355,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,9.294048765834553,gradient_boosting,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,39.350903200144955,gradient_boosting,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,42.795311124882296,gradient_boosting,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,9.560028337935107,gradient_boosting,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,9.560028337935107,gradient_boosting,2022
+2026,Primeiro turno 2026 - cenario reduzido,Lula,37.096732904901444,gradient_boosting,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,12.926284408569003,gradient_boosting,2022
+2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,13.087661244708418,gradient_boosting,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,24.822376548339474,mlp_pequena,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,27.118447418651154,mlp_pequena,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,1.7997283462651943,mlp_pequena,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,32.87012173453928,mlp_pequena,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Lula,34.13436554733904,mlp_pequena,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,33.60326206248222,mlp_pequena,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,38.21317900634241,mlp_pequena,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,26.152384995317952,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,29.719077619713783,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,38.618192297272394,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,38.4765964292805,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,34.80365631349627,mlp_pequena,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,37.147016166629825,mlp_pequena,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,2.6303628753393475,mlp_pequena,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,3.460842840199202,mlp_pequena,2022
+2026,Primeiro turno 2026 - cenario reduzido,Lula,27.122765264606684,mlp_pequena,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,4.173122647394546,mlp_pequena,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,33.9281803294597,voting_ia,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,41.98273395205621,voting_ia,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,7.845397005199545,voting_ia,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,9.398451120403166,voting_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,7.790916731490956,voting_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,33.00531626159328,voting_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Lula,43.64467157897775,voting_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,5.536215874103584,voting_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,6.407150680857483,voting_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,5.931564398027923,voting_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,32.84989759838528,voting_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,45.446504664154126,voting_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,5.931564398027923,voting_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,6.617148877480813,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,9.996260725220823,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,5.171218047160179,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,5.367357759483784,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,32.86214430829407,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,5.367357759483784,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,43.18342061974456,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,5.479810609710647,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,6.8235880522484855,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,5.5169734354047435,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,5.489694914671559,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,5.235994886299414,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,5.266105058364277,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,5.1305579362920675,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,7.7697044775272435,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,5.512806561088547,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,5.512806561088547,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,33.38893870319436,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,5.1824599457413045,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,43.79820392139546,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,6.046815257565015,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,5.77739979821567,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,6.4376524315804025,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,5.512806561088547,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,5.512806561088547,voting_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,5.233182976528883,voting_ia,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,34.91427921539117,voting_ia,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,46.25956253548893,voting_ia,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,6.848681452054912,voting_ia,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,7.00388722227856,voting_ia,2022
+2026,Primeiro turno 2026 - cenario reduzido,Lula,44.31868564946046,voting_ia,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,9.206497321054368,voting_ia,2022
+2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,10.55227091713551,voting_ia,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,33.085055643265605,stacking_ia,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,36.44267313594766,stacking_ia,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,10.43557224356971,stacking_ia,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,10.403392631285572,stacking_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,9.282436843956674,stacking_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,39.29758392570438,stacking_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Lula,40.93391455150427,stacking_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,8.807579850942894,stacking_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,9.19654957849889,stacking_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,8.797755066922193,stacking_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,38.52576615473154,stacking_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,42.35768450409745,stacking_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,8.797755066922193,stacking_ia,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,9.100922001540514,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,11.645835138667776,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,8.687582012628077,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,8.747554294124695,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,39.17159545868443,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,8.747554294124695,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,40.57093300325616,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,8.773981440389713,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,9.131562303041914,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,8.787962362263025,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,8.780595003744514,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,8.708131907550639,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,8.713209011875156,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,8.676600566196363,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,9.349665993835698,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,8.818822364912052,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,8.818822364912052,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,39.50459585304243,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,8.694464105164629,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,40.97538042943226,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,8.957863365071349,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,8.890283470100139,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,9.216871528599231,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,8.818822364912052,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,8.818822364912052,stacking_ia,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,8.708163336021494,stacking_ia,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,39.57252142120437,stacking_ia,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,42.68822142029022,stacking_ia,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,9.463852784097844,stacking_ia,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,9.513462401127905,stacking_ia,2022
+2026,Primeiro turno 2026 - cenario reduzido,Lula,37.59970953067567,stacking_ia,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,13.456865506678959,stacking_ia,2022
+2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,13.497300459492223,stacking_ia,2022

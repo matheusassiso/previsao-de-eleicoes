@@ -1,0 +1,28 @@
+ano_eleicao,cenario,rotulo,prioridade,usar_previsao_principal,observacao
+1994,folha_datafolha_1994_08_22,Primeiro turno 1994 - Datafolha 22/08,1,1,Pesquisa nacional Datafolha publicada pela Folha; entrada manual auditada
+1994,folha_datafolha_1994_05_24,Primeiro turno 1994 - Datafolha 23-24/05,2,1,Pesquisa nacional Datafolha publicada pela Folha; entrada manual auditada
+1998,folha_datafolha_1998_07_09,Primeiro turno 1998 - Datafolha 08-09/07,1,1,Pesquisa nacional Datafolha publicada pela Folha; amostra nao informada na pagina
+1998,folha_datafolha_1998_08_14,Primeiro turno 1998 - Datafolha 12-14/08,1,1,Pesquisa nacional Datafolha publicada pela Folha
+2002,cesop_datafolha_01690,Primeiro turno 2002 - CESOP/Datafolha 01690,1,1,Pesquisa nacional estimulada de 09/09/2002 extraida de PDF CESOP/Datafolha
+2006,wikipedia_2006_primeiro_turno,Primeiro turno 2006,1,1,Pesquisas extraidas de graficos em wikitexto; auditoria separada
+2006,folha_ibope_2006_08_31,Primeiro turno 2006 - Ibope 29-31/08,2,1,Pesquisa nacional Ibope publicada pela Folha; entrada manual auditada
+2006,folha_datafolha_2006_09_05,Primeiro turno 2006 - Datafolha 04-05/09,2,1,Pesquisa nacional Datafolha publicada pela Folha; amostra imputada
+2006,folha_datafolha_2006_09_19,Primeiro turno 2006 - Datafolha 18-19/09,2,1,Pesquisa nacional Datafolha publicada pela Folha; entrada manual auditada
+2006,folha_datafolha_2006_09_27,Primeiro turno 2006 - Datafolha 27/09,2,1,Pesquisa nacional Datafolha publicada pela Folha; entrada manual auditada
+2010,wikipedia_tabela_1,Primeiro turno 2010,1,1,Tabela principal de primeiro turno
+2014,wikipedia_tabela_9,Primeiro turno 2014,1,1,Tabela principal de primeiro turno na pagina da eleicao geral
+2018,wikipedia_tabela_1,Primeiro turno 2018,1,1,Tabela principal de primeiro turno
+2022,wikipedia_tabela_2,Primeiro turno 2022 - reta final,1,1,Julho a outubro de 2022
+2022,wikipedia_tabela_3,Primeiro turno 2022 - abril a junho,2,0,Cenario historico anterior
+2022,wikipedia_tabela_4,Primeiro turno 2022 - janeiro a marco,3,0,Cenario historico anterior
+2022,wikipedia_tabela_5,Primeiro turno 2022 - 2021,4,0,Cenario historico anterior
+2022,wikipedia_tabela_6,Primeiro turno 2022 - 2021 alternativo,5,0,Cenario historico anterior
+2022,wikipedia_tabela_7,Primeiro turno 2022 - 2020,6,0,Cenario historico anterior
+2022,wikipedia_tabela_8,Primeiro turno 2022 - 2019,7,0,Cenario historico anterior
+2026,wikipedia_tabela_2,Primeiro turno 2026 - Lula vs Flavio,1,1,Cenario recente de primeiro turno
+2026,agosto_setembro_2026_sem_marcal,Primeiro turno 2026 - agosto/setembro com Renan,1,1,Pesquisas recentes com Renan Santos e candidatos menores; sem Pablo Marcal
+2026,agosto_setembro_2026_com_marcal,Primeiro turno 2026 - agosto/setembro com Marcal,2,0,Cenario alternativo com Pablo Marcal; fontes citam Marcal como inelegivel
+2026,wikipedia_tabela_3,Primeiro turno 2026 - Lula vs Flavio ampliado,2,1,Cenario recente de primeiro turno
+2026,wikipedia_tabela_4,Primeiro turno 2026 - alternativa com Tarcisio,3,0,Cenario alternativo
+2026,wikipedia_tabela_5,Primeiro turno 2026 - 2025 com Freitas/Gomes,4,0,Cenario antigo ou alternativo
+2026,wikipedia_tabela_6,Primeiro turno 2026 - cenario reduzido,5,0,Cenario reduzido; nao usar como principal

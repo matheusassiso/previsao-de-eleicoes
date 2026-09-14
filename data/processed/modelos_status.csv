@@ -1,0 +1,18 @@
+modelo,status,detalhe
+inferencial_ols,treinado,r2=0.3154; n=1265
+ridge,treinado,familia=machine_learning; n=1265; validacao fora da amostra ainda pendente
+elastic_net,treinado,familia=machine_learning; n=1265; validacao fora da amostra ainda pendente
+huber,treinado,familia=machine_learning; n=1265; validacao fora da amostra ainda pendente
+svr_rbf,treinado,familia=machine_learning; n=1265; validacao fora da amostra ainda pendente
+random_forest,treinado,familia=machine_learning; n=1265; validacao fora da amostra ainda pendente
+random_forest_sqrt_600,treinado,familia=machine_learning; n=1265; validacao fora da amostra ainda pendente
+random_forest_07_600,treinado,familia=machine_learning; n=1265; validacao fora da amostra ainda pendente
+extra_trees,treinado,familia=machine_learning; n=1265; validacao fora da amostra ainda pendente
+gradient_boosting,treinado,familia=machine_learning; n=1265; validacao fora da amostra ainda pendente
+ada_boost,treinado,familia=machine_learning; n=1265; validacao fora da amostra ainda pendente
+mlp_pequena,treinado,familia=deep_learning; n=1265; validacao fora da amostra ainda pendente
+mlp_media,treinado,familia=deep_learning; n=1265; validacao fora da amostra ainda pendente
+mlp_profunda,treinado,familia=deep_learning; n=1265; validacao fora da amostra ainda pendente
+voting_ia,treinado,familia=ia_ensemble; n=1265; validacao fora da amostra ainda pendente
+stacking_ia,treinado,familia=ia_ensemble; n=1265; validacao fora da amostra ainda pendente
+ensemble_ia,parcial,usa baseline por enquanto; modelos treinados entram quando passarem no backtest

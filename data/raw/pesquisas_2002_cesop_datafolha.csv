@@ -1,0 +1,7 @@
+ano_eleicao,turno,instituto,data_inicio_campo,data_fim_campo,data_publicacao,amostra,cenario,candidato,percentual_total,brancos_nulos,indecisos,fonte,amostra_imputada,qualidade_fonte,cenario_tipo
+2002,1,Datafolha,2002-09-09,2002-09-09,2002-09-09,4862,cesop_datafolha_01690,Anthony Garotinho,17.3,3.7,6.1,https://www.cesop.unicamp.br/vw/1I8v7SqswNQ_MDA_aef91_,0,primaria_cesop_datafolha,estimulado_primeiro_turno
+2002,1,Datafolha,2002-09-09,2002-09-09,2002-09-09,4862,cesop_datafolha_01690,Ciro Gomes,12.7,3.7,6.1,https://www.cesop.unicamp.br/vw/1I8v7SqswNQ_MDA_aef91_,0,primaria_cesop_datafolha,estimulado_primeiro_turno
+2002,1,Datafolha,2002-09-09,2002-09-09,2002-09-09,4862,cesop_datafolha_01690,José Serra,19.4,3.7,6.1,https://www.cesop.unicamp.br/vw/1I8v7SqswNQ_MDA_aef91_,0,primaria_cesop_datafolha,estimulado_primeiro_turno
+2002,1,Datafolha,2002-09-09,2002-09-09,2002-09-09,4862,cesop_datafolha_01690,Lula,39.9,3.7,6.1,https://www.cesop.unicamp.br/vw/1I8v7SqswNQ_MDA_aef91_,0,primaria_cesop_datafolha,estimulado_primeiro_turno
+2002,1,Datafolha,2002-09-09,2002-09-09,2002-09-09,4862,cesop_datafolha_01690,Rui Costa Pimenta,0.3,3.7,6.1,https://www.cesop.unicamp.br/vw/1I8v7SqswNQ_MDA_aef91_,0,primaria_cesop_datafolha,estimulado_primeiro_turno
+2002,1,Datafolha,2002-09-09,2002-09-09,2002-09-09,4862,cesop_datafolha_01690,Zé Maria,0.6,3.7,6.1,https://www.cesop.unicamp.br/vw/1I8v7SqswNQ_MDA_aef91_,0,primaria_cesop_datafolha,estimulado_primeiro_turno

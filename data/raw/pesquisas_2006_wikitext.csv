@@ -1,0 +1,15 @@
+ano_eleicao,turno,instituto,data_inicio_campo,data_fim_campo,data_publicacao,amostra,cenario,candidato,percentual_total,brancos_nulos,indecisos,fonte
+2006,1,Datafolha,2006-09-30,2006-09-30,2006-09-30,7528,wikipedia_2006_primeiro_turno,Lula,49,0,9,Wikipedia pt 2006 wikitext: pesquisa de primeiro turno
+2006,1,Datafolha,2006-09-30,2006-09-30,2006-09-30,7528,wikipedia_2006_primeiro_turno,Geraldo Alckmin,35,0,9,Wikipedia pt 2006 wikitext: pesquisa de primeiro turno
+2006,1,Datafolha,2006-09-30,2006-09-30,2006-09-30,7528,wikipedia_2006_primeiro_turno,Heloísa Helena,8,0,9,Wikipedia pt 2006 wikitext: pesquisa de primeiro turno
+2006,1,Datafolha,2006-09-30,2006-09-30,2006-09-30,7528,wikipedia_2006_primeiro_turno,Cristovam Buarque,2,0,9,Wikipedia pt 2006 wikitext: pesquisa de primeiro turno
+2006,1,IBOPE,2006-09-21,2006-09-21,2006-09-21,3010,wikipedia_2006_primeiro_turno,Lula,49,5,4,Wikipedia pt 2006 wikitext: pesquisa de primeiro turno
+2006,1,IBOPE,2006-09-21,2006-09-21,2006-09-21,3010,wikipedia_2006_primeiro_turno,Geraldo Alckmin,30,5,4,Wikipedia pt 2006 wikitext: pesquisa de primeiro turno
+2006,1,IBOPE,2006-09-21,2006-09-21,2006-09-21,3010,wikipedia_2006_primeiro_turno,Heloísa Helena,9,5,4,Wikipedia pt 2006 wikitext: pesquisa de primeiro turno
+2006,1,IBOPE,2006-09-21,2006-09-21,2006-09-21,3010,wikipedia_2006_primeiro_turno,Cristovam Buarque,2,5,4,Wikipedia pt 2006 wikitext: pesquisa de primeiro turno
+2006,1,IBOPE,2006-09-21,2006-09-21,2006-09-21,3010,wikipedia_2006_primeiro_turno,Ana Maria Rangel,1,5,4,Wikipedia pt 2006 wikitext: pesquisa de primeiro turno
+2006,1,IBOPE,2006-09-08,2006-09-08,2006-09-08,3010,wikipedia_2006_primeiro_turno,Lula,48,6,8,Wikipedia pt 2006 wikitext: pesquisa de primeiro turno
+2006,1,IBOPE,2006-09-08,2006-09-08,2006-09-08,3010,wikipedia_2006_primeiro_turno,Geraldo Alckmin,27,6,8,Wikipedia pt 2006 wikitext: pesquisa de primeiro turno
+2006,1,IBOPE,2006-09-08,2006-09-08,2006-09-08,3010,wikipedia_2006_primeiro_turno,Heloísa Helena,9,6,8,Wikipedia pt 2006 wikitext: pesquisa de primeiro turno
+2006,1,IBOPE,2006-09-08,2006-09-08,2006-09-08,3010,wikipedia_2006_primeiro_turno,Cristovam Buarque,1,6,8,Wikipedia pt 2006 wikitext: pesquisa de primeiro turno
+2006,1,IBOPE,2006-09-08,2006-09-08,2006-09-08,3010,wikipedia_2006_primeiro_turno,Ana Maria Rangel,1,6,8,Wikipedia pt 2006 wikitext: pesquisa de primeiro turno

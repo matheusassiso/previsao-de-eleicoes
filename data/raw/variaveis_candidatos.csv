@@ -1,0 +1,18 @@
+ano_eleicao,candidato,incumbente,sucessor_governo,partido_governo,reeleicao_permitida,ex_presidente,observacao
+1994,Fernando Henrique Cardoso,0,1,0,0,0,Ministro da Fazenda do governo Itamar
+1994,Lula,0,0,0,0,0,Principal oposicao
+1998,Fernando Henrique Cardoso,1,0,1,1,1,Presidente candidato a reeleicao
+1998,Lula,0,0,0,1,0,Principal oposicao
+2002,José Serra,0,1,1,0,0,Candidato governista com FHC impedido de disputar
+2002,Lula,0,0,0,0,0,Principal oposicao
+2006,Lula,1,0,1,1,1,Presidente candidato a reeleicao
+2006,Geraldo Alckmin,0,0,0,1,0,Principal oposicao
+2010,Dilma Rousseff,0,1,1,0,0,Candidata governista apoiada por Lula
+2010,José Serra,0,0,0,0,0,Principal oposicao
+2014,Dilma Rousseff,1,0,1,1,1,Presidente candidata a reeleicao
+2014,Aécio Neves,0,0,0,1,0,Principal oposicao
+2018,Fernando Haddad,0,0,0,1,0,Candidato do PT substituiu Lula
+2018,Jair Bolsonaro,0,0,0,1,0,Principal candidato de oposicao ao sistema partidario tradicional
+2022,Jair Bolsonaro,1,0,1,1,1,Presidente candidato a reeleicao
+2022,Lula,0,0,0,1,1,Ex-presidente e principal oposicao
+2026,Lula,1,0,1,1,1,Classificacao preliminar se Lula disputar

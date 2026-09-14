@@ -1,0 +1,14 @@
+ano_eleicao,turno,instituto,data_inicio_campo,data_fim_campo,data_publicacao,amostra,cenario,candidato,percentual_total,brancos_nulos,indecisos,fonte
+2026,1,BTG/Nexus,2026-09-04,2026-09-07,2026-09-08,2002,sem_marcal,Lula,39,8,5,Folha/UOL resumo BTG Nexus BR-06790/2026
+2026,1,BTG/Nexus,2026-09-04,2026-09-07,2026-09-08,2002,sem_marcal,Flávio Bolsonaro,35,8,5,Folha/UOL resumo BTG Nexus BR-06790/2026
+2026,1,BTG/Nexus,2026-09-04,2026-09-07,2026-09-08,2002,sem_marcal,Augusto Cury,9,8,5,Folha/UOL resumo BTG Nexus BR-06790/2026
+2026,1,BTG/Nexus,2026-09-04,2026-09-07,2026-09-08,2002,sem_marcal,Ronaldo Caiado,4,8,5,Folha/UOL resumo BTG Nexus BR-06790/2026
+2026,1,BTG/Nexus,2026-09-04,2026-09-07,2026-09-08,2002,sem_marcal,Renan Santos,4,8,5,Folha/UOL resumo BTG Nexus BR-06790/2026
+2026,1,BTG/Nexus,2026-09-04,2026-09-07,2026-09-08,2002,sem_marcal,Romeu Zema,2,8,5,Folha/UOL resumo BTG Nexus BR-06790/2026
+2026,1,BTG/Nexus,2026-09-04,2026-09-07,2026-09-08,2002,com_marcal,Lula,39,8,5,Folha/UOL resumo BTG Nexus BR-06790/2026
+2026,1,BTG/Nexus,2026-09-04,2026-09-07,2026-09-08,2002,com_marcal,Flávio Bolsonaro,34,8,5,Folha/UOL resumo BTG Nexus BR-06790/2026
+2026,1,BTG/Nexus,2026-09-04,2026-09-07,2026-09-08,2002,com_marcal,Augusto Cury,9,8,5,Folha/UOL resumo BTG Nexus BR-06790/2026
+2026,1,BTG/Nexus,2026-09-04,2026-09-07,2026-09-08,2002,com_marcal,Ronaldo Caiado,4,8,5,Folha/UOL resumo BTG Nexus BR-06790/2026
+2026,1,BTG/Nexus,2026-09-04,2026-09-07,2026-09-08,2002,com_marcal,Renan Santos,4,8,5,Folha/UOL resumo BTG Nexus BR-06790/2026
+2026,1,BTG/Nexus,2026-09-04,2026-09-07,2026-09-08,2002,com_marcal,Pablo Marçal,3,8,5,Folha/UOL resumo BTG Nexus BR-06790/2026
+2026,1,BTG/Nexus,2026-09-04,2026-09-07,2026-09-08,2002,com_marcal,Romeu Zema,1,8,5,Folha/UOL resumo BTG Nexus BR-06790/2026
