@@ -1,40 +1,40 @@
 data_previsao,ano_eleicao,cenario,modelo,candidato,voto_valido_estimado,intervalo_baixo,intervalo_alto,probabilidade_liderar,probabilidade_ir_ao_segundo_turno,fonte_dados_ate
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Lula,43.7217,31.9124,55.5310,0.6810,1.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Flávio Bolsonaro,39.8238,28.0145,51.6331,0.3190,1.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Augusto Cury,5.6885,0.0000,17.4978,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Renan Santos,4.8572,0.0000,16.6665,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Ronaldo Caiado,3.2255,0.0000,15.0348,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Romeu Zema,1.2637,0.0000,13.0730,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Samara Martins,1.0098,0.0000,12.8191,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Rui Costa Pimenta,0.5629,0.0000,12.3722,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Edmilson Costa,0.3003,0.0000,12.1096,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Clariana Barão,0.3003,0.0000,12.1096,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Wilson Grassi,0.0645,0.0000,11.8738,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Hertz Dias,0.0215,0.0000,11.8308,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Lula,44.2115,31.9835,56.4395,0.6798,1.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Flávio Bolsonaro,40.1887,27.9607,52.4167,0.3202,1.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Augusto Cury,6.2083,0.0000,18.4363,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Renan Santos,5.2776,0.0000,17.5056,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Ronaldo Caiado,3.7354,0.0000,15.9634,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Romeu Zema,1.6539,0.0000,13.8819,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Samara Martins,1.2766,0.0000,13.5046,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Rui Costa Pimenta,0.8936,0.0000,13.1216,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Edmilson Costa,0.5673,0.0000,12.7953,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Clariana Barão,0.5673,0.0000,12.7953,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Wilson Grassi,0.0645,0.0000,12.2925,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Hertz Dias,0.0215,0.0000,12.2495,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Lula,44.5263,31.9255,57.1271,0.6874,1.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Flávio Bolsonaro,40.1887,27.5879,52.7895,0.3126,0.9998,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Augusto Cury,6.2083,0.0000,18.8091,0.0000,0.0002,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Renan Santos,5.2776,0.0000,17.8784,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Ronaldo Caiado,3.7354,0.0000,16.3362,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Romeu Zema,1.6539,0.0000,14.2547,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Samara Martins,1.2766,0.0000,13.8774,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Rui Costa Pimenta,0.8936,0.0000,13.4944,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Edmilson Costa,0.5673,0.0000,13.1681,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Clariana Barão,0.5673,0.0000,13.1681,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Wilson Grassi,0.0645,0.0000,12.6653,0.0000,0.0000,2026-09-24
-2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Hertz Dias,0.0215,0.0000,12.6223,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Lula,43.7217,31.8705,55.5729,0.6796,1.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Flávio Bolsonaro,39.8238,27.9726,51.6750,0.3204,1.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Augusto Cury,5.6885,0.0000,17.5397,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Renan Santos,4.8572,0.0000,16.7084,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Ronaldo Caiado,3.2255,0.0000,15.0767,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Romeu Zema,1.2637,0.0000,13.1149,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Samara Martins,1.0098,0.0000,12.8610,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Rui Costa Pimenta,0.5629,0.0000,12.4141,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Edmilson Costa,0.3003,0.0000,12.1515,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Clariana Barão,0.3003,0.0000,12.1515,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Wilson Grassi,0.0645,0.0000,11.9157,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_pesquisa,Hertz Dias,0.0215,0.0000,11.8727,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Lula,44.2115,31.9506,56.4724,0.6792,1.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Flávio Bolsonaro,40.1887,27.9278,52.4496,0.3208,1.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Augusto Cury,6.2083,0.0000,18.4692,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Renan Santos,5.2776,0.0000,17.5385,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Ronaldo Caiado,3.7354,0.0000,15.9963,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Romeu Zema,1.6539,0.0000,13.9148,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Samara Martins,1.2766,0.0000,13.5375,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Rui Costa Pimenta,0.8936,0.0000,13.1545,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Edmilson Costa,0.5673,0.0000,12.8282,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Clariana Barão,0.5673,0.0000,12.8282,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Wilson Grassi,0.0645,0.0000,12.3254,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_ajustado,Hertz Dias,0.0215,0.0000,12.2824,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Lula,44.5263,31.8637,57.1889,0.6872,1.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Flávio Bolsonaro,40.1887,27.5261,52.8513,0.3128,0.9998,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Augusto Cury,6.2083,0.0000,18.8709,0.0000,0.0002,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Renan Santos,5.2776,0.0000,17.9402,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Ronaldo Caiado,3.7354,0.0000,16.3980,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Romeu Zema,1.6539,0.0000,14.3165,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Samara Martins,1.2766,0.0000,13.9392,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Rui Costa Pimenta,0.8936,0.0000,13.5562,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Edmilson Costa,0.5673,0.0000,13.2299,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Clariana Barão,0.5673,0.0000,13.2299,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Wilson Grassi,0.0645,0.0000,12.7271,0.0000,0.0000,2026-09-24
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_efeito_casa,Hertz Dias,0.0215,0.0000,12.6841,0.0000,0.0000,2026-09-24
 2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_temporal,Lula,44.7355,38.7355,50.7355,0.7510,1.0000,2026-09-24
 2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_temporal,Flávio Bolsonaro,41.8496,35.8496,47.8496,0.2490,1.0000,2026-09-24
 2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,baseline_temporal,Renan Santos,5.1778,0.0000,11.1778,0.0000,0.0000,2026-09-24

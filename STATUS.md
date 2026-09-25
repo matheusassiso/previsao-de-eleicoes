@@ -37,11 +37,12 @@ Atualizado em 2026-09-25.
 - Base limpa automatica com 1.255 linhas brutas aproveitaveis de 2010 a 2026.
 - Complemento manual auditado de 1994 e 1998 com pesquisas Datafolha publicadas pela Folha.
 - Series consolidadas Datafolha de 1994 e 1998 incorporadas, adicionando 23 pesquisas/cenarios historicos sem duplicar datas ja auditadas.
+- Primeira rodada CNI/Ibope/Ibope de 1998 incorporada, com 4 pesquisas nacionais auditadas em fontes jornalisticas.
 - Complemento manual auditado de 1994 e 2006 com pesquisas publicadas pela Folha.
 - Complemento de 2002 com 6 linhas de pesquisa nacional CESOP/Datafolha e 367 linhas do acervo Fernando Rodrigues/UOL.
 - Complemento de 2006 com 14 linhas extraidas de wikitexto.
 - Complemento recente de 2026 com 231 linhas de pesquisas de agosto/setembro incluindo Renan Santos, candidatos menores e cenarios alternativos com Pablo Marcal.
-- Base processada com 1.965 linhas de pesquisas ate o primeiro turno.
+- Base processada com 1.982 linhas de pesquisas ate o primeiro turno.
 - Historico de previsoes criado em `data/processed/previsoes_historico.csv`.
 - Tabela de qualidade historica com 55 institutos apos limpeza de marcadores de referencia.
 - Tabela de efeito casa com 95 pares instituto-candidato.
@@ -56,7 +57,7 @@ Atualizado em 2026-09-25.
 ## Cobertura processada
 
 - 1994: 71 linhas.
-- 1998: 41 linhas.
+- 1998: 58 linhas.
 - 2002: 373 linhas.
 - 2006: 32 linhas.
 - 2010: 170 linhas.

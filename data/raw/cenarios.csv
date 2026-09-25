@@ -26,6 +26,10 @@ ano_eleicao,cenario,rotulo,prioridade,usar_previsao_principal,observacao
 1998,datafolha_serie_1998_09_18,Primeiro turno 1998 - Datafolha 17-18/09,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
 1998,datafolha_serie_1998_09_25,Primeiro turno 1998 - Datafolha 24-25/09,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
 1998,datafolha_serie_1998_10_02,Primeiro turno 1998 - Datafolha 02/10,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1998,cni_ibope_1998_05_13,Primeiro turno 1998 - CNI/Ibope 08-13/05,1,1,Pesquisa CNI/Ibope nacional publicada pela Folha de Londrina
+1998,ibope_1998_06_03,Primeiro turno 1998 - Ibope 30/05-03/06,1,1,Pesquisa Ibope nacional publicada por UOL/Folha
+1998,ibope_1998_07_28,Primeiro turno 1998 - Ibope 23-28/07,1,1,Pesquisa Ibope nacional publicada pela Folha de Londrina
+1998,ibope_1998_09_14,Primeiro turno 1998 - Ibope 09-14/09,1,1,Pesquisa Ibope nacional publicada pela Folha de Londrina
 2002,cesop_datafolha_01690,Primeiro turno 2002 - CESOP/Datafolha 01690,1,1,Pesquisa nacional estimulada de 09/09/2002 extraida de PDF CESOP/Datafolha
 2006,wikipedia_2006_primeiro_turno,Primeiro turno 2006,1,1,Pesquisas extraidas de graficos em wikitexto; auditoria separada
 2006,folha_ibope_2006_08_31,Primeiro turno 2006 - Ibope 29-31/08,2,1,Pesquisa nacional Ibope publicada pela Folha; entrada manual auditada
