@@ -1,6 +1,6 @@
 ---
-title: "Modelo de previsao eleitoral presidencial"
-subtitle: "Base, variaveis, analise exploratoria e trilha de modelagem para 2026"
+title: "Projeto de Marcos de Oliveira Wenceslau Junior"
+subtitle: "Modelo de previsao eleitoral presidencial: base, variaveis, analise exploratoria e trilha de modelagem para 2026"
 author: "Projeto de Marcos de Oliveira Wenceslau Junior"
 date: today
 format:
