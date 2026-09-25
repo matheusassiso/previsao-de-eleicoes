@@ -112,6 +112,20 @@ def current_scenario(data):
     ].copy()
     return recent if not recent.empty else data.copy()
 
+def current_candidate_coverage():
+    if polls.empty:
+        return pd.DataFrame(columns=["candidato", "medicoes", "cobertura_pct", "cobertura_status"])
+    current = polls[polls["cenario_rotulo"].eq(CURRENT_SCENARIO_LABEL)].copy()
+    total = current.drop_duplicates(["instituto", "data_publicacao", "cenario"]).shape[0]
+    if not total:
+        return pd.DataFrame(columns=["candidato", "medicoes", "cobertura_pct", "cobertura_status"])
+    coverage = current.groupby("candidato").size().rename("medicoes").reset_index()
+    coverage["cobertura_pct"] = coverage["medicoes"] / total * 100
+    coverage["cobertura_status"] = coverage["cobertura_pct"].map(
+        lambda value: "regular" if value >= 50 else "baixa"
+    )
+    return coverage
+
 def confidence_label(score):
     if score >= 80:
         return "alta"
@@ -184,7 +198,12 @@ if not ensemble_forecast.empty:
     view = view.copy()
     view["voto_valido_estimado"] = pd.to_numeric(view["voto_valido_estimado"]).round(2)
     view["probabilidade_liderar"] = (pd.to_numeric(view["probabilidade_liderar"]) * 100).round(1)
-    display(view[["cenario", "candidato", "voto_valido_estimado", "probabilidade_liderar", "modelo"]].sort_values("voto_valido_estimado", ascending=False).head(10))
+    coverage = current_candidate_coverage()
+    view = view.merge(coverage, on="candidato", how="left")
+    view["medicoes"] = view["medicoes"].fillna(0).astype(int)
+    view["cobertura_pct"] = view["cobertura_pct"].fillna(0).round(1)
+    view["cobertura_status"] = view["cobertura_status"].fillna("baixa")
+    display(view[["cenario", "candidato", "voto_valido_estimado", "probabilidade_liderar", "medicoes", "cobertura_pct", "cobertura_status", "modelo"]].sort_values("voto_valido_estimado", ascending=False))
 ```
 
 ```{python}
@@ -195,7 +214,12 @@ if not ensemble_forecast.empty:
     plot = plot.copy()
     plot["voto_valido_estimado"] = pd.to_numeric(plot["voto_valido_estimado"])
     plot["probabilidade_liderar"] = pd.to_numeric(plot["probabilidade_liderar"])
-    group = plot.sort_values("voto_valido_estimado", ascending=False).head(8).sort_values("voto_valido_estimado")
+    coverage = current_candidate_coverage()
+    plot = plot.merge(coverage, on="candidato", how="left")
+    plot["medicoes"] = plot["medicoes"].fillna(0)
+    group = plot[
+        plot["voto_valido_estimado"].ge(0.5) | plot["cobertura_status"].eq("regular")
+    ].sort_values("voto_valido_estimado", ascending=False).head(8).sort_values("voto_valido_estimado")
     fig, ax = plt.subplots(figsize=(9, 4.8))
     colors = [ORANGE if i >= len(group) - 2 else GREEN for i in range(len(group))]
     ax.barh(group["candidato"], group["voto_valido_estimado"], color=colors)
@@ -208,6 +232,19 @@ if not ensemble_forecast.empty:
             label += f" | lidera {row.probabilidade_liderar:.0%}"
         ax.text(row.voto_valido_estimado + 0.4, i, label, va="center", fontsize=9)
     plt.tight_layout()
+```
+
+```{python}
+#| label: cobertura-candidatos-oficiais
+if not ensemble_forecast.empty:
+    coverage = current_candidate_coverage()
+    current = current_scenario(ensemble_forecast).copy()
+    current["voto_valido_estimado"] = pd.to_numeric(current["voto_valido_estimado"], errors="coerce")
+    view = current.merge(coverage, on="candidato", how="left")
+    view["medicoes"] = view["medicoes"].fillna(0).astype(int)
+    view["cobertura_pct"] = view["cobertura_pct"].fillna(0).round(1)
+    view["cobertura_status"] = view["cobertura_status"].fillna("baixa")
+    display(view[["candidato", "voto_valido_estimado", "medicoes", "cobertura_pct", "cobertura_status"]].sort_values(["cobertura_status", "voto_valido_estimado"], ascending=[False, False]))
 ```
 
 ## Confianca da rodada
