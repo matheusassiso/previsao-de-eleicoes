@@ -1,23 +1,13 @@
 data_previsao,ano_eleicao,cenario,modelo,candidato,voto_valido_estimado,intervalo_baixo,intervalo_alto,probabilidade_liderar,probabilidade_ir_ao_segundo_turno,fonte_dados_ate,metodo_estado_latente
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio,bayesiano_dinamico_kalman,Lula,42.3419,36.4025,48.2813,0.7282,1.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio,bayesiano_dinamico_kalman,Flávio Bolsonaro,37.7653,24.3303,51.2004,0.2718,1.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio,bayesiano_dinamico_kalman,Augusto Cury,6.823,0.0,19.2634,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio,bayesiano_dinamico_kalman,Ronaldo Caiado,3.3603,0.0,7.45,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio,bayesiano_dinamico_kalman,Romeu Zema,1.5159,0.0,5.3778,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,bayesiano_dinamico_kalman,Lula,46.1684,30.1438,62.193,0.7958,1.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,bayesiano_dinamico_kalman,Flávio Bolsonaro,37.7084,26.1321,49.2847,0.2042,1.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,bayesiano_dinamico_kalman,Ronaldo Caiado,4.878,0.0,13.1841,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,bayesiano_dinamico_kalman,Augusto Cury,2.439,0.0,9.7043,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,bayesiano_dinamico_kalman,Romeu Zema,2.439,0.0,8.3453,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Lula,42.1947,39.7133,44.6762,0.7402,1.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Flávio Bolsonaro,38.8889,29.1933,48.5845,0.2598,1.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Augusto Cury,6.4665,0.0,20.5557,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Renan Santos,5.5171,0.0,15.6028,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Ronaldo Caiado,3.4442,0.0,8.0778,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Romeu Zema,2.2222,0.0,7.1041,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Clariana Barão,1.1111,0.1617,2.0605,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Edmilson Costa,1.1111,0.1617,2.0605,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Rui Costa Pimenta,1.1111,0.0407,2.1815,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Samara Martins,1.1111,0.0,2.7193,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Wilson Grassi,0.3195,0.0,1.4816,0.0,0.0,2026-09-11,kalman_local_level
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Hertz Dias,0.1065,0.0,0.4938,0.0,0.0,2026-09-11,kalman_local_level
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Lula,44.0424,37.6472,50.4377,0.6774,1.0,2026-09-24,kalman_local_level
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Flávio Bolsonaro,41.1731,31.2769,51.0694,0.3226,1.0,2026-09-24,kalman_local_level
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Renan Santos,5.6652,0.0,14.0003,0.0,0.0,2026-09-24,kalman_local_level
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Augusto Cury,4.0812,0.0,12.8129,0.0,0.0,2026-09-24,kalman_local_level
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Ronaldo Caiado,2.179,0.0,8.3314,0.0,0.0,2026-09-24,kalman_local_level
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Samara Martins,1.0753,0.3224,1.8282,0.0,0.0,2026-09-24,kalman_local_level
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Romeu Zema,1.0479,0.0,3.415,0.0,0.0,2026-09-24,kalman_local_level
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Rui Costa Pimenta,0.4254,0.0,1.3468,0.0,0.0,2026-09-24,kalman_local_level
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Clariana Barão,0.0,0.0,1.1052,0.0,0.0,2026-09-24,kalman_local_level
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Edmilson Costa,0.0,0.0,1.1052,0.0,0.0,2026-09-24,kalman_local_level
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Hertz Dias,0.0,0.0,0.1328,0.0,0.0,2026-09-24,kalman_local_level
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,bayesiano_dinamico_kalman,Wilson Grassi,0.0,0.0,0.3984,0.0,0.0,2026-09-24,kalman_local_level

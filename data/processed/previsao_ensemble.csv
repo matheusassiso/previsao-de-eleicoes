@@ -1,23 +1,13 @@
 data_previsao,ano_eleicao,cenario,candidato,voto_valido_estimado,probabilidade_liderar,probabilidade_ir_ao_segundo_turno,fonte_dados_ate,modelo
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio,Lula,42.2341,0.7397,1.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,37.4178,0.2603,1.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,7.1993,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,3.4059,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,1.6172,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,45.8787,0.8452,1.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,37.2139,0.1548,1.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,5.0903,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,2.8367,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,2.1595,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,42.0349,0.7383,1.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,38.0446,0.2617,1.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,7.3139,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,5.4038,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,3.472,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,1.902,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,1.0491,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,0.8968,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,0.8883,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,0.8883,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,0.2395,0.0,0.0,2026-09-11,ensemble_disciplinado
-2026-09-11,2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,0.0798,0.0,0.0,2026-09-11,ensemble_disciplinado
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,43.8696,0.6793,1.0,2026-09-24,ensemble_disciplinado
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,40.446,0.3207,1.0,2026-09-24,ensemble_disciplinado
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,5.2298,0.0,0.0,2026-09-24,ensemble_disciplinado
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,4.9473,0.0,0.0,2026-09-24,ensemble_disciplinado
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,2.7429,0.0,0.0,2026-09-24,ensemble_disciplinado
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,1.1642,0.0,0.0,2026-09-24,ensemble_disciplinado
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,1.04,0.0,0.0,2026-09-24,ensemble_disciplinado
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,0.4995,0.0,0.0,2026-09-24,ensemble_disciplinado
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,0.1618,0.0,0.0,2026-09-24,ensemble_disciplinado
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,0.1618,0.0,0.0,2026-09-24,ensemble_disciplinado
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,0.0348,0.0,0.0,2026-09-24,ensemble_disciplinado
+2026-09-24,2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,0.0116,0.0,0.0,2026-09-24,ensemble_disciplinado

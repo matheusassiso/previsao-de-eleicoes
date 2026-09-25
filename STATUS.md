@@ -1,6 +1,6 @@
 # Status atual
 
-Atualizado em 2026-09-12.
+Atualizado em 2026-09-25.
 
 ## Pronto
 
@@ -13,6 +13,9 @@ Atualizado em 2026-09-12.
 - Relatorio melhorado visualmente com resumo executivo, cobertura por ano e graficos mais focados no cenario recente.
 - Relatorio reorganizado com resultado atual no inicio, tabela de cenarios de 2026, status dos modelos e tabelas longas reduzidas para recortes legiveis.
 - Secao "O que mudou com as pesquisas novas" adicionada ao relatorio, comparando cenario anterior e coleta recente de agosto/setembro.
+- Secao "Confianca da rodada" adicionada ao relatorio, combinando recencia, cobertura, auditoria, margem e erro historico.
+- Cenario operacional de 2026 corrigido: apenas `agosto_setembro_2026_sem_marcal` fica como previsao principal; cenarios antigos/ampliados e com Pablo Marcal ficam como comparativos.
+- Tabela de backtest cronologico por vencedor prevista no relatorio, comparando vencedor previsto, vencedor real, acerto e MAE por modelo.
 - Auditoria das pesquisas recentes de 2026 adicionada com registro TSE, fonte de auditoria e status por instituto/data/cenario.
 - Notebook Jupyter gerado por script.
 - Scripts para preparar pesquisas e gerar previsao baseline.
@@ -36,8 +39,8 @@ Atualizado em 2026-09-12.
 - Complemento manual auditado de 1994 e 2006 com pesquisas publicadas pela Folha.
 - Complemento de 2002 com 6 linhas de pesquisa nacional CESOP/Datafolha e 367 linhas do acervo Fernando Rodrigues/UOL.
 - Complemento de 2006 com 14 linhas extraidas de wikitexto.
-- Complemento recente de 2026 com 154 linhas de pesquisas de agosto/setembro incluindo Renan Santos, candidatos menores e cenarios alternativos com Pablo Marcal.
-- Base processada com 1.796 linhas de pesquisas ate o primeiro turno.
+- Complemento recente de 2026 com 231 linhas de pesquisas de agosto/setembro incluindo Renan Santos, candidatos menores e cenarios alternativos com Pablo Marcal.
+- Base processada com 1.873 linhas de pesquisas ate o primeiro turno.
 - Historico de previsoes criado em `data/processed/previsoes_historico.csv`.
 - Tabela de qualidade historica com 55 institutos apos limpeza de marcadores de referencia.
 - Tabela de efeito casa com 95 pares instituto-candidato.
@@ -59,7 +62,7 @@ Atualizado em 2026-09-12.
 - 2014: 54 linhas.
 - 2018: 170 linhas.
 - 2022: 474 linhas.
-- 2026: 503 linhas.
+- 2026: 580 linhas.
 
 ## Modelos
 
@@ -139,11 +142,11 @@ Motivo: nao venceram o baseline no erro medio absoluto medio apos a limpeza.
 
 Erro medio absoluto medio por modelo:
 
-- `baseline_temporal`: 6,96.
-- `baseline_pesquisa`: 7,02.
-- `bayesiano_dinamico_kalman`: 7,03.
-- `baseline_efeito_casa`: 7,04.
-- `baseline_ajustado`: 7,13.
+- 7 dias antes: 5,71.
+- 15 dias antes: 6,21.
+- 30 dias antes: 6,93.
+- 60 dias antes: 6,89.
+- 90 dias antes: 8,46.
 
 Leitura: a direcao geral melhora perto da eleicao, mas a serie ainda nao e monotonicamente limpa porque a base historica tem poucos anos e cenarios heterogeneos.
 
@@ -153,11 +156,11 @@ Este teste simula como o projeto seria usado de verdade: em cada corte, o modelo
 
 Erro medio absoluto medio por modelo:
 
-- `baseline_temporal`: 6,98.
-- `bayesiano_dinamico_kalman`: 7,04.
-- `baseline_efeito_casa`: 7,47.
-- `baseline_pesquisa`: 7,66.
-- `baseline_ajustado`: 7,76.
+- 7 dias antes: 5,62.
+- 15 dias antes: 5,88.
+- 30 dias antes: 6,68.
+- 60 dias antes: 7,70.
+- 90 dias antes: 9,11.
 
 Leitura: este e o teste mais interpretavel ate agora. O baseline temporal simples ainda vence por pouco, mas o Bayesiano dinamico ja fica perto e supera os baselines nao temporais.
 
@@ -180,9 +183,9 @@ Resultado atual:
 
 Leitura: os modelos de ML ainda oscilam muito entre eleicoes. Devem aparecer no relatorio como comparacao, mas nao devem substituir automaticamente o baseline.
 
-## Primeira previsao gerada
+## Previsao gerada
 
-Base usada: pesquisas estruturadas extraidas e normalizadas da Wikipedia, entradas manuais auditadas de 1994/1998, complemento de 2006 em wikitexto, uma pesquisa nacional CESOP/Datafolha de 2002, acervo Fernando Rodrigues/UOL para 2002 e pesquisas recentes de agosto/setembro de 2026.
+Base usada: pesquisas estruturadas extraidas e normalizadas da Wikipedia, entradas manuais auditadas de 1994/1998, complemento de 2006 em wikitexto, uma pesquisa nacional CESOP/Datafolha de 2002, acervo Fernando Rodrigues/UOL para 2002 e pesquisas recentes de agosto/setembro de 2026, atualizadas ate 24/09/2026.
 
 Cenario principal recente da tabela 2:
 
@@ -199,17 +202,17 @@ Cenario principal recente da tabela 2, baseline ajustado:
 
 Cenario principal recente da tabela 2, ensemble disciplinado:
 
-- Lula: 42,23%; probabilidade simulada de liderar 73,97%.
-- Flavio Bolsonaro: 37,42%; probabilidade simulada de liderar 26,03%.
+- Lula: 42,23%; probabilidade simulada de liderar 72,27%.
+- Flavio Bolsonaro: 37,42%; probabilidade simulada de liderar 27,73%.
 
 Cenario recente com Renan Santos, ensemble disciplinado, apos complemento de agosto/setembro:
 
-- Lula: 42,03%; probabilidade simulada de liderar 73,83%.
-- Flavio Bolsonaro: 38,04%; probabilidade simulada de liderar 26,17%.
-- Augusto Cury: 7,31%.
-- Renan Santos: 5,40%.
-- Ronaldo Caiado: 3,47%.
-- Romeu Zema: 1,90%.
+- Lula: 43,87%; probabilidade simulada de liderar 67,93%.
+- Flavio Bolsonaro: 40,45%; probabilidade simulada de liderar 32,07%.
+- Renan Santos: 5,23%.
+- Augusto Cury: 4,95%.
+- Ronaldo Caiado: 2,74%.
+- Romeu Zema: 1,16%.
 
 Cenario recente da tabela 4:
 

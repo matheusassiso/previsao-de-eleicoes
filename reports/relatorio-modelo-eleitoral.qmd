@@ -98,11 +98,26 @@ def metric_card(label, value, note=""):
     </div>
     """
 
+CURRENT_SCENARIO_LABEL = "Primeiro turno 2026 - agosto/setembro com Renan"
+
 def current_scenario(data):
     if data.empty or "cenario" not in data:
         return data
-    recent = data[data["cenario"].astype(str).str.contains("agosto/setembro", na=False)].copy()
+    scenario = data[data["cenario"].astype(str).eq(CURRENT_SCENARIO_LABEL)].copy()
+    if not scenario.empty:
+        return scenario
+    recent = data[
+        data["cenario"].astype(str).str.contains("agosto/setembro", na=False)
+        & ~data["cenario"].astype(str).str.contains("Marcal|Marçal", case=False, na=False)
+    ].copy()
     return recent if not recent.empty else data.copy()
+
+def confidence_label(score):
+    if score >= 80:
+        return "alta"
+    if score >= 60:
+        return "media"
+    return "baixa"
 
 polls = read_csv(PROCESSED / "pesquisas_validos.csv")
 raw_polls = read_csv(RAW / "pesquisas.csv")
@@ -193,6 +208,69 @@ if not ensemble_forecast.empty:
     plt.tight_layout()
 ```
 
+## Confianca da rodada
+
+Esta secao resume se a previsao deve ser lida como sinal forte ou como fotografia ainda instavel. O placar combina apenas criterios auditaveis: recencia das pesquisas, quantidade de pesquisas no cenario operacional, auditoria de fontes, margem entre primeiro e segundo e erro historico do ensemble.
+
+```{python}
+#| label: confianca-rodada
+score = 0
+notes = []
+cards = []
+
+principal_polls = pd.DataFrame()
+if not polls.empty:
+    principal_polls = polls[polls["cenario_rotulo"].eq(CURRENT_SCENARIO_LABEL)].copy()
+    unique_current = principal_polls.drop_duplicates(["instituto", "data_publicacao", "cenario"]).shape[0]
+    last_date = pd.to_datetime(principal_polls["data_publicacao"], errors="coerce").max()
+    if unique_current >= 12:
+        score += 25
+    elif unique_current >= 6:
+        score += 18
+    else:
+        score += 8
+    cards.append(metric_card("Pesquisas no cenario", unique_current, "instituto-data-cenario"))
+    if pd.notna(last_date):
+        days_old = (pd.Timestamp.today().normalize() - last_date.normalize()).days
+        score += 20 if days_old <= 7 else 12 if days_old <= 21 else 5
+        cards.append(metric_card("Recencia", f"{days_old} dias", f"ultima publicacao: {last_date.strftime('%d/%m/%Y')}"))
+
+if not recent_audit.empty:
+    current_audit = recent_audit[recent_audit["cenario"].eq("agosto_setembro_2026_sem_marcal")].copy()
+    strong = current_audit["status_auditoria"].astype(str).str.contains("confirmad|primaria", case=False, na=False).sum()
+    total = len(current_audit)
+    ratio = strong / total if total else 0
+    score += 20 if ratio >= 0.7 else 14 if ratio >= 0.45 else 8
+    cards.append(metric_card("Auditoria recente", f"{strong}/{total}", "fontes fortes ou confirmadas"))
+
+if not ensemble_forecast.empty:
+    current = current_scenario(ensemble_forecast).copy()
+    current["voto_valido_estimado"] = pd.to_numeric(current["voto_valido_estimado"], errors="coerce")
+    ordered = current.sort_values("voto_valido_estimado", ascending=False)
+    if len(ordered) >= 2:
+        margin = float(ordered.iloc[0]["voto_valido_estimado"] - ordered.iloc[1]["voto_valido_estimado"])
+        score += 15 if margin >= 8 else 10 if margin >= 4 else 5
+        cards.append(metric_card("Margem lideranca", pct(margin), "quanto maior, mais estavel"))
+
+if not backtest_vivo.empty:
+    live = backtest_vivo.copy()
+    live["mae"] = pd.to_numeric(live["mae"], errors="coerce")
+    live_mae = live.groupby("modelo")["mae"].mean()
+    ref_mae = float(live_mae.min())
+    score += 20 if ref_mae <= 6 else 14 if ref_mae <= 8 else 8
+    cards.append(metric_card("Erro vivo historico", f"{ref_mae:.2f} p.p.", "melhor modelo medio"))
+
+score = min(score, 100)
+display(HTML('<div class="executive-grid">' + "".join(cards) + "</div>"))
+display(HTML(f"""
+<div class="callout-box">
+  <strong>Confianca operacional: {confidence_label(score).upper()} ({score}/100).</strong>
+  A rodada esta bem alimentada e recente, mas a incerteza segue relevante porque a eleicao ainda esta longe
+  e parte da base historica antiga ainda depende de auditoria complementar.
+</div>
+"""))
+```
+
 ## Cenarios de 2026
 
 ```{python}
@@ -201,8 +279,14 @@ scenarios_path = RAW / "cenarios.csv"
 scenarios = read_csv(scenarios_path)
 if not scenarios.empty:
     view = scenarios[scenarios["ano_eleicao"].eq(2026)].copy()
-    view["uso"] = view["usar_previsao_principal"].map({1: "principal", 0: "alternativo"}).fillna(view["usar_previsao_principal"])
-    display(view[["rotulo", "uso", "prioridade", "observacao"]].sort_values(["uso", "prioridade", "rotulo"]))
+    view["uso"] = view["usar_previsao_principal"].map({1: "operacional", 0: "comparativo"}).fillna(view["usar_previsao_principal"])
+    view["familia"] = view["rotulo"].map(
+        lambda x: "principal atual" if x == CURRENT_SCENARIO_LABEL
+        else "com Marcal" if "Marcal" in str(x) or "Marçal" in str(x)
+        else "comparativo antigo" if "Lula vs Flavio" in str(x)
+        else "alternativo"
+    )
+    display(view[["rotulo", "familia", "uso", "prioridade", "observacao"]].sort_values(["uso", "prioridade", "rotulo"]))
 ```
 
 ```{python}
@@ -754,6 +838,34 @@ if not rolling.empty:
     view["resultado_real_validos"] = pd.to_numeric(view["resultado_real_validos"]).round(2)
     view["erro_abs"] = pd.to_numeric(view["erro_abs"]).round(2)
     display(view[["ano_eleicao", "ano_treino_max", "modelo", "cenario_rotulo", "candidato", "previsto", "resultado_real_validos", "erro_abs"]].sort_values(["ano_eleicao", "modelo", "erro_abs"]).head(60))
+```
+
+```{python}
+#| label: rolling-vencedor
+if not rolling.empty:
+    view = rolling.copy()
+    view["previsto"] = pd.to_numeric(view["previsto"], errors="coerce")
+    view["resultado_real_validos"] = pd.to_numeric(view["resultado_real_validos"], errors="coerce")
+    predicted = (
+        view.sort_values("previsto", ascending=False)
+        .groupby(["ano_eleicao", "modelo"], as_index=False)
+        .first()[["ano_eleicao", "modelo", "candidato", "previsto"]]
+        .rename(columns={"candidato": "vencedor_previsto", "previsto": "voto_previsto"})
+    )
+    actual = (
+        view.sort_values("resultado_real_validos", ascending=False)
+        .groupby("ano_eleicao", as_index=False)
+        .first()[["ano_eleicao", "candidato", "resultado_real_validos"]]
+        .rename(columns={"candidato": "vencedor_real", "resultado_real_validos": "voto_real"})
+    )
+    mae = view.groupby(["ano_eleicao", "modelo"], as_index=False)["erro_abs"].mean().rename(columns={"erro_abs": "mae"})
+    summary = predicted.merge(actual, on="ano_eleicao", how="left").merge(mae, on=["ano_eleicao", "modelo"], how="left")
+    summary["acertou_vencedor"] = summary["vencedor_previsto"].eq(summary["vencedor_real"]).map({True: "sim", False: "nao"})
+    keep = ["baseline_pesquisa", "random_forest_07_600", "gradient_boosting", "voting_ia", "mlp_pequena", "bayesiano_dinamico_kalman"]
+    summary = summary[summary["modelo"].isin(keep)]
+    for col in ["voto_previsto", "voto_real", "mae"]:
+        summary[col] = pd.to_numeric(summary[col], errors="coerce").round(2)
+    display(summary.sort_values(["ano_eleicao", "mae"])[["ano_eleicao", "modelo", "vencedor_previsto", "voto_previsto", "vencedor_real", "voto_real", "acertou_vencedor", "mae"]])
 ```
 
 ## Previsao de 2026 por modelo

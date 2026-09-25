@@ -19,10 +19,10 @@ ano_eleicao,cenario,rotulo,prioridade,usar_previsao_principal,observacao
 2022,wikipedia_tabela_6,Primeiro turno 2022 - 2021 alternativo,5,0,Cenario historico anterior
 2022,wikipedia_tabela_7,Primeiro turno 2022 - 2020,6,0,Cenario historico anterior
 2022,wikipedia_tabela_8,Primeiro turno 2022 - 2019,7,0,Cenario historico anterior
-2026,wikipedia_tabela_2,Primeiro turno 2026 - Lula vs Flavio,1,1,Cenario recente de primeiro turno
+2026,wikipedia_tabela_2,Primeiro turno 2026 - Lula vs Flavio,2,0,Cenario comparativo antigo sem Renan Santos explicito
 2026,agosto_setembro_2026_sem_marcal,Primeiro turno 2026 - agosto/setembro com Renan,1,1,Pesquisas recentes com Renan Santos e candidatos menores; sem Pablo Marcal
 2026,agosto_setembro_2026_com_marcal,Primeiro turno 2026 - agosto/setembro com Marcal,2,0,Cenario alternativo com Pablo Marcal; fontes citam Marcal como inelegivel
-2026,wikipedia_tabela_3,Primeiro turno 2026 - Lula vs Flavio ampliado,2,1,Cenario recente de primeiro turno
+2026,wikipedia_tabela_3,Primeiro turno 2026 - Lula vs Flavio ampliado,3,0,Cenario comparativo antigo com lista ampliada anterior a coleta recente
 2026,wikipedia_tabela_4,Primeiro turno 2026 - alternativa com Tarcisio,3,0,Cenario alternativo
 2026,wikipedia_tabela_5,Primeiro turno 2026 - 2025 com Freitas/Gomes,4,0,Cenario antigo ou alternativo
 2026,wikipedia_tabela_6,Primeiro turno 2026 - cenario reduzido,5,0,Cenario reduzido; nao usar como principal
