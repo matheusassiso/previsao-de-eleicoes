@@ -105,6 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#modelos" id="toc-modelos" class="nav-link" data-scroll-target="#modelos">Modelos</a></li>
   <li><a href="#criterio-de-comparacao" id="toc-criterio-de-comparacao" class="nav-link" data-scroll-target="#criterio-de-comparacao">Criterio de comparacao</a></li>
   <li><a href="#avaliacao-cronologica" id="toc-avaliacao-cronologica" class="nav-link" data-scroll-target="#avaliacao-cronologica">Avaliacao cronologica</a></li>
+  <li><a href="#onde-os-modelos-erram" id="toc-onde-os-modelos-erram" class="nav-link" data-scroll-target="#onde-os-modelos-erram">Onde os modelos erram</a></li>
   <li><a href="#previsao-de-2026-por-modelo" id="toc-previsao-de-2026-por-modelo" class="nav-link" data-scroll-target="#previsao-de-2026-por-modelo">Previsao de 2026 por modelo</a></li>
   <li><a href="#proximas-entregas" id="toc-proximas-entregas" class="nav-link" data-scroll-target="#proximas-entregas">Proximas entregas</a></li>
   </ul>
@@ -4287,38 +4288,706 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+<section id="onde-os-modelos-erram" class="level2">
+<h2 class="anchored" data-anchor-id="onde-os-modelos-erram">Onde os modelos erram</h2>
+<p>O erro medio geral e util para ranquear modelos, mas ele esconde duas coisas importantes: eleicoes dificeis e candidatos que os modelos tendem a superestimar ou subestimar. Abaixo, o mesmo backtest cronologico e aberto por ano e por candidato.</p>
+<div id="cell-rolling-erro-eleicao-modelo" class="cell" data-execution_count="36">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> rolling.empty:</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">"Sem erros por eleicao ainda"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    view <span class="op">=</span> rolling.copy()</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    view[<span class="st">"erro_abs"</span>] <span class="op">=</span> pd.to_numeric(view[<span class="st">"erro_abs"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    keep <span class="op">=</span> [<span class="st">"baseline_pesquisa"</span>, <span class="st">"gradient_boosting"</span>, <span class="st">"random_forest_07_600"</span>, <span class="st">"voting_ia"</span>, <span class="st">"mlp_pequena"</span>]</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    view <span class="op">=</span> view[view[<span class="st">"modelo"</span>].isin(keep)]</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    heat <span class="op">=</span> view.pivot_table(index<span class="op">=</span><span class="st">"modelo"</span>, columns<span class="op">=</span><span class="st">"ano_eleicao"</span>, values<span class="op">=</span><span class="st">"erro_abs"</span>, aggfunc<span class="op">=</span><span class="st">"mean"</span>)</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    heat <span class="op">=</span> heat.loc[[m <span class="cf">for</span> m <span class="kw">in</span> keep <span class="cf">if</span> m <span class="kw">in</span> heat.index]]</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">4</span>))</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>    image <span class="op">=</span> ax.imshow(heat, cmap<span class="op">=</span><span class="st">"YlOrRd"</span>, aspect<span class="op">=</span><span class="st">"auto"</span>)</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    ax.set_xticks(<span class="bu">range</span>(<span class="bu">len</span>(heat.columns)), heat.columns)</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>    ax.set_yticks(<span class="bu">range</span>(<span class="bu">len</span>(heat.index)), heat.index)</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Eleicao prevista"</span>)</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">""</span>)</span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> y, model <span class="kw">in</span> <span class="bu">enumerate</span>(heat.index):</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> x, year <span class="kw">in</span> <span class="bu">enumerate</span>(heat.columns):</span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>            value <span class="op">=</span> heat.loc[model, year]</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>            ax.text(x, y, <span class="ss">f"</span><span class="sc">{</span>value<span class="sc">:.1f}</span><span class="ss">"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>    fig.colorbar(image, ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Erro medio absoluto"</span>)</span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="rolling-erro-eleicao-modelo" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="relatorio-modelo-eleitoral_files/figure-html/rolling-erro-eleicao-modelo-output-1.png" width="821" height="374" class="figure-img"></p>
+<figcaption>Erro absoluto medio por modelo e eleicao no backtest cronologico</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-rolling-erro-candidato" class="cell" data-execution_count="37">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> rolling.empty:</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    view <span class="op">=</span> rolling.copy()</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    view[<span class="st">"erro_abs"</span>] <span class="op">=</span> pd.to_numeric(view[<span class="st">"erro_abs"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    keep <span class="op">=</span> [<span class="st">"baseline_pesquisa"</span>, <span class="st">"gradient_boosting"</span>, <span class="st">"random_forest_07_600"</span>, <span class="st">"voting_ia"</span>, <span class="st">"mlp_pequena"</span>]</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    view <span class="op">=</span> view[view[<span class="st">"modelo"</span>].isin(keep)]</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    by_candidate <span class="op">=</span> (</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>        view.groupby([<span class="st">"modelo"</span>, <span class="st">"candidato"</span>], as_index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>        .agg(</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>            eleicoes<span class="op">=</span>(<span class="st">"ano_eleicao"</span>, <span class="st">"nunique"</span>),</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>            erro_medio<span class="op">=</span>(<span class="st">"erro_abs"</span>, <span class="st">"mean"</span>),</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>            pior_erro<span class="op">=</span>(<span class="st">"erro_abs"</span>, <span class="st">"max"</span>),</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"erro_medio"</span>, <span class="st">"pior_erro"</span>]:</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>        by_candidate[col] <span class="op">=</span> by_candidate[col].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>    display(by_candidate.sort_values([<span class="st">"erro_medio"</span>, <span class="st">"pior_erro"</span>], ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">35</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="rolling-erro-candidato" class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">modelo</th>
+<th data-quarto-table-cell-role="th">candidato</th>
+<th data-quarto-table-cell-role="th">eleicoes</th>
+<th data-quarto-table-cell-role="th">erro_medio</th>
+<th data-quarto-table-cell-role="th">pior_erro</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">20</th>
+<td>mlp_pequena</td>
+<td>Aécio Neves</td>
+<td>1</td>
+<td>28.75</td>
+<td>28.75</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">17</th>
+<td>gradient_boosting</td>
+<td>João Amoêdo</td>
+<td>1</td>
+<td>28.53</td>
+<td>28.53</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">14</th>
+<td>gradient_boosting</td>
+<td>Geraldo Alckmin</td>
+<td>1</td>
+<td>27.14</td>
+<td>27.14</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">47</th>
+<td>voting_ia</td>
+<td>João Amoêdo</td>
+<td>1</td>
+<td>22.26</td>
+<td>22.26</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">37</th>
+<td>random_forest_07_600</td>
+<td>João Amoêdo</td>
+<td>1</td>
+<td>21.26</td>
+<td>21.26</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">44</th>
+<td>voting_ia</td>
+<td>Geraldo Alckmin</td>
+<td>1</td>
+<td>20.94</td>
+<td>20.94</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">34</th>
+<td>random_forest_07_600</td>
+<td>Geraldo Alckmin</td>
+<td>1</td>
+<td>19.00</td>
+<td>19.00</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">28</th>
+<td>mlp_pequena</td>
+<td>Lula</td>
+<td>1</td>
+<td>15.52</td>
+<td>27.82</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">33</th>
+<td>random_forest_07_600</td>
+<td>Fernando Haddad</td>
+<td>1</td>
+<td>9.20</td>
+<td>9.20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">38</th>
+<td>random_forest_07_600</td>
+<td>Lula</td>
+<td>1</td>
+<td>8.97</td>
+<td>18.33</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>baseline_pesquisa</td>
+<td>Lula</td>
+<td>1</td>
+<td>8.85</td>
+<td>28.66</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">22</th>
+<td>mlp_pequena</td>
+<td>Dilma Rousseff</td>
+<td>2</td>
+<td>7.82</td>
+<td>8.07</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">5</th>
+<td>baseline_pesquisa</td>
+<td>Jair Bolsonaro</td>
+<td>2</td>
+<td>7.04</td>
+<td>17.56</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">12</th>
+<td>gradient_boosting</td>
+<td>Dilma Rousseff</td>
+<td>2</td>
+<td>6.55</td>
+<td>8.50</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">11</th>
+<td>gradient_boosting</td>
+<td>Ciro Gomes</td>
+<td>2</td>
+<td>5.83</td>
+<td>21.44</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>baseline_pesquisa</td>
+<td>Ciro Gomes</td>
+<td>2</td>
+<td>5.73</td>
+<td>12.18</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">18</th>
+<td>gradient_boosting</td>
+<td>Lula</td>
+<td>1</td>
+<td>5.71</td>
+<td>19.78</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">26</th>
+<td>mlp_pequena</td>
+<td>José Serra</td>
+<td>1</td>
+<td>5.69</td>
+<td>5.69</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">15</th>
+<td>gradient_boosting</td>
+<td>Jair Bolsonaro</td>
+<td>2</td>
+<td>5.08</td>
+<td>10.10</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">31</th>
+<td>random_forest_07_600</td>
+<td>Ciro Gomes</td>
+<td>2</td>
+<td>5.01</td>
+<td>12.87</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">42</th>
+<td>voting_ia</td>
+<td>Dilma Rousseff</td>
+<td>2</td>
+<td>4.97</td>
+<td>5.66</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">35</th>
+<td>random_forest_07_600</td>
+<td>Jair Bolsonaro</td>
+<td>2</td>
+<td>4.85</td>
+<td>9.33</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">32</th>
+<td>random_forest_07_600</td>
+<td>Dilma Rousseff</td>
+<td>2</td>
+<td>4.77</td>
+<td>6.70</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">24</th>
+<td>mlp_pequena</td>
+<td>Geraldo Alckmin</td>
+<td>1</td>
+<td>4.76</td>
+<td>4.76</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">41</th>
+<td>voting_ia</td>
+<td>Ciro Gomes</td>
+<td>2</td>
+<td>4.46</td>
+<td>15.34</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">48</th>
+<td>voting_ia</td>
+<td>Lula</td>
+<td>1</td>
+<td>4.35</td>
+<td>16.94</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">3</th>
+<td>baseline_pesquisa</td>
+<td>Fernando Haddad</td>
+<td>1</td>
+<td>4.30</td>
+<td>4.30</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">21</th>
+<td>mlp_pequena</td>
+<td>Ciro Gomes</td>
+<td>2</td>
+<td>3.92</td>
+<td>10.92</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>baseline_pesquisa</td>
+<td>Dilma Rousseff</td>
+<td>2</td>
+<td>3.78</td>
+<td>5.16</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">0</th>
+<td>baseline_pesquisa</td>
+<td>Aécio Neves</td>
+<td>1</td>
+<td>3.55</td>
+<td>3.55</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">40</th>
+<td>voting_ia</td>
+<td>Aécio Neves</td>
+<td>1</td>
+<td>3.19</td>
+<td>3.19</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">13</th>
+<td>gradient_boosting</td>
+<td>Fernando Haddad</td>
+<td>1</td>
+<td>3.03</td>
+<td>3.03</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">45</th>
+<td>voting_ia</td>
+<td>Jair Bolsonaro</td>
+<td>2</td>
+<td>2.55</td>
+<td>15.32</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">27</th>
+<td>mlp_pequena</td>
+<td>João Amoêdo</td>
+<td>1</td>
+<td>2.50</td>
+<td>2.50</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">29</th>
+<td>mlp_pequena</td>
+<td>Simone Tebet</td>
+<td>1</td>
+<td>2.22</td>
+<td>4.16</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-rolling-piores-erros" class="cell" data-execution_count="38">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> rolling.empty:</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    view <span class="op">=</span> rolling.copy()</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    view[<span class="st">"previsto"</span>] <span class="op">=</span> pd.to_numeric(view[<span class="st">"previsto"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    view[<span class="st">"resultado_real_validos"</span>] <span class="op">=</span> pd.to_numeric(view[<span class="st">"resultado_real_validos"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    view[<span class="st">"erro_abs"</span>] <span class="op">=</span> pd.to_numeric(view[<span class="st">"erro_abs"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    keep <span class="op">=</span> [<span class="st">"baseline_pesquisa"</span>, <span class="st">"gradient_boosting"</span>, <span class="st">"random_forest_07_600"</span>, <span class="st">"voting_ia"</span>, <span class="st">"mlp_pequena"</span>]</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    view <span class="op">=</span> view[view[<span class="st">"modelo"</span>].isin(keep)]</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    cols <span class="op">=</span> [<span class="st">"ano_eleicao"</span>, <span class="st">"modelo"</span>, <span class="st">"candidato"</span>, <span class="st">"previsto"</span>, <span class="st">"resultado_real_validos"</span>, <span class="st">"erro_abs"</span>]</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    display(view.sort_values(<span class="st">"erro_abs"</span>, ascending<span class="op">=</span><span class="va">False</span>)[cols].head(<span class="dv">30</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="rolling-piores-erros" class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ano_eleicao</th>
+<th data-quarto-table-cell-role="th">modelo</th>
+<th data-quarto-table-cell-role="th">candidato</th>
+<th data-quarto-table-cell-role="th">previsto</th>
+<th data-quarto-table-cell-role="th">resultado_real_validos</th>
+<th data-quarto-table-cell-role="th">erro_abs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">42</th>
+<td>2014</td>
+<td>mlp_pequena</td>
+<td>Aécio Neves</td>
+<td>4.80</td>
+<td>33.55</td>
+<td>28.75</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">112</th>
+<td>2022</td>
+<td>baseline_pesquisa</td>
+<td>Lula</td>
+<td>19.77</td>
+<td>48.43</td>
+<td>28.66</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">92</th>
+<td>2018</td>
+<td>gradient_boosting</td>
+<td>João Amoêdo</td>
+<td>31.03</td>
+<td>2.50</td>
+<td>28.53</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">310</th>
+<td>2022</td>
+<td>mlp_pequena</td>
+<td>Lula</td>
+<td>20.61</td>
+<td>48.43</td>
+<td>27.82</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">90</th>
+<td>2018</td>
+<td>gradient_boosting</td>
+<td>Geraldo Alckmin</td>
+<td>31.90</td>
+<td>4.76</td>
+<td>27.14</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">102</th>
+<td>2018</td>
+<td>voting_ia</td>
+<td>João Amoêdo</td>
+<td>24.76</td>
+<td>2.50</td>
+<td>22.26</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">88</th>
+<td>2018</td>
+<td>gradient_boosting</td>
+<td>Ciro Gomes</td>
+<td>33.91</td>
+<td>12.47</td>
+<td>21.44</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">82</th>
+<td>2018</td>
+<td>random_forest_07_600</td>
+<td>João Amoêdo</td>
+<td>23.76</td>
+<td>2.50</td>
+<td>21.26</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">100</th>
+<td>2018</td>
+<td>voting_ia</td>
+<td>Geraldo Alckmin</td>
+<td>25.70</td>
+<td>4.76</td>
+<td>20.94</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">288</th>
+<td>2022</td>
+<td>gradient_boosting</td>
+<td>Lula</td>
+<td>28.65</td>
+<td>48.43</td>
+<td>19.78</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">80</th>
+<td>2018</td>
+<td>random_forest_07_600</td>
+<td>Geraldo Alckmin</td>
+<td>23.76</td>
+<td>4.76</td>
+<td>19.00</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">244</th>
+<td>2022</td>
+<td>random_forest_07_600</td>
+<td>Lula</td>
+<td>30.10</td>
+<td>48.43</td>
+<td>18.33</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">323</th>
+<td>2022</td>
+<td>mlp_pequena</td>
+<td>Lula</td>
+<td>30.67</td>
+<td>48.43</td>
+<td>17.76</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">114</th>
+<td>2022</td>
+<td>baseline_pesquisa</td>
+<td>Jair Bolsonaro</td>
+<td>25.64</td>
+<td>43.20</td>
+<td>17.56</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">332</th>
+<td>2022</td>
+<td>voting_ia</td>
+<td>Lula</td>
+<td>31.49</td>
+<td>48.43</td>
+<td>16.94</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">98</th>
+<td>2018</td>
+<td>voting_ia</td>
+<td>Ciro Gomes</td>
+<td>27.81</td>
+<td>12.47</td>
+<td>15.34</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">334</th>
+<td>2022</td>
+<td>voting_ia</td>
+<td>Jair Bolsonaro</td>
+<td>27.88</td>
+<td>43.20</td>
+<td>15.32</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">317</th>
+<td>2022</td>
+<td>mlp_pequena</td>
+<td>Lula</td>
+<td>33.41</td>
+<td>48.43</td>
+<td>15.02</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">313</th>
+<td>2022</td>
+<td>mlp_pequena</td>
+<td>Lula</td>
+<td>34.86</td>
+<td>48.43</td>
+<td>13.57</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">78</th>
+<td>2018</td>
+<td>random_forest_07_600</td>
+<td>Ciro Gomes</td>
+<td>25.34</td>
+<td>12.47</td>
+<td>12.87</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">320</th>
+<td>2022</td>
+<td>mlp_pequena</td>
+<td>Lula</td>
+<td>35.65</td>
+<td>48.43</td>
+<td>12.78</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">117</th>
+<td>2022</td>
+<td>baseline_pesquisa</td>
+<td>Ciro Gomes</td>
+<td>15.22</td>
+<td>3.04</td>
+<td>12.18</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">108</th>
+<td>2022</td>
+<td>baseline_pesquisa</td>
+<td>Ciro Gomes</td>
+<td>14.73</td>
+<td>3.04</td>
+<td>11.69</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">93</th>
+<td>2018</td>
+<td>mlp_pequena</td>
+<td>Ciro Gomes</td>
+<td>1.55</td>
+<td>12.47</td>
+<td>10.92</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">290</th>
+<td>2022</td>
+<td>gradient_boosting</td>
+<td>Jair Bolsonaro</td>
+<td>33.10</td>
+<td>43.20</td>
+<td>10.10</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">118</th>
+<td>2022</td>
+<td>baseline_pesquisa</td>
+<td>Jair Bolsonaro</td>
+<td>33.70</td>
+<td>43.20</td>
+<td>9.50</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">246</th>
+<td>2022</td>
+<td>random_forest_07_600</td>
+<td>Jair Bolsonaro</td>
+<td>33.87</td>
+<td>43.20</td>
+<td>9.33</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">79</th>
+<td>2018</td>
+<td>random_forest_07_600</td>
+<td>Fernando Haddad</td>
+<td>20.08</td>
+<td>29.28</td>
+<td>9.20</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">249</th>
+<td>2022</td>
+<td>random_forest_07_600</td>
+<td>Ciro Gomes</td>
+<td>11.76</td>
+<td>3.04</td>
+<td>8.72</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">284</th>
+<td>2022</td>
+<td>gradient_boosting</td>
+<td>Ciro Gomes</td>
+<td>11.73</td>
+<td>3.04</td>
+<td>8.69</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
 <section id="previsao-de-2026-por-modelo" class="level2">
 <h2 class="anchored" data-anchor-id="previsao-de-2026-por-modelo">Previsao de 2026 por modelo</h2>
 <p>Depois da avaliacao historica, os mesmos modelos sao treinados com todas as eleicoes disponiveis ate 2022 e aplicados aos cenarios principais de 2026.</p>
-<div id="cell-rolling-2026-modelos" class="cell" data-execution_count="36">
+<div id="cell-rolling-2026-modelos" class="cell" data-execution_count="39">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> rolling_2026.empty:</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">"Sem previsao 2026 por modelo ainda"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> rolling_2026.copy()</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"previsto"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"previsto"</span>])</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    scenario_options <span class="op">=</span> tmp[<span class="st">"cenario_rotulo"</span>].drop_duplicates()</span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    recent <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> scenario_options <span class="cf">if</span> <span class="st">"agosto/setembro"</span> <span class="kw">in</span> <span class="bu">str</span>(s)]</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    first_scenario <span class="op">=</span> recent[<span class="dv">0</span>] <span class="cf">if</span> recent <span class="cf">else</span> scenario_options.iloc[<span class="dv">0</span>]</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    plot <span class="op">=</span> tmp[tmp[<span class="st">"cenario_rotulo"</span>] <span class="op">==</span> first_scenario]</span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    pivot <span class="op">=</span> plot.pivot_table(index<span class="op">=</span><span class="st">"candidato"</span>, columns<span class="op">=</span><span class="st">"modelo"</span>, values<span class="op">=</span><span class="st">"previsto"</span>, aggfunc<span class="op">=</span><span class="st">"mean"</span>)</span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"baseline_pesquisa"</span> <span class="kw">in</span> pivot.columns:</span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>        order_candidates <span class="op">=</span> pivot[<span class="st">"baseline_pesquisa"</span>].sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">8</span>).index</span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>        pivot <span class="op">=</span> pivot.loc[order_candidates]</span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>    keep_models <span class="op">=</span> [m <span class="cf">for</span> m <span class="kw">in</span> [<span class="st">"baseline_pesquisa"</span>, <span class="st">"random_forest_07_600"</span>, <span class="st">"gradient_boosting"</span>, <span class="st">"voting_ia"</span>, <span class="st">"mlp_pequena"</span>] <span class="cf">if</span> m <span class="kw">in</span> pivot.columns]</span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> keep_models:</span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>        pivot <span class="op">=</span> pivot[keep_models]</span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>    order <span class="op">=</span> pivot.get(<span class="st">"baseline_pesquisa"</span>, pivot.mean(axis<span class="op">=</span><span class="dv">1</span>)).sort_values(ascending<span class="op">=</span><span class="va">True</span>).index</span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>    pivot <span class="op">=</span> pivot.loc[order]</span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> pivot.plot(kind<span class="op">=</span><span class="st">"barh"</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>    ax.set_title(first_scenario)</span>
-<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Votos validos estimados (%)"</span>)</span>
-<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">""</span>)</span>
-<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>    ax.legend(title<span class="op">=</span><span class="st">"Modelo"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.02</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">"upper left"</span>)</span>
-<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> rolling_2026.empty:</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">"Sem previsao 2026 por modelo ainda"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> rolling_2026.copy()</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"previsto"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"previsto"</span>])</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    scenario_options <span class="op">=</span> tmp[<span class="st">"cenario_rotulo"</span>].drop_duplicates()</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    recent <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> scenario_options <span class="cf">if</span> <span class="st">"agosto/setembro"</span> <span class="kw">in</span> <span class="bu">str</span>(s)]</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    first_scenario <span class="op">=</span> recent[<span class="dv">0</span>] <span class="cf">if</span> recent <span class="cf">else</span> scenario_options.iloc[<span class="dv">0</span>]</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    plot <span class="op">=</span> tmp[tmp[<span class="st">"cenario_rotulo"</span>] <span class="op">==</span> first_scenario]</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    pivot <span class="op">=</span> plot.pivot_table(index<span class="op">=</span><span class="st">"candidato"</span>, columns<span class="op">=</span><span class="st">"modelo"</span>, values<span class="op">=</span><span class="st">"previsto"</span>, aggfunc<span class="op">=</span><span class="st">"mean"</span>)</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"baseline_pesquisa"</span> <span class="kw">in</span> pivot.columns:</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>        order_candidates <span class="op">=</span> pivot[<span class="st">"baseline_pesquisa"</span>].sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">8</span>).index</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>        pivot <span class="op">=</span> pivot.loc[order_candidates]</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>    keep_models <span class="op">=</span> [m <span class="cf">for</span> m <span class="kw">in</span> [<span class="st">"baseline_pesquisa"</span>, <span class="st">"random_forest_07_600"</span>, <span class="st">"gradient_boosting"</span>, <span class="st">"voting_ia"</span>, <span class="st">"mlp_pequena"</span>] <span class="cf">if</span> m <span class="kw">in</span> pivot.columns]</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> keep_models:</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>        pivot <span class="op">=</span> pivot[keep_models]</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>    order <span class="op">=</span> pivot.get(<span class="st">"baseline_pesquisa"</span>, pivot.mean(axis<span class="op">=</span><span class="dv">1</span>)).sort_values(ascending<span class="op">=</span><span class="va">True</span>).index</span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>    pivot <span class="op">=</span> pivot.loc[order]</span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> pivot.plot(kind<span class="op">=</span><span class="st">"barh"</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>    ax.set_title(first_scenario)</span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Votos validos estimados (%)"</span>)</span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">""</span>)</span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>    ax.legend(title<span class="op">=</span><span class="st">"Modelo"</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">1.02</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">"upper left"</span>)</span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="rolling-2026-modelos" class="quarto-figure quarto-figure-center anchored">
@@ -4329,25 +4998,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-rolling-2026-tabela" class="cell" data-execution_count="37">
+<div id="cell-rolling-2026-tabela" class="cell" data-execution_count="40">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> rolling_2026.empty:</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    view <span class="op">=</span> rolling_2026.copy()</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    view[<span class="st">"previsto"</span>] <span class="op">=</span> pd.to_numeric(view[<span class="st">"previsto"</span>]).<span class="bu">round</span>(<span class="dv">2</span>)</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    scenario_options <span class="op">=</span> view[<span class="st">"cenario_rotulo"</span>].drop_duplicates()</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    recent <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> scenario_options <span class="cf">if</span> <span class="st">"agosto/setembro"</span> <span class="kw">in</span> <span class="bu">str</span>(s)]</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    first_scenario <span class="op">=</span> recent[<span class="dv">0</span>] <span class="cf">if</span> recent <span class="cf">else</span> scenario_options.iloc[<span class="dv">0</span>]</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    focus <span class="op">=</span> view[view[<span class="st">"cenario_rotulo"</span>].eq(first_scenario)].copy()</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    top_candidates <span class="op">=</span> (</span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>        focus[focus[<span class="st">"modelo"</span>].eq(<span class="st">"baseline_pesquisa"</span>)]</span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>        .sort_values(<span class="st">"previsto"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>        .head(<span class="dv">8</span>)[<span class="st">"candidato"</span>]</span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    focus <span class="op">=</span> focus[focus[<span class="st">"candidato"</span>].isin(top_candidates)]</span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    keep_models <span class="op">=</span> [<span class="st">"baseline_pesquisa"</span>, <span class="st">"random_forest_07_600"</span>, <span class="st">"gradient_boosting"</span>, <span class="st">"voting_ia"</span>, <span class="st">"mlp_pequena"</span>]</span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    focus <span class="op">=</span> focus[focus[<span class="st">"modelo"</span>].isin(keep_models)]</span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>    display(focus[[<span class="st">"modelo"</span>, <span class="st">"cenario_rotulo"</span>, <span class="st">"candidato"</span>, <span class="st">"previsto"</span>, <span class="st">"ano_treino_max"</span>]].sort_values([<span class="st">"candidato"</span>, <span class="st">"modelo"</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> rolling_2026.empty:</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    view <span class="op">=</span> rolling_2026.copy()</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    view[<span class="st">"previsto"</span>] <span class="op">=</span> pd.to_numeric(view[<span class="st">"previsto"</span>]).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    scenario_options <span class="op">=</span> view[<span class="st">"cenario_rotulo"</span>].drop_duplicates()</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    recent <span class="op">=</span> [s <span class="cf">for</span> s <span class="kw">in</span> scenario_options <span class="cf">if</span> <span class="st">"agosto/setembro"</span> <span class="kw">in</span> <span class="bu">str</span>(s)]</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    first_scenario <span class="op">=</span> recent[<span class="dv">0</span>] <span class="cf">if</span> recent <span class="cf">else</span> scenario_options.iloc[<span class="dv">0</span>]</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    focus <span class="op">=</span> view[view[<span class="st">"cenario_rotulo"</span>].eq(first_scenario)].copy()</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    top_candidates <span class="op">=</span> (</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>        focus[focus[<span class="st">"modelo"</span>].eq(<span class="st">"baseline_pesquisa"</span>)]</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>        .sort_values(<span class="st">"previsto"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>        .head(<span class="dv">8</span>)[<span class="st">"candidato"</span>]</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>    focus <span class="op">=</span> focus[focus[<span class="st">"candidato"</span>].isin(top_candidates)]</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>    keep_models <span class="op">=</span> [<span class="st">"baseline_pesquisa"</span>, <span class="st">"random_forest_07_600"</span>, <span class="st">"gradient_boosting"</span>, <span class="st">"voting_ia"</span>, <span class="st">"mlp_pequena"</span>]</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>    focus <span class="op">=</span> focus[focus[<span class="st">"modelo"</span>].isin(keep_models)]</span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>    display(focus[[<span class="st">"modelo"</span>, <span class="st">"cenario_rotulo"</span>, <span class="st">"candidato"</span>, <span class="st">"previsto"</span>, <span class="st">"ano_treino_max"</span>]].sort_values([<span class="st">"candidato"</span>, <span class="st">"modelo"</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div id="rolling-2026-tabela" class="cell-output cell-output-display">
 <div>
@@ -4691,35 +5360,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-comparacao-modelos" class="cell" data-execution_count="38">
+<div id="cell-comparacao-modelos" class="cell" data-execution_count="41">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> backtest.empty:</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    modelos <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"modelo"</span>: [<span class="st">"Baseline"</span>, <span class="st">"Inferencial"</span>, <span class="st">"ML tradicional"</span>, <span class="st">"IA/rede neural"</span>, <span class="st">"Ensemble"</span>],</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"entra_agora"</span>: [<span class="st">"Sim"</span>, <span class="st">"Parcial"</span>, <span class="st">"Depois"</span>, <span class="st">"Depois"</span>, <span class="st">"Depois"</span>],</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"papel"</span>: [</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Primeira previsao viva"</span>,</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Entender impacto das variaveis"</span>,</span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Tentar reduzir erro fora da amostra"</span>,</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Capturar interacoes se houver dados"</span>,</span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Combinar apenas modelos aprovados"</span>,</span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>        ],</span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>    display(modelos)</span>
-<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> backtest.copy()</span>
-<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"mae"</span>])</span>
-<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>    summary <span class="op">=</span> tmp.groupby(<span class="st">"modelo"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"mae"</span>].mean().sort_values(<span class="st">"mae"</span>)</span>
-<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>    ax.barh(summary[<span class="st">"modelo"</span>], summary[<span class="st">"mae"</span>], color<span class="op">=</span><span class="st">"#4C78A8"</span>)</span>
-<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>    ax.invert_yaxis()</span>
-<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Erro medio absoluto"</span>)</span>
-<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Modelo"</span>)</span>
-<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="st">"Backtest: menor erro e melhor"</span>)</span>
-<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, row <span class="kw">in</span> <span class="bu">enumerate</span>(summary.itertuples()):</span>
-<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a>        ax.text(row.mae <span class="op">+</span> <span class="fl">0.15</span>, i, <span class="ss">f"</span><span class="sc">{</span>row<span class="sc">.</span>mae<span class="sc">:.2f}</span><span class="ss">"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
-<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> backtest.empty:</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    modelos <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"modelo"</span>: [<span class="st">"Baseline"</span>, <span class="st">"Inferencial"</span>, <span class="st">"ML tradicional"</span>, <span class="st">"IA/rede neural"</span>, <span class="st">"Ensemble"</span>],</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"entra_agora"</span>: [<span class="st">"Sim"</span>, <span class="st">"Parcial"</span>, <span class="st">"Depois"</span>, <span class="st">"Depois"</span>, <span class="st">"Depois"</span>],</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"papel"</span>: [</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Primeira previsao viva"</span>,</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Entender impacto das variaveis"</span>,</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Tentar reduzir erro fora da amostra"</span>,</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Capturar interacoes se houver dados"</span>,</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Combinar apenas modelos aprovados"</span>,</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>    display(modelos)</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> backtest.copy()</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"mae"</span>])</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>    summary <span class="op">=</span> tmp.groupby(<span class="st">"modelo"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"mae"</span>].mean().sort_values(<span class="st">"mae"</span>)</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>    ax.barh(summary[<span class="st">"modelo"</span>], summary[<span class="st">"mae"</span>], color<span class="op">=</span><span class="st">"#4C78A8"</span>)</span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>    ax.invert_yaxis()</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Erro medio absoluto"</span>)</span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Modelo"</span>)</span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="st">"Backtest: menor erro e melhor"</span>)</span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, row <span class="kw">in</span> <span class="bu">enumerate</span>(summary.itertuples()):</span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>        ax.text(row.mae <span class="op">+</span> <span class="fl">0.15</span>, i, <span class="ss">f"</span><span class="sc">{</span>row<span class="sc">.</span>mae<span class="sc">:.2f}</span><span class="ss">"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="comparacao-modelos" class="quarto-figure quarto-figure-center anchored">
@@ -4730,14 +5399,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-tabela-backtest" class="cell" data-execution_count="39">
+<div id="cell-tabela-backtest" class="cell" data-execution_count="42">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> backtest.empty:</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    view <span class="op">=</span> backtest.copy()</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    view[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(view[<span class="st">"mae"</span>])</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    top <span class="op">=</span> view.groupby(<span class="st">"modelo"</span>)[<span class="st">"mae"</span>].mean().sort_values().head(<span class="dv">8</span>).index</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    display(view[view[<span class="st">"modelo"</span>].isin(top)].sort_values([<span class="st">"ano_teste"</span>, <span class="st">"mae"</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> backtest.empty:</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    view <span class="op">=</span> backtest.copy()</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    view[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(view[<span class="st">"mae"</span>])</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    top <span class="op">=</span> view.groupby(<span class="st">"modelo"</span>)[<span class="st">"mae"</span>].mean().sort_values().head(<span class="dv">8</span>).index</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    display(view[view[<span class="st">"modelo"</span>].isin(top)].sort_values([<span class="st">"ano_teste"</span>, <span class="st">"mae"</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div id="tabela-backtest" class="cell-output cell-output-display">
 <div>
@@ -4850,28 +5519,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-backtest-janelas" class="cell" data-execution_count="40">
+<div id="cell-backtest-janelas" class="cell" data-execution_count="43">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> backtest_janelas.empty:</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">"Sem backtest por janela ainda"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> backtest_janelas.copy()</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"dias_antes_eleicao"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"dias_antes_eleicao"</span>])</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"mae"</span>])</span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"modelo"</span>] <span class="op">=</span> tmp.get(<span class="st">"modelo"</span>, <span class="st">"baseline_pesquisa"</span>)</span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>    summary <span class="op">=</span> tmp.groupby([<span class="st">"modelo"</span>, <span class="st">"dias_antes_eleicao"</span>], as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"mae"</span>].mean().sort_values(<span class="st">"dias_antes_eleicao"</span>)</span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> model, group <span class="kw">in</span> summary.groupby(<span class="st">"modelo"</span>):</span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>        ax.plot(group[<span class="st">"dias_antes_eleicao"</span>], group[<span class="st">"mae"</span>], marker<span class="op">=</span><span class="st">"o"</span>, label<span class="op">=</span>model)</span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>    ax.invert_xaxis()</span>
-<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Dias antes da eleicao"</span>)</span>
-<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Erro medio absoluto"</span>)</span>
-<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="st">"Quanto mais perto da eleicao, menor tende a ser o erro"</span>)</span>
-<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
-<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> backtest_janelas.empty:</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">"Sem backtest por janela ainda"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> backtest_janelas.copy()</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"dias_antes_eleicao"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"dias_antes_eleicao"</span>])</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"mae"</span>])</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"modelo"</span>] <span class="op">=</span> tmp.get(<span class="st">"modelo"</span>, <span class="st">"baseline_pesquisa"</span>)</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    summary <span class="op">=</span> tmp.groupby([<span class="st">"modelo"</span>, <span class="st">"dias_antes_eleicao"</span>], as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"mae"</span>].mean().sort_values(<span class="st">"dias_antes_eleicao"</span>)</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> model, group <span class="kw">in</span> summary.groupby(<span class="st">"modelo"</span>):</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>        ax.plot(group[<span class="st">"dias_antes_eleicao"</span>], group[<span class="st">"mae"</span>], marker<span class="op">=</span><span class="st">"o"</span>, label<span class="op">=</span>model)</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    ax.invert_xaxis()</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Dias antes da eleicao"</span>)</span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Erro medio absoluto"</span>)</span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="st">"Quanto mais perto da eleicao, menor tende a ser o erro"</span>)</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="backtest-janelas" class="quarto-figure quarto-figure-center anchored">
@@ -4882,28 +5551,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-backtest-previsao-viva" class="cell" data-execution_count="41">
+<div id="cell-backtest-previsao-viva" class="cell" data-execution_count="44">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> backtest_vivo.empty:</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">"Sem backtest de previsao viva ainda"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> backtest_vivo.copy()</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"dias_antes_eleicao"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"dias_antes_eleicao"</span>])</span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"mae"</span>])</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"modelo"</span>] <span class="op">=</span> tmp.get(<span class="st">"modelo"</span>, <span class="st">"baseline_pesquisa"</span>)</span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    summary <span class="op">=</span> tmp.groupby([<span class="st">"modelo"</span>, <span class="st">"dias_antes_eleicao"</span>], as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"mae"</span>].mean().sort_values(<span class="st">"dias_antes_eleicao"</span>)</span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> model, group <span class="kw">in</span> summary.groupby(<span class="st">"modelo"</span>):</span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>        ax.plot(group[<span class="st">"dias_antes_eleicao"</span>], group[<span class="st">"mae"</span>], marker<span class="op">=</span><span class="st">"o"</span>, label<span class="op">=</span>model)</span>
-<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>    ax.invert_xaxis()</span>
-<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Dias antes da eleicao"</span>)</span>
-<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Erro medio absoluto"</span>)</span>
-<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="st">"Previsao viva melhora conforme novas pesquisas ficam disponiveis"</span>)</span>
-<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
-<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> backtest_vivo.empty:</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">"Sem backtest de previsao viva ainda"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> backtest_vivo.copy()</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"dias_antes_eleicao"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"dias_antes_eleicao"</span>])</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"mae"</span>])</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"modelo"</span>] <span class="op">=</span> tmp.get(<span class="st">"modelo"</span>, <span class="st">"baseline_pesquisa"</span>)</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>    summary <span class="op">=</span> tmp.groupby([<span class="st">"modelo"</span>, <span class="st">"dias_antes_eleicao"</span>], as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"mae"</span>].mean().sort_values(<span class="st">"dias_antes_eleicao"</span>)</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> model, group <span class="kw">in</span> summary.groupby(<span class="st">"modelo"</span>):</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>        ax.plot(group[<span class="st">"dias_antes_eleicao"</span>], group[<span class="st">"mae"</span>], marker<span class="op">=</span><span class="st">"o"</span>, label<span class="op">=</span>model)</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>    ax.invert_xaxis()</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Dias antes da eleicao"</span>)</span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Erro medio absoluto"</span>)</span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="st">"Previsao viva melhora conforme novas pesquisas ficam disponiveis"</span>)</span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="backtest-previsao-viva" class="quarto-figure quarto-figure-center anchored">

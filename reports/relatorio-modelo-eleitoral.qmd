@@ -946,6 +946,71 @@ if not rolling.empty:
     display(summary.sort_values(["ano_eleicao", "mae"])[["ano_eleicao", "modelo", "vencedor_previsto", "voto_previsto", "vencedor_real", "voto_real", "acertou_vencedor", "mae"]])
 ```
 
+## Onde os modelos erram
+
+O erro medio geral e util para ranquear modelos, mas ele esconde duas coisas importantes: eleicoes dificeis e candidatos que os modelos tendem a superestimar ou subestimar. Abaixo, o mesmo backtest cronologico e aberto por ano e por candidato.
+
+```{python}
+#| label: rolling-erro-eleicao-modelo
+#| fig-cap: "Erro absoluto medio por modelo e eleicao no backtest cronologico"
+if rolling.empty:
+    fig, ax = plt.subplots()
+    ax.text(0.5, 0.5, "Sem erros por eleicao ainda", ha="center", va="center", fontsize=14)
+    ax.axis("off")
+else:
+    view = rolling.copy()
+    view["erro_abs"] = pd.to_numeric(view["erro_abs"], errors="coerce")
+    keep = ["baseline_pesquisa", "gradient_boosting", "random_forest_07_600", "voting_ia", "mlp_pequena"]
+    view = view[view["modelo"].isin(keep)]
+    heat = view.pivot_table(index="modelo", columns="ano_eleicao", values="erro_abs", aggfunc="mean")
+    heat = heat.loc[[m for m in keep if m in heat.index]]
+    fig, ax = plt.subplots(figsize=(9, 4))
+    image = ax.imshow(heat, cmap="YlOrRd", aspect="auto")
+    ax.set_xticks(range(len(heat.columns)), heat.columns)
+    ax.set_yticks(range(len(heat.index)), heat.index)
+    ax.set_xlabel("Eleicao prevista")
+    ax.set_ylabel("")
+    for y, model in enumerate(heat.index):
+        for x, year in enumerate(heat.columns):
+            value = heat.loc[model, year]
+            ax.text(x, y, f"{value:.1f}", ha="center", va="center", fontsize=9)
+    fig.colorbar(image, ax=ax, label="Erro medio absoluto")
+    plt.tight_layout()
+```
+
+```{python}
+#| label: rolling-erro-candidato
+if not rolling.empty:
+    view = rolling.copy()
+    view["erro_abs"] = pd.to_numeric(view["erro_abs"], errors="coerce")
+    keep = ["baseline_pesquisa", "gradient_boosting", "random_forest_07_600", "voting_ia", "mlp_pequena"]
+    view = view[view["modelo"].isin(keep)]
+    by_candidate = (
+        view.groupby(["modelo", "candidato"], as_index=False)
+        .agg(
+            eleicoes=("ano_eleicao", "nunique"),
+            erro_medio=("erro_abs", "mean"),
+            pior_erro=("erro_abs", "max"),
+        )
+    )
+    for col in ["erro_medio", "pior_erro"]:
+        by_candidate[col] = by_candidate[col].round(2)
+    display(by_candidate.sort_values(["erro_medio", "pior_erro"], ascending=False).head(35))
+```
+
+```{python}
+#| label: rolling-piores-erros
+if not rolling.empty:
+    view = rolling.copy()
+    view["previsto"] = pd.to_numeric(view["previsto"], errors="coerce").round(2)
+    view["resultado_real_validos"] = pd.to_numeric(view["resultado_real_validos"], errors="coerce").round(2)
+    view["erro_abs"] = pd.to_numeric(view["erro_abs"], errors="coerce").round(2)
+    keep = ["baseline_pesquisa", "gradient_boosting", "random_forest_07_600", "voting_ia", "mlp_pequena"]
+    view = view[view["modelo"].isin(keep)]
+    cols = ["ano_eleicao", "modelo", "candidato", "previsto", "resultado_real_validos", "erro_abs"]
+    display(view.sort_values("erro_abs", ascending=False)[cols].head(30))
+```
+
 ## Previsao de 2026 por modelo
 
 Depois da avaliacao historica, os mesmos modelos sao treinados com todas as eleicoes disponiveis ate 2022 e aplicados aos cenarios principais de 2026.
