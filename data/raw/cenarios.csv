@@ -1,8 +1,31 @@
 ano_eleicao,cenario,rotulo,prioridade,usar_previsao_principal,observacao
+1994,datafolha_serie_1994_04_05,Primeiro turno 1994 - Datafolha 04-05/04,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1994,datafolha_serie_1994_05_03,Primeiro turno 1994 - Datafolha 02-03/05,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1994,datafolha_serie_1994_06_13,Primeiro turno 1994 - Datafolha 09-13/06,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1994,datafolha_serie_1994_07_05,Primeiro turno 1994 - Datafolha 05/07,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1994,datafolha_serie_1994_07_13,Primeiro turno 1994 - Datafolha 11-13/07,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1994,datafolha_serie_1994_07_26,Primeiro turno 1994 - Datafolha 25-26/07,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1994,datafolha_serie_1994_08_09,Primeiro turno 1994 - Datafolha 08-09/08,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1994,datafolha_serie_1994_08_18,Primeiro turno 1994 - Datafolha 16-18/08,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1994,datafolha_serie_1994_08_30,Primeiro turno 1994 - Datafolha 29-30/08,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1994,datafolha_serie_1994_09_05,Primeiro turno 1994 - Datafolha 05/09,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1994,datafolha_serie_1994_09_09,Primeiro turno 1994 - Datafolha 09/09,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1994,datafolha_serie_1994_09_15,Primeiro turno 1994 - Datafolha 13-15/09,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1994,datafolha_serie_1994_09_22,Primeiro turno 1994 - Datafolha 20-22/09,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1994,datafolha_serie_1994_09_28,Primeiro turno 1994 - Datafolha 27-28/09,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1994,datafolha_serie_1994_10_01,Primeiro turno 1994 - Datafolha 30/09-01/10,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
 1994,folha_datafolha_1994_08_22,Primeiro turno 1994 - Datafolha 22/08,1,1,Pesquisa nacional Datafolha publicada pela Folha; entrada manual auditada
 1994,folha_datafolha_1994_05_24,Primeiro turno 1994 - Datafolha 23-24/05,2,1,Pesquisa nacional Datafolha publicada pela Folha; entrada manual auditada
 1998,folha_datafolha_1998_07_09,Primeiro turno 1998 - Datafolha 08-09/07,1,1,Pesquisa nacional Datafolha publicada pela Folha; amostra nao informada na pagina
 1998,folha_datafolha_1998_08_14,Primeiro turno 1998 - Datafolha 12-14/08,1,1,Pesquisa nacional Datafolha publicada pela Folha
+1998,datafolha_serie_1998_03_11,Primeiro turno 1998 - Datafolha 10-11/03,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1998,datafolha_serie_1998_04_30,Primeiro turno 1998 - Datafolha 29-30/04,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1998,datafolha_serie_1998_05_28,Primeiro turno 1998 - Datafolha 27-28/05,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1998,datafolha_serie_1998_06_09,Primeiro turno 1998 - Datafolha 08-09/06,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1998,datafolha_serie_1998_09_02,Primeiro turno 1998 - Datafolha 01-02/09,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1998,datafolha_serie_1998_09_18,Primeiro turno 1998 - Datafolha 17-18/09,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1998,datafolha_serie_1998_09_25,Primeiro turno 1998 - Datafolha 24-25/09,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
+1998,datafolha_serie_1998_10_02,Primeiro turno 1998 - Datafolha 02/10,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
 2002,cesop_datafolha_01690,Primeiro turno 2002 - CESOP/Datafolha 01690,1,1,Pesquisa nacional estimulada de 09/09/2002 extraida de PDF CESOP/Datafolha
 2006,wikipedia_2006_primeiro_turno,Primeiro turno 2006,1,1,Pesquisas extraidas de graficos em wikitexto; auditoria separada
 2006,folha_ibope_2006_08_31,Primeiro turno 2006 - Ibope 29-31/08,2,1,Pesquisa nacional Ibope publicada pela Folha; entrada manual auditada

@@ -11,6 +11,8 @@ RAW = ROOT / "data" / "raw"
 PROCESSED = ROOT / "data" / "processed"
 
 PESQUISAS = RAW / "pesquisas.csv"
+PESQUISAS_1994_DATAFOLHA_SERIE = RAW / "pesquisas_1994_datafolha_serie.csv"
+PESQUISAS_1998_DATAFOLHA_SERIE = RAW / "pesquisas_1998_datafolha_serie.csv"
 PESQUISAS_1994_1998_FOLHA = RAW / "pesquisas_1994_1998_folha_manual.csv"
 PESQUISAS_1994_2006_FOLHA = RAW / "pesquisas_1994_2006_folha_manual.csv"
 PESQUISAS_2026_INICIAIS = RAW / "pesquisas_2026_iniciais.csv"
@@ -310,6 +312,10 @@ def main() -> None:
         poll_paths.append(PESQUISAS_2002_CESOP_DATAFOLHA)
     if PESQUISAS_2002_UOL.exists():
         poll_paths.append(PESQUISAS_2002_UOL)
+    if PESQUISAS_1994_DATAFOLHA_SERIE.exists():
+        poll_paths.append(PESQUISAS_1994_DATAFOLHA_SERIE)
+    if PESQUISAS_1998_DATAFOLHA_SERIE.exists():
+        poll_paths.append(PESQUISAS_1998_DATAFOLHA_SERIE)
     if PESQUISAS_1994_1998_FOLHA.exists():
         poll_paths.append(PESQUISAS_1994_1998_FOLHA)
     if PESQUISAS_1994_2006_FOLHA.exists():
