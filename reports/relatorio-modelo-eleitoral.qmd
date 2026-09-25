@@ -137,6 +137,7 @@ quality = read_csv(PROCESSED / "qualidade_institutos.csv")
 house_effect = read_csv(PROCESSED / "efeito_casa_instituto_candidato.csv")
 source_audit = read_csv(PROCESSED / "auditoria_fontes.csv")
 recent_audit = read_csv(RAW / "auditoria_2026_recente.csv")
+candidates_2026 = read_csv(RAW / "candidatos_2026_auditoria.csv")
 ```
 
 ## Leitura executiva
@@ -158,7 +159,7 @@ if not polls.empty:
     cards.append(metric_card("Cobertura historica", f"{polls['ano_eleicao'].nunique()} eleicoes", f"{int(polls['ano_eleicao'].min())}-{int(polls['ano_eleicao'].max())}"))
     cards.append(metric_card("Ultima pesquisa", latest_date.strftime("%d/%m/%Y"), "data de publicacao mais recente"))
 if not ensemble_forecast.empty:
-    principal = ensemble_forecast[ensemble_forecast["cenario"].str.contains("agosto/setembro", na=False)].copy()
+    principal = current_scenario(ensemble_forecast)
     if principal.empty:
         principal = ensemble_forecast.copy()
     principal["voto_valido_estimado"] = pd.to_numeric(principal["voto_valido_estimado"])
@@ -174,7 +175,7 @@ if cards:
 
 ## Resultado atual
 
-O cenario operacional de agora e o de agosto/setembro sem Pablo Marcal. Ele incorpora as pesquisas recentes com Renan Santos e candidatos menores, mas deixa cenarios com Marcal como alternativa, porque as fontes recentes citam inelegibilidade.
+O cenario operacional de agora e o de agosto/setembro sem Pablo Marcal. Ele incorpora as pesquisas recentes com Renan Santos e os demais nomes com registro aprovado pelo TSE. Cenarios com Marcal ficam apenas como comparacao historica, porque o TSE indeferiu o registro da chapa.
 
 ```{python}
 #| label: resultado-atual-tabela
@@ -275,6 +276,15 @@ display(HTML(f"""
 ## Cenarios de 2026
 
 ```{python}
+#| label: candidatos-2026-auditados
+if not candidates_2026.empty:
+    view = candidates_2026.copy()
+    view["uso_modelo"] = view["usar_previsao_principal"].map({1: "entra no cenario operacional", 0: "fora do cenario operacional"})
+    view = view.sort_values(["usar_previsao_principal", "candidato"], ascending=[False, True])
+    display(view[["candidato", "partido", "vice", "status_tse", "uso_modelo", "observacao"]])
+```
+
+```{python}
 #| label: cenarios-2026
 scenarios_path = RAW / "cenarios.csv"
 scenarios = read_csv(scenarios_path)
@@ -295,7 +305,7 @@ if not scenarios.empty:
 display(HTML("""
 <div class="callout-box">
   <strong>Leitura:</strong> o relatorio separa cenario operacional e cenarios alternativos.
-  Isso evita misturar candidatos inelegiveis ou listas antigas com a previsao principal.
+  Isso evita misturar candidatos sem registro aprovado ou listas antigas com a previsao principal.
 </div>
 """))
 ```
@@ -311,7 +321,7 @@ if not ensemble_forecast.empty:
     view["voto_valido_estimado"] = pd.to_numeric(view["voto_valido_estimado"])
     view["probabilidade_liderar"] = pd.to_numeric(view["probabilidade_liderar"])
     old = view[view["cenario"].eq("Primeiro turno 2026 - Lula vs Flavio")]
-    new = view[view["cenario"].str.contains("agosto/setembro", na=False)]
+    new = current_scenario(view)
     rows = []
     for candidate in sorted(set(old["candidato"]) | set(new["candidato"])):
         old_value = old.loc[old["candidato"].eq(candidate), "voto_valido_estimado"]
@@ -333,7 +343,7 @@ if not ensemble_forecast.empty:
     view = ensemble_forecast.copy()
     view["voto_valido_estimado"] = pd.to_numeric(view["voto_valido_estimado"])
     old = view[view["cenario"].eq("Primeiro turno 2026 - Lula vs Flavio")]
-    new = view[view["cenario"].str.contains("agosto/setembro", na=False)]
+    new = current_scenario(view)
     focus = ["Lula", "Flávio Bolsonaro", "Augusto Cury", "Renan Santos", "Ronaldo Caiado", "Romeu Zema"]
     rows = []
     for candidate in focus:
@@ -1121,7 +1131,9 @@ else:
     tmp = rolling_2026.copy()
     tmp["previsto"] = pd.to_numeric(tmp["previsto"])
     scenario_options = tmp["cenario_rotulo"].drop_duplicates()
-    recent = [s for s in scenario_options if "agosto/setembro" in str(s)]
+    recent = [s for s in scenario_options if str(s) == CURRENT_SCENARIO_LABEL]
+    if not recent:
+        recent = [s for s in scenario_options if "agosto/setembro" in str(s) and "Marcal" not in str(s) and "Marçal" not in str(s)]
     first_scenario = recent[0] if recent else scenario_options.iloc[0]
     plot = tmp[tmp["cenario_rotulo"] == first_scenario]
     pivot = plot.pivot_table(index="candidato", columns="modelo", values="previsto", aggfunc="mean")
@@ -1147,7 +1159,9 @@ if not rolling_2026.empty:
     view = rolling_2026.copy()
     view["previsto"] = pd.to_numeric(view["previsto"]).round(2)
     scenario_options = view["cenario_rotulo"].drop_duplicates()
-    recent = [s for s in scenario_options if "agosto/setembro" in str(s)]
+    recent = [s for s in scenario_options if str(s) == CURRENT_SCENARIO_LABEL]
+    if not recent:
+        recent = [s for s in scenario_options if "agosto/setembro" in str(s) and "Marcal" not in str(s) and "Marçal" not in str(s)]
     first_scenario = recent[0] if recent else scenario_options.iloc[0]
     focus = view[view["cenario_rotulo"].eq(first_scenario)].copy()
     top_candidates = (
