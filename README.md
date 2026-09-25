@@ -4,6 +4,11 @@ Projeto para acompanhar a eleicao presidencial de 2026 no Brasil com um modelo i
 
 Status curto: veja `STATUS.md`.
 
+## Painel online
+
+- [Abrir o painel pelo GitHub Pages](https://matheusassiso.github.io/previsao-de-eleicoes/)
+- [Abrir o HTML direto no repositório](reports/relatorio-modelo-eleitoral.html)
+
 ## Ideia
 
 1. Guardar pesquisas em formato tabular.
