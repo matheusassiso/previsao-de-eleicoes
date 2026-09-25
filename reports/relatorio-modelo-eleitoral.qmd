@@ -1,7 +1,7 @@
 ---
 title: "Modelo de previsao eleitoral presidencial"
 subtitle: "Base, variaveis, analise exploratoria e trilha de modelagem para 2026"
-author: "Codex"
+author: "Projeto de Marcos de Oliveira Wenceslau Junior"
 date: today
 format:
   html:
@@ -155,6 +155,11 @@ candidates_2026 = read_csv(RAW / "candidatos_2026_auditoria.csv")
 ```
 
 ## Leitura executiva
+
+<div class="callout-box">
+  <strong>Titularidade do projeto:</strong> Marcos de Oliveira Wenceslau Junior.
+  Desenvolvimento analitico e automacao com apoio do Codex.
+</div>
 
 Este projeto deve funcionar como um nowcast eleitoral: a cada nova pesquisa, o modelo atualiza a estimativa do primeiro turno em votos validos e preserva a previsao antiga para acompanhar a evolucao da corrida.
 
