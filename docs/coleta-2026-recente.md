@@ -36,9 +36,10 @@ Auditoria: `data/raw/auditoria_2026_recente.csv`.
 
 Resumo da auditoria em 25/09/2026:
 
-- 6 pesquisas/cenarios com fonte primaria ou quase primaria confirmada: BTG/Nexus nas paginas da Nexus e PoderData/Aya nas paginas do Poder360/PoderData.
-- 5 pesquisas/cenarios com registro e metodologia confirmados em fonte forte: AtlasIntel 31/08 via Poder360 e Datafolha de 03/09, 11/09, 17/09 e 24/09 via Folha/Datafolha.
-- 15 pesquisas/cenarios com registro e metodologia confirmados em fonte secundaria jornalistica: AtlasIntel/Bloomberg, BTG/Nexus, CNT/MDA, Meio/Ideia, Palver, Quaest e RealTime Big Data.
+- 14 pesquisas/cenarios com fonte primaria confirmada: BTG/Nexus nas paginas da Nexus, AtlasIntel nas paginas da AtlasIntel, Palver nas paginas/repositorio oficiais e PoderData/Aya nas paginas do Poder360/PoderData.
+- 3 pesquisas/cenarios com fonte primaria localizada: Quaest nas paginas oficiais de relatorio e RealTime Big Data na pagina oficial de pesquisas, mantendo fontes jornalisticas para conferencia dos numeros/metadados.
+- 6 pesquisas/cenarios com registro e metodologia confirmados em fonte forte: AtlasIntel 31/08 via Poder360, CNT/MDA via Poder360 com link para integra em PDF e Datafolha de 03/09, 11/09, 17/09 e 24/09 via Folha/Datafolha.
+- 3 pesquisas/cenarios ainda em fonte secundaria jornalistica: Meio/Ideia e Quaest 07/09.
 - 1 pesquisa/cenario Futura/Apex ainda pendente de registro completo aberto no navegador; a biblioteca da Futura indica a rodada, mas a pagina nao expos todos os metadados durante a coleta.
 
 ## Observacao
