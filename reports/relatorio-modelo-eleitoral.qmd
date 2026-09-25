@@ -153,7 +153,8 @@ cards = []
 if not polls.empty:
     unique_polls = polls.drop_duplicates(["ano_eleicao", "instituto", "data_publicacao", "cenario"]).shape[0]
     latest_date = pd.to_datetime(polls["data_publicacao"], errors="coerce").max()
-    cards.append(metric_card("Base processada", f"{len(polls):,}".replace(",", "."), f"{unique_polls} pesquisas/cenarios"))
+    cards.append(metric_card("Linhas candidato-pesquisa", f"{len(polls):,}".replace(",", "."), "uma pesquisa vira varias linhas"))
+    cards.append(metric_card("Pesquisas/cenarios unicos", f"{unique_polls:,}".replace(",", "."), "ano-instituto-data-cenario"))
     cards.append(metric_card("Cobertura historica", f"{polls['ano_eleicao'].nunique()} eleicoes", f"{int(polls['ano_eleicao'].min())}-{int(polls['ano_eleicao'].max())}"))
     cards.append(metric_card("Ultima pesquisa", latest_date.strftime("%d/%m/%Y"), "data de publicacao mais recente"))
 if not ensemble_forecast.empty:
@@ -365,11 +366,13 @@ recent_raw = read_csv(RAW / "pesquisas_2026_agosto_setembro_manual.csv")
 if not recent_raw.empty:
     principal = recent_raw[recent_raw["cenario"].eq("agosto_setembro_2026_sem_marcal")]
     alternativo = recent_raw[recent_raw["cenario"].eq("agosto_setembro_2026_com_marcal")]
+    principal_unique = principal.drop_duplicates(["instituto", "data_publicacao", "cenario"]).shape[0]
+    alternativo_unique = alternativo.drop_duplicates(["instituto", "data_publicacao", "cenario"]).shape[0]
     display(HTML(f"""
     <div class="callout-box">
-      <strong>Coleta adicionada:</strong> {len(recent_raw)} linhas manuais auditadas,
-      com {principal.drop_duplicates(['instituto', 'data_publicacao', 'cenario']).shape[0]} pesquisas/cenarios no cenario principal
-      sem Marcal e {alternativo.drop_duplicates(['instituto', 'data_publicacao', 'cenario']).shape[0]} no cenario alternativo com Marcal.
+      <strong>Coleta adicionada:</strong> {len(recent_raw)} linhas candidato-pesquisa manuais.
+      Isso corresponde a {principal_unique + alternativo_unique} pesquisas/cenarios unicos:
+      {principal_unique} no cenario principal sem Marcal e {alternativo_unique} no cenario alternativo com Marcal.
     </div>
     """))
 ```
@@ -465,17 +468,92 @@ else:
 
 ```{python}
 #| label: cobertura-por-ano
-#| fig-cap: "Tamanho da base por eleicao"
+#| fig-cap: "Pesquisas/cenarios unicos por eleicao"
 if not polls.empty:
-    counts = polls.groupby("ano_eleicao").size().reset_index(name="linhas")
+    counts = (
+        polls.groupby("ano_eleicao")
+        .agg(
+            linhas=("candidato", "size"),
+            pesquisas_cenarios=("data_publicacao", lambda s: 0),
+        )
+        .reset_index()
+    )
+    uniques = polls.drop_duplicates(["ano_eleicao", "instituto", "data_publicacao", "cenario"]).groupby("ano_eleicao").size()
+    counts["pesquisas_cenarios"] = counts["ano_eleicao"].map(uniques).fillna(0).astype(int)
     fig, ax = plt.subplots(figsize=(9, 3.8))
     colors = [ORANGE if year == 2026 else BLUE for year in counts["ano_eleicao"]]
-    ax.bar(counts["ano_eleicao"].astype(str), counts["linhas"], color=colors)
-    ax.set_title("A base cresceu, mas ainda e desigual entre eleicoes")
+    ax.bar(counts["ano_eleicao"].astype(str), counts["pesquisas_cenarios"], color=colors)
+    ax.set_title("Pesquisas unicas crescem nas eleicoes recentes; anos antigos dependem de acervo")
     ax.set_xlabel("Ano da eleicao")
-    ax.set_ylabel("Linhas candidato-pesquisa")
+    ax.set_ylabel("Pesquisas/cenarios unicos")
     for i, row in enumerate(counts.itertuples()):
-        ax.text(i, row.linhas + counts["linhas"].max() * 0.02, f"{row.linhas}", ha="center", fontsize=9)
+        ax.text(
+            i,
+            row.pesquisas_cenarios + counts["pesquisas_cenarios"].max() * 0.02,
+            f"{row.pesquisas_cenarios}\n({row.linhas} linhas)",
+            ha="center",
+            fontsize=8,
+        )
+    plt.tight_layout()
+```
+
+## Cobertura real da base
+
+Uma linha do arquivo processado e uma combinacao candidato-pesquisa. Uma pesquisa com oito candidatos vira oito linhas. Para avaliar a cobertura real, a unidade correta e a combinacao `ano + instituto + data + cenario`.
+
+```{python}
+#| label: cobertura-real-tabela
+if not polls.empty:
+    base = polls.copy()
+    base["amostra_imputada"] = pd.to_numeric(base.get("amostra_imputada", 0), errors="coerce").fillna(0)
+    unique = base.drop_duplicates(["ano_eleicao", "instituto", "data_publicacao", "cenario"]).copy()
+    quality_terms = "primaria|confirmad|oficial|poderdata"
+    unique["fonte_forte"] = unique["qualidade_fonte"].astype(str).str.contains(quality_terms, case=False, na=False)
+    summary = (
+        base.groupby("ano_eleicao")
+        .agg(
+            linhas_candidato_pesquisa=("candidato", "size"),
+            candidatos=("candidato", "nunique"),
+            institutos=("instituto", "nunique"),
+        )
+        .join(unique.groupby("ano_eleicao").size().rename("pesquisas_cenarios"))
+        .join(unique.groupby("ano_eleicao")["fonte_forte"].mean().mul(100).rename("fonte_forte_pct"))
+        .join(unique.groupby("ano_eleicao")["amostra_imputada"].mean().mul(100).rename("amostra_imputada_pct"))
+        .reset_index()
+    )
+    for col in ["fonte_forte_pct", "amostra_imputada_pct"]:
+        summary[col] = summary[col].round(1)
+    display(summary[[
+        "ano_eleicao",
+        "pesquisas_cenarios",
+        "linhas_candidato_pesquisa",
+        "institutos",
+        "candidatos",
+        "fonte_forte_pct",
+        "amostra_imputada_pct",
+    ]])
+```
+
+```{python}
+#| label: cobertura-real-grafico
+#| fig-cap: "Linhas candidato-pesquisa versus pesquisas/cenarios unicos"
+if not polls.empty:
+    unique = polls.drop_duplicates(["ano_eleicao", "instituto", "data_publicacao", "cenario"]).groupby("ano_eleicao").size()
+    lines = polls.groupby("ano_eleicao").size()
+    summary = pd.DataFrame({"linhas": lines, "pesquisas_cenarios": unique}).reset_index()
+    x = range(len(summary))
+    fig, ax1 = plt.subplots(figsize=(9, 4.2))
+    ax2 = ax1.twinx()
+    ax1.bar([i - 0.18 for i in x], summary["pesquisas_cenarios"], width=0.36, color=BLUE, label="pesquisas/cenarios")
+    ax2.bar([i + 0.18 for i in x], summary["linhas"], width=0.36, color=GRAY, alpha=0.55, label="linhas candidato-pesquisa")
+    ax1.set_xticks(list(x))
+    ax1.set_xticklabels(summary["ano_eleicao"].astype(str))
+    ax1.set_ylabel("Pesquisas/cenarios unicos")
+    ax2.set_ylabel("Linhas candidato-pesquisa")
+    ax1.set_title("Quantidade real de pesquisas e tamanho tabular sao coisas diferentes")
+    handles1, labels1 = ax1.get_legend_handles_labels()
+    handles2, labels2 = ax2.get_legend_handles_labels()
+    ax1.legend(handles1 + handles2, labels1 + labels2, loc="upper left")
     plt.tight_layout()
 ```
 
