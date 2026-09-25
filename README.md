@@ -6,7 +6,7 @@ Status curto: veja `STATUS.md`.
 
 ## Painel online
 
-- [Abrir o painel pelo GitHub Pages](https://matheusassiso.github.io/previsao-de-eleicoes/reports/relatorio-modelo-eleitoral.html?v=pendencias-20260925)
+- [Abrir o painel pelo GitHub Pages](https://matheusassiso.github.io/previsao-de-eleicoes/reports/relatorio-modelo-eleitoral.html?v=auditoria-meio-futura-20260925)
 - [Abrir o HTML direto no repositório](reports/relatorio-modelo-eleitoral.html)
 
 ## Ideia
