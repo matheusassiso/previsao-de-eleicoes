@@ -1163,7 +1163,7 @@ if not rolling_2026.empty:
 
 ```{python}
 #| label: comparacao-modelos
-#| fig-cap: "Erro medio absoluto no backtest por eleicao"
+#| fig-cap: "Erro medio absoluto no backtest por modelo"
 if backtest.empty:
     modelos = pd.DataFrame({
         "modelo": ["Baseline", "Inferencial", "ML tradicional", "IA/rede neural", "Ensemble"],
@@ -1190,6 +1190,70 @@ else:
     for i, row in enumerate(summary.itertuples()):
         ax.text(row.mae + 0.15, i, f"{row.mae:.2f}", va="center", fontsize=9)
     plt.tight_layout()
+```
+
+## Backtest ponderado pela qualidade da base
+
+O ranking bruto trata 1994, 1998 e 2022 como se tivessem a mesma confiabilidade de medicao. O ranking ponderado abaixo reduz o peso de anos com pouca cobertura, poucos institutos, muita amostra imputada ou dependencia forte de base agregada.
+
+```{python}
+#| label: pesos-qualidade-backtest
+if not polls.empty and not backtest.empty:
+    base = polls.copy()
+    unique = base.drop_duplicates(["ano_eleicao", "instituto", "data_publicacao", "cenario"]).copy()
+    unique["amostra_imputada"] = pd.to_numeric(unique.get("amostra_imputada", 0), errors="coerce").fillna(0)
+
+    def categoria_fonte_backtest(value):
+        text = str(value).lower()
+        if "primaria" in text or "confirmad" in text or "oficial" in text:
+            return "fonte forte"
+        if "wikipedia" in text or "pesqele" in text or "normalizada" in text:
+            return "base agregada"
+        if "secundaria" in text or "folha" in text or "gazeta" in text:
+            return "fonte secundaria auditada"
+        return "outra"
+
+    unique["categoria_fonte"] = unique["qualidade_fonte"].map(categoria_fonte_backtest)
+    weights = (
+        unique.groupby("ano_eleicao")
+        .agg(
+            pesquisas_cenarios=("cenario", "size"),
+            institutos=("instituto", "nunique"),
+            base_agregada_pct=("categoria_fonte", lambda s: s.eq("base agregada").mean() * 100),
+            amostra_imputada_pct=("amostra_imputada", lambda s: s.mean() * 100),
+        )
+        .reset_index()
+    )
+    penalty = (
+        weights["pesquisas_cenarios"].lt(10).astype(float) * 0.20
+        + weights["institutos"].lt(3).astype(float) * 0.15
+        + weights["base_agregada_pct"].gt(50).astype(float) * 0.20
+        + weights["amostra_imputada_pct"].gt(50).astype(float) * 0.15
+    )
+    weights["peso_qualidade_base"] = (1 - penalty).clip(lower=0.40).round(2)
+    display(weights.sort_values("ano_eleicao"))
+```
+
+```{python}
+#| label: ranking-modelos-ponderado
+if not polls.empty and not backtest.empty:
+    view = backtest.copy()
+    view["mae"] = pd.to_numeric(view["mae"], errors="coerce")
+    view = view.merge(weights[["ano_eleicao", "peso_qualidade_base"]], left_on="ano_teste", right_on="ano_eleicao", how="left")
+    view["peso_qualidade_base"] = view["peso_qualidade_base"].fillna(1.0)
+    view["mae_vezes_peso"] = view["mae"] * view["peso_qualidade_base"]
+    weighted = (
+        view.groupby("modelo", as_index=False)
+        .agg(mae_vezes_peso=("mae_vezes_peso", "sum"), peso_total=("peso_qualidade_base", "sum"))
+    )
+    weighted["mae_ponderado"] = weighted["mae_vezes_peso"] / weighted["peso_total"]
+    weighted = weighted[["modelo", "mae_ponderado"]]
+    raw = view.groupby("modelo", as_index=False)["mae"].mean().rename(columns={"mae": "mae_bruto"})
+    shown = raw.merge(weighted, on="modelo")
+    shown["delta"] = shown["mae_ponderado"] - shown["mae_bruto"]
+    for col in ["mae_bruto", "mae_ponderado", "delta"]:
+        shown[col] = shown[col].round(2)
+    display(shown.sort_values("mae_ponderado").head(12))
 ```
 
 ```{python}
