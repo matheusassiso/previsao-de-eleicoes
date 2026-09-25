@@ -98,7 +98,7 @@ def metric_card(label, value, note=""):
     </div>
     """
 
-CURRENT_SCENARIO_LABEL = "Primeiro turno 2026 - agosto/setembro com Renan"
+CURRENT_SCENARIO_LABEL = "Primeiro turno 2026 - oficial pos-TSE"
 
 def current_scenario(data):
     if data.empty or "cenario" not in data:
@@ -107,7 +107,7 @@ def current_scenario(data):
     if not scenario.empty:
         return scenario
     recent = data[
-        data["cenario"].astype(str).str.contains("agosto/setembro", na=False)
+        data["cenario"].astype(str).str.contains("oficial pos-TSE|agosto/setembro", na=False)
         & ~data["cenario"].astype(str).str.contains("Marcal|Marçal", case=False, na=False)
     ].copy()
     return recent if not recent.empty else data.copy()
@@ -175,7 +175,7 @@ if cards:
 
 ## Resultado atual
 
-O cenario operacional de agora e o de agosto/setembro sem Pablo Marcal. Ele incorpora as pesquisas recentes com Renan Santos e os demais nomes com registro aprovado pelo TSE. Cenarios com Marcal ficam apenas como comparacao historica, porque o TSE indeferiu o registro da chapa.
+O cenario operacional de agora e o oficial pos-TSE: pesquisas sem Pablo Marcal, publicadas a partir de 11/09/2026, somente com nomes de candidaturas aprovadas pelo TSE. Cenarios com Marcal ficam apenas como comparacao historica, porque o TSE indeferiu o registro da chapa.
 
 ```{python}
 #| label: resultado-atual-tabela
@@ -238,7 +238,12 @@ if not polls.empty:
         cards.append(metric_card("Recencia", f"{days_old} dias", f"ultima publicacao: {last_date.strftime('%d/%m/%Y')}"))
 
 if not recent_audit.empty:
-    current_audit = recent_audit[recent_audit["cenario"].eq("agosto_setembro_2026_sem_marcal")].copy()
+    audit_work = recent_audit.copy()
+    audit_work["data_publicacao"] = pd.to_datetime(audit_work["data_publicacao"], errors="coerce")
+    current_audit = audit_work[
+        audit_work["cenario"].eq("agosto_setembro_2026_sem_marcal")
+        & audit_work["data_publicacao"].ge(pd.Timestamp("2026-09-11"))
+    ].copy()
     strong = current_audit["status_auditoria"].astype(str).str.contains("confirmad|primaria", case=False, na=False).sum()
     total = len(current_audit)
     ratio = strong / total if total else 0
@@ -358,7 +363,7 @@ if not ensemble_forecast.empty:
     y = range(len(plot))
     fig, ax = plt.subplots(figsize=(9, 4.4))
     ax.scatter(plot["anterior"], y, color=GRAY, s=55, label="cenario anterior")
-    ax.scatter(plot["recente"], y, color=ORANGE, s=70, label="agosto/setembro")
+    ax.scatter(plot["recente"], y, color=ORANGE, s=70, label="oficial pos-TSE")
     for i, row in enumerate(plot.itertuples()):
         ax.plot([row.anterior, row.recente], [i, i], color=GRAY, alpha=0.45)
         ax.text(row.recente + 0.35, i, f"{row.recente:.1f}", va="center", fontsize=9)
@@ -381,8 +386,8 @@ if not recent_raw.empty:
     display(HTML(f"""
     <div class="callout-box">
       <strong>Coleta adicionada:</strong> {len(recent_raw)} linhas candidato-pesquisa manuais.
-      Isso corresponde a {principal_unique + alternativo_unique} pesquisas/cenarios unicos:
-      {principal_unique} no cenario principal sem Marcal e {alternativo_unique} no cenario alternativo com Marcal.
+      Isso corresponde a {principal_unique + alternativo_unique} pesquisas/cenarios unicos recentes:
+      {principal_unique} no cenario sem Marcal e {alternativo_unique} no cenario alternativo com Marcal.
     </div>
     """))
 ```
@@ -724,10 +729,37 @@ if not recent_audit.empty:
 ```
 
 ```{python}
+#| label: auditoria-operacional-2026
+if not recent_audit.empty:
+    view = recent_audit.copy()
+    view["data_publicacao"] = pd.to_datetime(view["data_publicacao"], errors="coerce")
+    view["recorte_tse"] = view["data_publicacao"].ge(pd.Timestamp("2026-09-11")).map({True: "pos-TSE", False: "pre-TSE"})
+    view["cenario_status"] = view["cenario"].map(
+        lambda x: "obsoleto: inclui Marcal" if "com_marcal" in str(x)
+        else "operacional" if "sem_marcal" in str(x)
+        else "outro"
+    )
+    view["entra_operacional"] = (
+        view["recorte_tse"].eq("pos-TSE") & view["cenario_status"].eq("operacional")
+    ).map({True: "sim", False: "nao"})
+    summary = (
+        view.groupby(["entra_operacional", "recorte_tse", "cenario_status", "status_auditoria"], as_index=False)
+        .size()
+        .rename(columns={"size": "pesquisas_cenarios"})
+    )
+    display(summary.sort_values(["entra_operacional", "recorte_tse", "cenario_status"], ascending=[False, True, True]))
+```
+
+```{python}
 #| label: auditoria-recente-2026-detalhe
 if not recent_audit.empty:
     view = recent_audit.copy()
-    display(view[["instituto", "data_publicacao", "cenario", "registro_tse", "status_auditoria", "observacao_auditoria"]].sort_values(["status_auditoria", "instituto", "data_publicacao"]))
+    view["data_publicacao_dt"] = pd.to_datetime(view["data_publicacao"], errors="coerce")
+    view["entra_operacional"] = (
+        view["cenario"].eq("agosto_setembro_2026_sem_marcal")
+        & view["data_publicacao_dt"].ge(pd.Timestamp("2026-09-11"))
+    ).map({True: "sim", False: "nao"})
+    display(view[["entra_operacional", "instituto", "data_publicacao", "cenario", "registro_tse", "status_auditoria", "observacao_auditoria"]].sort_values(["entra_operacional", "data_publicacao", "instituto"], ascending=[False, False, True]))
 ```
 
 ```{python}

@@ -19,6 +19,7 @@ PESQUISAS_1994_1998_FOLHA = RAW / "pesquisas_1994_1998_folha_manual.csv"
 PESQUISAS_1994_2006_FOLHA = RAW / "pesquisas_1994_2006_folha_manual.csv"
 PESQUISAS_2026_INICIAIS = RAW / "pesquisas_2026_iniciais.csv"
 PESQUISAS_2026_RECENTES = RAW / "pesquisas_2026_agosto_setembro_manual.csv"
+CANDIDATOS_2026 = RAW / "candidatos_2026_auditoria.csv"
 PESQUISAS_2002_CESOP_DATAFOLHA = RAW / "pesquisas_2002_cesop_datafolha.csv"
 PESQUISAS_2002_UOL = RAW / "pesquisas_2002_uol_fernando_rodrigues.csv"
 PESQUISAS_2006_WIKITEXT = RAW / "pesquisas_2006_wikitext.csv"
@@ -167,6 +168,35 @@ def read_poll_rows(paths: list[Path]) -> list[dict[str, str]]:
     return rows
 
 
+def load_approved_2026(path: Path) -> set[str]:
+    if not path.exists():
+        return set()
+    with path.open(newline="", encoding="utf-8") as file:
+        return {
+            row["candidato"].strip()
+            for row in csv.DictReader(file)
+            if row.get("usar_previsao_principal") == "1"
+        }
+
+
+def append_official_2026_scenario(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    approved = load_approved_2026(CANDIDATOS_2026)
+    derived: list[dict[str, str]] = []
+    for row in rows:
+        if row.get("ano_eleicao") != "2026":
+            continue
+        if row.get("cenario") != "agosto_setembro_2026_sem_marcal":
+            continue
+        if parse_date(row["data_publicacao"]) < parse_date("2026-09-11"):
+            continue
+        if approved and row.get("candidato", "").strip() not in approved:
+            continue
+        copy = dict(row)
+        copy["cenario"] = "oficial_pos_tse_2026"
+        derived.append(copy)
+    return rows + derived
+
+
 def prepare_rows(poll_paths: list[Path], results_path: Path) -> list[dict[str, str]]:
     results = load_results(results_path)
     election_dates = load_election_dates(ELEICOES)
@@ -174,6 +204,7 @@ def prepare_rows(poll_paths: list[Path], results_path: Path) -> list[dict[str, s
     scenarios = load_scenarios(CENARIOS)
     fundamentals = load_fundamentals(FUNDAMENTOS)
     rows = read_poll_rows(poll_paths)
+    rows = append_official_2026_scenario(rows)
     for row in rows:
         row["candidato"] = canonical_candidate(row["ano_eleicao"], row["candidato"])
         row["instituto"] = clean_institute(row.get("instituto", ""))
