@@ -557,6 +557,101 @@ if not polls.empty:
     plt.tight_layout()
 ```
 
+## Qualidade da base historica
+
+Esta leitura separa volume de confiabilidade. Uma eleicao pode ter muitas linhas e ainda depender de amostras imputadas, series consolidadas ou fontes secundarias. Isso importa porque o backtest deve punir menos um modelo quando a propria base historica daquele ano e fraca.
+
+```{python}
+#| label: qualidade-fonte-por-ano
+if not polls.empty:
+    base = polls.copy()
+    unique = base.drop_duplicates(["ano_eleicao", "instituto", "data_publicacao", "cenario"]).copy()
+    unique["amostra_imputada"] = pd.to_numeric(unique.get("amostra_imputada", 0), errors="coerce").fillna(0)
+
+    def fonte_categoria(value):
+        text = str(value).lower()
+        if "primaria" in text or "confirmad" in text or "oficial" in text:
+            return "fonte forte"
+        if "secundaria" in text or "folha" in text or "gazeta" in text:
+            return "fonte secundaria auditada"
+        if "wikipedia" in text or "pesqele" in text or "normalizada" in text:
+            return "base agregada"
+        return "outra"
+
+    unique["categoria_fonte"] = unique["qualidade_fonte"].map(fonte_categoria)
+    summary = (
+        unique.groupby(["ano_eleicao", "categoria_fonte"], as_index=False)
+        .size()
+        .rename(columns={"size": "pesquisas_cenarios"})
+    )
+    total = summary.groupby("ano_eleicao")["pesquisas_cenarios"].transform("sum")
+    summary["pct"] = (summary["pesquisas_cenarios"] / total * 100).round(1)
+    display(summary.sort_values(["ano_eleicao", "pesquisas_cenarios"], ascending=[True, False]))
+```
+
+```{python}
+#| label: qualidade-fonte-grafico
+#| fig-cap: "Composicao das fontes por ano"
+if not polls.empty:
+    base = polls.copy()
+    unique = base.drop_duplicates(["ano_eleicao", "instituto", "data_publicacao", "cenario"]).copy()
+    unique["categoria_fonte"] = unique["qualidade_fonte"].map(fonte_categoria)
+    pivot = unique.pivot_table(index="ano_eleicao", columns="categoria_fonte", values="cenario", aggfunc="count", fill_value=0)
+    order = [c for c in ["fonte forte", "fonte secundaria auditada", "base agregada", "outra"] if c in pivot.columns]
+    pivot = pivot[order]
+    colors = {
+        "fonte forte": GREEN,
+        "fonte secundaria auditada": BLUE,
+        "base agregada": ORANGE,
+        "outra": GRAY,
+    }
+    fig, ax = plt.subplots(figsize=(9, 4.3))
+    bottom = None
+    for col in pivot.columns:
+        ax.bar(pivot.index.astype(str), pivot[col], bottom=bottom, label=col, color=colors.get(col, GRAY))
+        bottom = pivot[col] if bottom is None else bottom + pivot[col]
+    ax.set_title("Nem toda cobertura tem a mesma confiabilidade")
+    ax.set_xlabel("Ano da eleicao")
+    ax.set_ylabel("Pesquisas/cenarios unicos")
+    ax.legend(title="Categoria da fonte", bbox_to_anchor=(1.02, 1), loc="upper left")
+    plt.tight_layout()
+```
+
+```{python}
+#| label: risco-base-por-ano
+if not polls.empty:
+    base = polls.copy()
+    unique = base.drop_duplicates(["ano_eleicao", "instituto", "data_publicacao", "cenario"]).copy()
+    unique["amostra_imputada"] = pd.to_numeric(unique.get("amostra_imputada", 0), errors="coerce").fillna(0)
+    unique["categoria_fonte"] = unique["qualidade_fonte"].map(fonte_categoria)
+    risk = (
+        unique.groupby("ano_eleicao")
+        .agg(
+            pesquisas_cenarios=("cenario", "size"),
+            institutos=("instituto", "nunique"),
+            fonte_forte_pct=("categoria_fonte", lambda s: (s.eq("fonte forte").mean() * 100)),
+            base_agregada_pct=("categoria_fonte", lambda s: (s.eq("base agregada").mean() * 100)),
+            amostra_imputada_pct=("amostra_imputada", lambda s: (s.mean() * 100)),
+        )
+        .reset_index()
+    )
+    def risco(row):
+        score = 0
+        if row["pesquisas_cenarios"] < 10:
+            score += 1
+        if row["institutos"] < 3:
+            score += 1
+        if row["amostra_imputada_pct"] > 50:
+            score += 1
+        if row["base_agregada_pct"] > 50:
+            score += 1
+        return "alto" if score >= 3 else "medio" if score >= 1 else "baixo"
+    risk["risco_leitura"] = risk.apply(risco, axis=1)
+    for col in ["fonte_forte_pct", "base_agregada_pct", "amostra_imputada_pct"]:
+        risk[col] = risk[col].round(1)
+    display(risk.sort_values("ano_eleicao"))
+```
+
 ## Variaveis objetivas para incluir logo
 
 A literatura e modelos profissionais costumam combinar pesquisas com fundamentos. Para o Brasil, algumas variaveis sao objetivas o suficiente para entrar cedo, desde que a fonte seja consistente:
@@ -609,7 +704,7 @@ plt.tight_layout()
 
 ## Auditoria da base
 
-O gargalo atual nao e algoritmo: e confiabilidade das series antigas. A base ja separa fonte, instituto, amostra imputada e cenario para permitir auditoria incremental. A busca mais recente confirmou uma fonte primaria promissora para 2002 no CESOP/Datafolha; 1998 e 1994 ainda precisam de URLs diretas ou tabelas extraiveis antes de entrar no treino.
+O gargalo atual nao e algoritmo: e confiabilidade das series antigas. A base ja separa fonte, instituto, amostra imputada e cenario para permitir auditoria incremental. A busca mais recente adicionou Datafolha e Ibope para 1994 e 1998, mas ainda vale priorizar relatorios primarios completos e novas tabelas extraiveis desses anos.
 
 ```{python}
 #| label: auditoria-recente-2026-resumo
