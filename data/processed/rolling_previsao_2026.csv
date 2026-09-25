@@ -349,7 +349,7 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,1.2824990928479743,huber,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,39.390233333333136,random_forest_07_600,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,41.55218333333352,random_forest_07_600,2022
-2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,12.053383333333377,random_forest_07_600,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,12.053383333333379,random_forest_07_600,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,12.662450000000064,random_forest_07_600,2022
 2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,11.976511935697546,random_forest_07_600,2022
 2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,33.49810739838413,random_forest_07_600,2022
@@ -374,36 +374,36 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,11.001988734660417,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,11.009394543380743,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,11.009394543380743,random_forest_07_600,2022
-2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,11.011091449814751,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,11.011091449814753,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,10.788050000000037,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,10.788050000000037,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,33.99095126932444,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,10.788050000000037,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,43.20244197416162,random_forest_07_600,2022
-2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,11.992092271992268,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,11.99209227199227,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,10.750460588414553,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,10.763030950219367,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,10.775346073881726,random_forest_07_600,2022
-2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,10.7293166666667,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,10.729316666666701,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,10.788050000000037,random_forest_07_600,2022
-2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,33.25126666666674,random_forest_07_600,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,33.25126666666673,random_forest_07_600,2022
 2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,43.607550000000195,random_forest_07_600,2022
 2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,11.529816666666704,random_forest_07_600,2022
 2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,11.537466666666706,random_forest_07_600,2022
 2026,Primeiro turno 2026 - cenario reduzido,Lula,40.537716666666896,random_forest_07_600,2022
-2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,13.477800000000048,random_forest_07_600,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,13.47780000000005,random_forest_07_600,2022
 2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,13.660750000000053,random_forest_07_600,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,11.011091449814751,random_forest_07_600,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,11.011091449814753,random_forest_07_600,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,10.788050000000037,random_forest_07_600,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,10.788050000000037,random_forest_07_600,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,33.99095126932444,random_forest_07_600,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,10.788050000000037,random_forest_07_600,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Lula,43.20244197416162,random_forest_07_600,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,11.992092271992268,random_forest_07_600,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,11.99209227199227,random_forest_07_600,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,10.750460588414553,random_forest_07_600,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,10.763030950219367,random_forest_07_600,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,10.775346073881726,random_forest_07_600,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,10.7293166666667,random_forest_07_600,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,10.729316666666701,random_forest_07_600,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,10.788050000000037,random_forest_07_600,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,39.50175999999996,extra_trees,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,42.95000000000008,extra_trees,2022

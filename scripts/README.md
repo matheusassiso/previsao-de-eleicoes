@@ -20,25 +20,13 @@ Scripts planejados:
 - `gerar_ensemble.py`: criar pesos do ensemble com base no backtest.
 - `bayesiano_dinamico.py`: gerar nowcast por estado latente dinamico via filtro de Kalman.
 - `auditar_fontes.py`: resumir cobertura e problemas basicos por ano e fonte.
+- `atualizar_tudo.py`: rodar a esteira inteira, testes e render do HTML.
 
 Rodar:
 
 ```powershell
-python scripts\coletar_2006_wikitext.py
-python scripts\coletar_2002_uol.py
-python scripts\coletar_fundamentos.py
-python scripts\preparar_dados.py
-python scripts\ajustes_literatura.py
-python scripts\rodar_modelos.py
-python scripts\avaliar_historico.py
-python scripts\avaliar_janelas.py
-python scripts\avaliar_previsao_viva.py
-python scripts\avaliar_rolling.py
-python scripts\prever.py
-python scripts\bayesiano_dinamico.py
-python scripts\gerar_ensemble.py
-python scripts\registrar_historico_previsoes.py
-python scripts\auditar_fontes.py
+python scripts\atualizar_tudo.py
+python scripts\atualizar_tudo.py --registrar-historico
 ```
 
 Os scripts ja rodam com a base vazia e deixam os arquivos de saida prontos.

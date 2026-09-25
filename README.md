@@ -6,7 +6,7 @@ Status curto: veja `STATUS.md`.
 
 ## Painel online
 
-- [Abrir o painel pelo GitHub Pages](https://matheusassiso.github.io/previsao-de-eleicoes/reports/relatorio-modelo-eleitoral.html?v=db0dfd4)
+- [Abrir o painel pelo GitHub Pages](https://matheusassiso.github.io/previsao-de-eleicoes/reports/relatorio-modelo-eleitoral.html?v=atualizar-tudo-20260925)
 - [Abrir o HTML direto no repositório](reports/relatorio-modelo-eleitoral.html)
 
 ## Ideia
@@ -44,14 +44,13 @@ Montar `data/raw/pesquisas.csv` com pesquisas historicas e atuais, usando uma li
 
 ```powershell
 cd C:\Users\Matheus\Documents\Codex\previsao-de-eleicoes
-python scripts\preparar_dados.py
-python scripts\prever.py
-python scripts\rodar_modelos.py
-python scripts\avaliar_historico.py
-python scripts\avaliar_janelas.py
-python scripts\avaliar_previsao_viva.py
-python scripts\avaliar_rolling.py
-python scripts\gerar_ensemble.py
+python scripts\atualizar_tudo.py
+```
+
+Para gravar uma nova fotografia datada da previsao no historico:
+
+```powershell
+python scripts\atualizar_tudo.py --registrar-historico
 ```
 
 ## Coletar pesquisas historicas estruturadas
