@@ -1,4 +1,5 @@
 ano_eleicao,cenario,rotulo,prioridade,usar_previsao_principal,observacao
+1994,ibope_1994_03_30,Primeiro turno 1994 - Ibope 26-30/03,1,1,Pesquisa nacional Ibope publicada pela Gazeta de Sergipe; entrada manual auditada
 1994,datafolha_serie_1994_04_05,Primeiro turno 1994 - Datafolha 04-05/04,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
 1994,datafolha_serie_1994_05_03,Primeiro turno 1994 - Datafolha 02-03/05,1,1,Serie consolidada Datafolha; amostra nao informada no PDF
 1994,datafolha_serie_1994_06_13,Primeiro turno 1994 - Datafolha 09-13/06,1,1,Serie consolidada Datafolha; amostra nao informada no PDF

@@ -3,6 +3,7 @@
 ## Incorporado
 
 - 1994: serie consolidada Datafolha de intencao de voto estimulada para presidente, com 15 novas medicoes entre 04-05/04 e 30/09-01/10, inserida em `data/raw/pesquisas_1994_datafolha_serie.csv`. As datas de 23-24/05 e 22/08 ja existiam em entradas manuais auditadas e nao foram duplicadas.
+- 1994: uma pesquisa nacional Ibope, de 26-30/03/1994, publicada pela Gazeta de Sergipe, inserida em `data/raw/pesquisas_1994_ibope_manual.csv`.
 - 1994: uma pesquisa nacional Datafolha publicada pela Folha em 23/08/1994, inserida em `data/raw/pesquisas_1994_1998_folha_manual.csv`.
 - 1998: serie consolidada Datafolha de intencao de voto estimulada para presidente, com 8 novas medicoes entre 10-11/03 e 02/10, inserida em `data/raw/pesquisas_1998_datafolha_serie.csv`. As datas de 08-09/07 e 14/08 ja existiam em entradas manuais auditadas e nao foram duplicadas.
 - 1998: quatro pesquisas nacionais CNI/Ibope ou Ibope, publicadas entre maio e setembro, inseridas em `data/raw/pesquisas_1998_ibope_manual.csv`.
@@ -29,6 +30,7 @@
 - 1998 Folha/Datafolha julho: https://www1.folha.uol.com.br/fsp/brasil/fc12079807.htm
 - 1998 Folha/Datafolha agosto: https://www1.folha.uol.com.br/fsp/brasil/fc18089803.htm
 - 1998 Datafolha serie consolidada: https://media.folha.uol.com.br/datafolha/2022/12/28/brasil-1998-1t.pdf
+- 1994 Ibope marco, Gazeta de Sergipe: https://jornaisdesergipe.ufs.br/bitstream/123456789/39242/1/Gazeta%20de%20Sergipe%201994.04.01a04.pdf
 - 1998 CNI/Ibope maio, Folha de Londrina: https://www.folhadelondrina.com.br/politica/pesquisa-do-ibope-indica-possibilidade-de-2-turno-78284.html
 - 1998 Ibope junho, UOL/Folha: https://www1.folha.uol.com.br/fol/pol/po0506981.htm
 - 1998 Ibope julho, Folha de Londrina: https://www.folhadelondrina.com.br/politica/fernando-henrique-cai-dois-pontos-na-pesquisa-do-ibope-89559.html
@@ -38,4 +40,4 @@
 
 ## Proximo caminho
 
-Prioridade agora e buscar fontes Ibope/CNI para 1994 e conferir relatorios primarios do Ibope de 1998.
+Prioridade agora e buscar novas fontes Ibope/CNI para 1994 e conferir relatorios primarios do Ibope de 1998.
