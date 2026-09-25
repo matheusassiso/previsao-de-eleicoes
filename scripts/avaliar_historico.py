@@ -8,21 +8,12 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.exceptions import ConvergenceWarning
 
 from ajustes_literatura import adjusted_vote, house_effect_lookup, house_effect_stats, house_effect_vote, institute_stats, stats_lookup
-from catalogo_modelos import FEATURES, FEATURES_NUM, model_catalog
+from catalogo_modelos import EVAL_MODELS_INTENSIVE, FEATURES, FEATURES_NUM, model_catalog
 ROOT = Path(__file__).resolve().parents[1]
 PROCESSED = ROOT / "data" / "processed"
 PESQUISAS = PROCESSED / "pesquisas_validos.csv"
 OUT = PROCESSED / "backtest_modelos.csv"
-EVAL_MODELS = [
-    "ridge",
-    "huber",
-    "random_forest_07_600",
-    "extra_trees",
-    "gradient_boosting",
-    "mlp_pequena",
-    "voting_ia",
-    "stacking_ia",
-]
+EVAL_MODELS = EVAL_MODELS_INTENSIVE
 
 def load_data() -> pd.DataFrame:
     df = pd.read_csv(PESQUISAS)

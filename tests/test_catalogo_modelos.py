@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from catalogo_modelos import FEATURES, model_catalog
+from catalogo_modelos import EVAL_MODELS_INTENSIVE, FEATURES, model_catalog
 
 
 def test_catalog_has_multiple_models_per_requested_family():
@@ -19,3 +19,10 @@ def test_catalog_has_multiple_models_per_requested_family():
     assert "pib_crescimento" in FEATURES
     assert "inflacao" in FEATURES
     assert "desemprego" in FEATURES
+    assert "dias_publicacao_ate_eleicao" in FEATURES
+    assert "ordem_pesquisa_campanha" in FEATURES
+    assert "qualidade_fonte" in FEATURES
+    assert "random_forest_05_1200" in catalog
+    assert "extra_trees_1000" in catalog
+    assert "random_forest_05_1200" in EVAL_MODELS_INTENSIVE
+    assert "extra_trees_1000" in EVAL_MODELS_INTENSIVE

@@ -9,7 +9,7 @@ from sklearn.exceptions import ConvergenceWarning
 from sklearn.metrics import mean_absolute_error
 
 from ajustes_literatura import adjusted_vote, house_effect_lookup, house_effect_stats, house_effect_vote, institute_stats, stats_lookup
-from catalogo_modelos import FEATURES, FEATURES_NUM, model_catalog
+from catalogo_modelos import EVAL_MODELS_INTENSIVE, FEATURES, FEATURES_NUM, model_catalog
 
 ROOT = Path(__file__).resolve().parents[1]
 PROCESSED = ROOT / "data" / "processed"
@@ -19,16 +19,7 @@ OUT_PREVISAO_2026 = PROCESSED / "rolling_previsao_2026.csv"
 OUT_RESUMO = PROCESSED / "rolling_resumo_modelos.csv"
 
 HISTORIC_TARGETS = [2010, 2014, 2018, 2022]
-EVAL_MODELS = [
-    "ridge",
-    "huber",
-    "random_forest_07_600",
-    "extra_trees",
-    "gradient_boosting",
-    "mlp_pequena",
-    "voting_ia",
-    "stacking_ia",
-]
+EVAL_MODELS = EVAL_MODELS_INTENSIVE
 
 
 def chronological_splits(df: pd.DataFrame, targets: list[int] = HISTORIC_TARGETS):

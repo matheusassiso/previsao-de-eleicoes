@@ -7,7 +7,10 @@ svr_rbf,treinado,familia=machine_learning; n=1397; validacao fora da amostra ain
 random_forest,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 random_forest_sqrt_600,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 random_forest_07_600,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+random_forest_05_1200,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+random_forest_sqrt_1200,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 extra_trees,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+extra_trees_1000,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 gradient_boosting,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 ada_boost,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 mlp_pequena,treinado,familia=deep_learning; n=1397; validacao fora da amostra ainda pendente

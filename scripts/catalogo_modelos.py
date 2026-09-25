@@ -29,9 +29,27 @@ FEATURES_NUM = [
     "inflacao",
     "desemprego",
     "fundamentos_defasagem_max",
+    "dias_publicacao_ate_eleicao",
+    "ordem_pesquisa_instituto_cenario",
+    "ordem_pesquisa_campanha",
+    "amostra_imputada",
+    "cenario_prioridade",
 ]
-FEATURES_CAT = ["instituto", "cenario_rotulo"]
+FEATURES_CAT = ["instituto", "cenario_rotulo", "qualidade_fonte"]
 FEATURES = FEATURES_NUM + FEATURES_CAT
+EVAL_MODELS_INTENSIVE = [
+    "ridge",
+    "huber",
+    "random_forest_07_600",
+    "random_forest_05_1200",
+    "random_forest_sqrt_1200",
+    "extra_trees",
+    "extra_trees_1000",
+    "gradient_boosting",
+    "mlp_pequena",
+    "voting_ia",
+    "stacking_ia",
+]
 
 
 def make_tabular_model(estimator):
@@ -53,7 +71,10 @@ def model_catalog():
         "random_forest": RandomForestRegressor(n_estimators=250, random_state=42),
         "random_forest_sqrt_600": RandomForestRegressor(n_estimators=600, max_features="sqrt", random_state=42, n_jobs=-1),
         "random_forest_07_600": RandomForestRegressor(n_estimators=600, max_features=0.7, random_state=43, n_jobs=-1),
+        "random_forest_05_1200": RandomForestRegressor(n_estimators=1200, max_features=0.5, min_samples_leaf=2, random_state=44, n_jobs=-1),
+        "random_forest_sqrt_1200": RandomForestRegressor(n_estimators=1200, max_features="sqrt", min_samples_leaf=2, random_state=45, n_jobs=-1),
         "extra_trees": ExtraTreesRegressor(n_estimators=250, random_state=42),
+        "extra_trees_1000": ExtraTreesRegressor(n_estimators=1000, max_features=0.7, min_samples_leaf=2, random_state=46, n_jobs=-1),
         "gradient_boosting": GradientBoostingRegressor(random_state=42),
         "ada_boost": AdaBoostRegressor(random_state=42),
     }
