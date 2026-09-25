@@ -21,6 +21,7 @@ Scripts planejados:
 - `bayesiano_dinamico.py`: gerar nowcast por estado latente dinamico via filtro de Kalman.
 - `auditar_fontes.py`: resumir cobertura e problemas basicos por ano e fonte.
 - `atualizar_tudo.py`: rodar a esteira inteira, testes e render do HTML.
+- `gerar_pendencias.py`: listar pendencias operacionais abertas a partir da auditoria.
 
 Rodar:
 

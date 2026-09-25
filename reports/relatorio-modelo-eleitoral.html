@@ -286,7 +286,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>house_effect <span class="op">=</span> read_csv(PROCESSED <span class="op">/</span> <span class="st">"efeito_casa_instituto_candidato.csv"</span>)</span>
 <span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>source_audit <span class="op">=</span> read_csv(PROCESSED <span class="op">/</span> <span class="st">"auditoria_fontes.csv"</span>)</span>
 <span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>recent_audit <span class="op">=</span> read_csv(RAW <span class="op">/</span> <span class="st">"auditoria_2026_recente.csv"</span>)</span>
-<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>candidates_2026 <span class="op">=</span> read_csv(RAW <span class="op">/</span> <span class="st">"candidatos_2026_auditoria.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>candidates_2026 <span class="op">=</span> read_csv(RAW <span class="op">/</span> <span class="st">"candidatos_2026_auditoria.csv"</span>)</span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>operational_pending <span class="op">=</span> read_csv(PROCESSED <span class="op">/</span> <span class="st">"pendencias_operacionais.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div id="setup" class="cell-output cell-output-display">
 
@@ -6965,13 +6966,101 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="proximas-entregas" class="level2">
 <h2 class="anchored" data-anchor-id="proximas-entregas">Proximas entregas</h2>
-<ol type="1">
-<li>Auditar amostra das pesquisas extraidas automaticamente.</li>
-<li>Buscar series completas de 2002, 1998 e 1994 no Banco de Dados Datafolha/CESOP ou em acervos dos institutos.</li>
-<li>Melhorar o Bayesiano dinamico com efeito de instituto e fundamentos como prior.</li>
-<li>Buscar series nacionais equivalentes para 1998 e 1994.</li>
-<li>Adicionar aprovacao do governo, rejeicao e renda real.</li>
-</ol>
+<div id="cell-proximas-entregas-pendencias" class="cell" data-execution_count="55">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> operational_pending.empty:</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    display(HTML(<span class="st">"&lt;p&gt;Nenhuma pendencia operacional aberta nos filtros atuais.&lt;/p&gt;"</span>))</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    display(operational_pending)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="proximas-entregas-pendencias" class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">prioridade</th>
+<th data-quarto-table-cell-role="th">tipo</th>
+<th data-quarto-table-cell-role="th">item</th>
+<th data-quarto-table-cell-role="th">detalhe</th>
+<th data-quarto-table-cell-role="th">fonte_atual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>alta</td>
+<td>localizar fonte primaria</td>
+<td>Futura/Apex 2026-09-03</td>
+<td>UOL confirma campo 27/08-01/09, amostra 2000, ...</td>
+<td>https://noticias.uol.com.br/eleicoes/2026/09/0...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>alta</td>
+<td>localizar fonte primaria</td>
+<td>Meio/Ideia 2026-09-09</td>
+<td>CNN/Poder360/Exame confirmam campo amostra tel...</td>
+<td>https://www.cnnbrasil.com.br/eleicoes/meio-ide...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>media</td>
+<td>localizar fonte primaria</td>
+<td>AtlasIntel 2026-08-31</td>
+<td>Poder360 confirma campo amostra margem registr...</td>
+<td>https://www.poder360.com.br/poder-eleicoes-202...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>media</td>
+<td>localizar fonte primaria</td>
+<td>CNT/MDA 2026-09-15</td>
+<td>Poder360 confirma campo amostra metodo margem ...</td>
+<td>https://www.poder360.com.br/poder-eleicoes-202...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>media</td>
+<td>localizar fonte primaria</td>
+<td>Datafolha 2026-09-03</td>
+<td>Folha/Datafolha confirma campo amostra cidades...</td>
+<td>https://www1.folha.uol.com.br/poder/2026/09/da...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>media</td>
+<td>localizar fonte primaria</td>
+<td>Datafolha 2026-09-11</td>
+<td>Folha/Datafolha confirma campo amostra cidades...</td>
+<td>https://www1.folha.uol.com.br/poder/2026/09/da...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>media</td>
+<td>localizar fonte primaria</td>
+<td>Datafolha 2026-09-17</td>
+<td>Folha confirma campo amostra municipios contra...</td>
+<td>https://www1.folha.uol.com.br/poder/2026/09/da...</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>media</td>
+<td>localizar fonte primaria</td>
+<td>Datafolha 2026-09-24</td>
+<td>Folha confirma campo amostra municipios contra...</td>
+<td>https://www1.folha.uol.com.br/poder/2026/09/da...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Depois desta fila operacional, as melhorias de modelo continuam sendo: melhorar o Bayesiano dinamico com efeito de instituto e fundamentos como prior; ampliar series nacionais antigas; adicionar aprovacao do governo, rejeicao e renda real.</p>
 </section>
 
 </main>

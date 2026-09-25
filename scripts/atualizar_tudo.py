@@ -23,6 +23,7 @@ def pipeline(include_history: bool = False) -> list[list[str]]:
         "prever.py",
         "bayesiano_dinamico.py",
         "gerar_ensemble.py",
+        "gerar_pendencias.py",
     ]
     if include_history:
         scripts.append("registrar_historico_previsoes.py")

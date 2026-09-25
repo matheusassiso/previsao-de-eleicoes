@@ -152,6 +152,7 @@ house_effect = read_csv(PROCESSED / "efeito_casa_instituto_candidato.csv")
 source_audit = read_csv(PROCESSED / "auditoria_fontes.csv")
 recent_audit = read_csv(RAW / "auditoria_2026_recente.csv")
 candidates_2026 = read_csv(RAW / "candidatos_2026_auditoria.csv")
+operational_pending = read_csv(PROCESSED / "pendencias_operacionais.csv")
 ```
 
 ## Leitura executiva
@@ -1440,8 +1441,12 @@ else:
 
 ## Proximas entregas
 
-1. Auditar amostra das pesquisas extraidas automaticamente.
-2. Buscar series completas de 2002, 1998 e 1994 no Banco de Dados Datafolha/CESOP ou em acervos dos institutos.
-3. Melhorar o Bayesiano dinamico com efeito de instituto e fundamentos como prior.
-4. Buscar series nacionais equivalentes para 1998 e 1994.
-5. Adicionar aprovacao do governo, rejeicao e renda real.
+```{python}
+#| label: proximas-entregas-pendencias
+if operational_pending.empty:
+    display(HTML("<p>Nenhuma pendencia operacional aberta nos filtros atuais.</p>"))
+else:
+    display(operational_pending)
+```
+
+Depois desta fila operacional, as melhorias de modelo continuam sendo: melhorar o Bayesiano dinamico com efeito de instituto e fundamentos como prior; ampliar series nacionais antigas; adicionar aprovacao do governo, rejeicao e renda real.
