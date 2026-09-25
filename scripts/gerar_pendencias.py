@@ -17,12 +17,13 @@ OUT_MD = DOCS / "pendencias-operacionais.md"
 def pending_recent_audit(df: pd.DataFrame) -> pd.DataFrame:
     if df.empty:
         return pd.DataFrame(columns=["prioridade", "tipo", "item", "detalhe", "fonte_atual"])
-    strong = df["status_auditoria"].astype(str).str.contains("primaria|primária", case=False, na=False)
-    pending = df.loc[~strong].copy()
+    status = df["status_auditoria"].astype(str)
+    weak = status.str.contains("pendente|agregador|sem_fonte|sem fonte", case=False, na=False)
+    pending = df.loc[weak].copy()
     pending["prioridade"] = pending["status_auditoria"].map(
-        lambda value: "alta" if "secundaria" in str(value) else "media"
+        lambda value: "alta" if "pendente" in str(value) or "sem_fonte" in str(value) else "media"
     )
-    pending["tipo"] = "localizar fonte primaria"
+    pending["tipo"] = "resolver auditoria insuficiente"
     pending["item"] = pending["instituto"].astype(str) + " " + pending["data_publicacao"].astype(str)
     pending["detalhe"] = pending["observacao_auditoria"].fillna("")
     pending["fonte_atual"] = pending["fonte_auditoria"].fillna("")
@@ -35,8 +36,8 @@ def write_markdown(pending: pd.DataFrame) -> None:
         lines.append("Nenhuma pendencia operacional encontrada nos filtros atuais.")
     else:
         lines.append(f"- Pendencias abertas: {len(pending)}.")
-        lines.append("- Prioridade alta: fonte secundaria confirma metodologia, mas falta relatorio primario.")
-        lines.append("- Prioridade media: registro/metodologia confirmados, mas fonte primaria direta ainda pode melhorar a auditoria.")
+        lines.append("- Prioridade alta: falta registro, metodologia ou fonte verificavel.")
+        lines.append("- Prioridade media: a fonte ainda depende de agregador publico ou precisa de conferencia manual.")
         lines.append("")
         for row in pending.to_dict("records"):
             lines.append(f"- **{row['prioridade']}** | {row['item']}: {row['tipo']}. {row['detalhe']}")
