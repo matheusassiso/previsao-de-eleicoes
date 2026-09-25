@@ -1339,6 +1339,43 @@ if not polls.empty and not backtest.empty:
     display(shown.sort_values("mae_ponderado").head(12))
 ```
 
+## Calibracao da incerteza
+
+Os intervalos atuais sao derivados do erro medio historico de cada modelo. A tabela abaixo traduz esse erro em uma leitura operacional: se o erro historico seguir uma distribuicao aproximadamente normal, qual fracao dos casos cairia dentro do intervalo usado hoje?
+
+```{python}
+#| label: calibracao-incerteza-modelos
+if not backtest.empty:
+    view = backtest.copy()
+    view["mae"] = pd.to_numeric(view["mae"], errors="coerce")
+    calib = view.groupby("modelo", as_index=False)["mae"].mean()
+    calib["intervalo_meia_largura"] = (1.96 * calib["mae"]).clip(lower=4, upper=18)
+    calib["sigma_aproximado"] = calib["mae"] * math.sqrt(math.pi / 2)
+    calib["cobertura_aproximada_pct"] = calib.apply(
+        lambda row: 100 * math.erf(row["intervalo_meia_largura"] / (row["sigma_aproximado"] * math.sqrt(2)))
+        if row["sigma_aproximado"] > 0 else 0,
+        axis=1,
+    )
+    calib["leitura"] = calib["cobertura_aproximada_pct"].map(
+        lambda value: "larga/conservadora" if value >= 85 else "razoavel" if value >= 70 else "estreita"
+    )
+    for col in ["mae", "intervalo_meia_largura", "cobertura_aproximada_pct"]:
+        calib[col] = calib[col].round(2)
+    display(calib.sort_values("mae"))
+```
+
+```{python}
+#| label: leitura-incerteza-atual
+if not forecasts.empty and not backtest.empty:
+    current = current_scenario(forecasts).copy()
+    current["voto_valido_estimado"] = pd.to_numeric(current["voto_valido_estimado"], errors="coerce")
+    current["intervalo_baixo"] = pd.to_numeric(current["intervalo_baixo"], errors="coerce")
+    current["intervalo_alto"] = pd.to_numeric(current["intervalo_alto"], errors="coerce")
+    current["meia_largura"] = ((current["intervalo_alto"] - current["intervalo_baixo"]) / 2).round(2)
+    top = current[current["modelo"].eq("baseline_pesquisa")].sort_values("voto_valido_estimado", ascending=False).head(6)
+    display(top[["candidato", "voto_valido_estimado", "intervalo_baixo", "intervalo_alto", "meia_largura"]])
+```
+
 ```{python}
 #| label: tabela-backtest
 if not backtest.empty:

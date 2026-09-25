@@ -109,6 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#onde-os-modelos-erram" id="toc-onde-os-modelos-erram" class="nav-link" data-scroll-target="#onde-os-modelos-erram">Onde os modelos erram</a></li>
   <li><a href="#previsao-de-2026-por-modelo" id="toc-previsao-de-2026-por-modelo" class="nav-link" data-scroll-target="#previsao-de-2026-por-modelo">Previsao de 2026 por modelo</a></li>
   <li><a href="#backtest-ponderado-pela-qualidade-da-base" id="toc-backtest-ponderado-pela-qualidade-da-base" class="nav-link" data-scroll-target="#backtest-ponderado-pela-qualidade-da-base">Backtest ponderado pela qualidade da base</a></li>
+  <li><a href="#calibracao-da-incerteza" id="toc-calibracao-da-incerteza" class="nav-link" data-scroll-target="#calibracao-da-incerteza">Calibracao da incerteza</a></li>
   <li><a href="#proximas-entregas" id="toc-proximas-entregas" class="nav-link" data-scroll-target="#proximas-entregas">Proximas entregas</a></li>
   </ul>
 </nav>
@@ -6542,14 +6543,243 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-tabela-backtest" class="cell" data-execution_count="50">
+</section>
+<section id="calibracao-da-incerteza" class="level2">
+<h2 class="anchored" data-anchor-id="calibracao-da-incerteza">Calibracao da incerteza</h2>
+<p>Os intervalos atuais sao derivados do erro medio historico de cada modelo. A tabela abaixo traduz esse erro em uma leitura operacional: se o erro historico seguir uma distribuicao aproximadamente normal, qual fracao dos casos cairia dentro do intervalo usado hoje?</p>
+<div id="cell-calibracao-incerteza-modelos" class="cell" data-execution_count="50">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> backtest.empty:</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    view <span class="op">=</span> backtest.copy()</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    view[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(view[<span class="st">"mae"</span>])</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    top <span class="op">=</span> view.groupby(<span class="st">"modelo"</span>)[<span class="st">"mae"</span>].mean().sort_values().head(<span class="dv">8</span>).index</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    display(view[view[<span class="st">"modelo"</span>].isin(top)].sort_values([<span class="st">"ano_teste"</span>, <span class="st">"mae"</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    view[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(view[<span class="st">"mae"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    calib <span class="op">=</span> view.groupby(<span class="st">"modelo"</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"mae"</span>].mean()</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    calib[<span class="st">"intervalo_meia_largura"</span>] <span class="op">=</span> (<span class="fl">1.96</span> <span class="op">*</span> calib[<span class="st">"mae"</span>]).clip(lower<span class="op">=</span><span class="dv">4</span>, upper<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    calib[<span class="st">"sigma_aproximado"</span>] <span class="op">=</span> calib[<span class="st">"mae"</span>] <span class="op">*</span> math.sqrt(math.pi <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    calib[<span class="st">"cobertura_aproximada_pct"</span>] <span class="op">=</span> calib.<span class="bu">apply</span>(</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">lambda</span> row: <span class="dv">100</span> <span class="op">*</span> math.erf(row[<span class="st">"intervalo_meia_largura"</span>] <span class="op">/</span> (row[<span class="st">"sigma_aproximado"</span>] <span class="op">*</span> math.sqrt(<span class="dv">2</span>)))</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> row[<span class="st">"sigma_aproximado"</span>] <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span>,</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>        axis<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>    calib[<span class="st">"leitura"</span>] <span class="op">=</span> calib[<span class="st">"cobertura_aproximada_pct"</span>].<span class="bu">map</span>(</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">lambda</span> value: <span class="st">"larga/conservadora"</span> <span class="cf">if</span> value <span class="op">&gt;=</span> <span class="dv">85</span> <span class="cf">else</span> <span class="st">"razoavel"</span> <span class="cf">if</span> value <span class="op">&gt;=</span> <span class="dv">70</span> <span class="cf">else</span> <span class="st">"estreita"</span></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"mae"</span>, <span class="st">"intervalo_meia_largura"</span>, <span class="st">"cobertura_aproximada_pct"</span>]:</span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>        calib[col] <span class="op">=</span> calib[col].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>    display(calib.sort_values(<span class="st">"mae"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="calibracao-incerteza-modelos" class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">modelo</th>
+<th data-quarto-table-cell-role="th">mae</th>
+<th data-quarto-table-cell-role="th">intervalo_meia_largura</th>
+<th data-quarto-table-cell-role="th">sigma_aproximado</th>
+<th data-quarto-table-cell-role="th">cobertura_aproximada_pct</th>
+<th data-quarto-table-cell-role="th">leitura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>baseline_pesquisa</td>
+<td>6.14</td>
+<td>12.03</td>
+<td>7.692389</td>
+<td>88.21</td>
+<td>larga/conservadora</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">4</th>
+<td>gradient_boosting</td>
+<td>6.17</td>
+<td>12.08</td>
+<td>7.727481</td>
+<td>88.21</td>
+<td>larga/conservadora</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>baseline_ajustado</td>
+<td>6.36</td>
+<td>12.46</td>
+<td>7.965854</td>
+<td>88.21</td>
+<td>larga/conservadora</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>baseline_efeito_casa</td>
+<td>6.61</td>
+<td>12.96</td>
+<td>8.288349</td>
+<td>88.21</td>
+<td>larga/conservadora</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">7</th>
+<td>random_forest_07_600</td>
+<td>6.88</td>
+<td>13.48</td>
+<td>8.621517</td>
+<td>88.21</td>
+<td>larga/conservadora</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>extra_trees</td>
+<td>7.16</td>
+<td>14.04</td>
+<td>8.975636</td>
+<td>88.21</td>
+<td>larga/conservadora</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>voting_ia</td>
+<td>15.17</td>
+<td>18.00</td>
+<td>19.009190</td>
+<td>65.63</td>
+<td>estreita</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>stacking_ia</td>
+<td>15.48</td>
+<td>18.00</td>
+<td>19.398200</td>
+<td>64.66</td>
+<td>estreita</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>ridge</td>
+<td>16.33</td>
+<td>18.00</td>
+<td>20.464520</td>
+<td>62.09</td>
+<td>estreita</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>huber</td>
+<td>16.87</td>
+<td>18.00</td>
+<td>21.147191</td>
+<td>60.53</td>
+<td>estreita</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>mlp_pequena</td>
+<td>17.54</td>
+<td>18.00</td>
+<td>21.980631</td>
+<td>58.72</td>
+<td>estreita</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-leitura-incerteza-atual" class="cell" data-execution_count="51">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> forecasts.empty <span class="kw">and</span> <span class="kw">not</span> backtest.empty:</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    current <span class="op">=</span> current_scenario(forecasts).copy()</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    current[<span class="st">"voto_valido_estimado"</span>] <span class="op">=</span> pd.to_numeric(current[<span class="st">"voto_valido_estimado"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    current[<span class="st">"intervalo_baixo"</span>] <span class="op">=</span> pd.to_numeric(current[<span class="st">"intervalo_baixo"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    current[<span class="st">"intervalo_alto"</span>] <span class="op">=</span> pd.to_numeric(current[<span class="st">"intervalo_alto"</span>], errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    current[<span class="st">"meia_largura"</span>] <span class="op">=</span> ((current[<span class="st">"intervalo_alto"</span>] <span class="op">-</span> current[<span class="st">"intervalo_baixo"</span>]) <span class="op">/</span> <span class="dv">2</span>).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>    top <span class="op">=</span> current[current[<span class="st">"modelo"</span>].eq(<span class="st">"baseline_pesquisa"</span>)].sort_values(<span class="st">"voto_valido_estimado"</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">6</span>)</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>    display(top[[<span class="st">"candidato"</span>, <span class="st">"voto_valido_estimado"</span>, <span class="st">"intervalo_baixo"</span>, <span class="st">"intervalo_alto"</span>, <span class="st">"meia_largura"</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="leitura-incerteza-atual" class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">candidato</th>
+<th data-quarto-table-cell-role="th">voto_valido_estimado</th>
+<th data-quarto-table-cell-role="th">intervalo_baixo</th>
+<th data-quarto-table-cell-role="th">intervalo_alto</th>
+<th data-quarto-table-cell-role="th">meia_largura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Lula</td>
+<td>44.2412</td>
+<td>32.2114</td>
+<td>56.2710</td>
+<td>12.03</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Flávio Bolsonaro</td>
+<td>40.5170</td>
+<td>28.4872</td>
+<td>52.5468</td>
+<td>12.03</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Augusto Cury</td>
+<td>5.0420</td>
+<td>0.0000</td>
+<td>17.0718</td>
+<td>8.54</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Renan Santos</td>
+<td>4.6506</td>
+<td>0.0000</td>
+<td>16.6804</td>
+<td>8.34</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Ronaldo Caiado</td>
+<td>3.2048</td>
+<td>0.0000</td>
+<td>15.2346</td>
+<td>7.62</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>Romeu Zema</td>
+<td>1.1988</td>
+<td>0.0000</td>
+<td>13.2286</td>
+<td>6.61</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-tabela-backtest" class="cell" data-execution_count="52">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> backtest.empty:</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    view <span class="op">=</span> backtest.copy()</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    view[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(view[<span class="st">"mae"</span>])</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    top <span class="op">=</span> view.groupby(<span class="st">"modelo"</span>)[<span class="st">"mae"</span>].mean().sort_values().head(<span class="dv">8</span>).index</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    display(view[view[<span class="st">"modelo"</span>].isin(top)].sort_values([<span class="st">"ano_teste"</span>, <span class="st">"mae"</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div id="tabela-backtest" class="cell-output cell-output-display">
 <div>
@@ -6662,28 +6892,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-backtest-janelas" class="cell" data-execution_count="51">
+<div id="cell-backtest-janelas" class="cell" data-execution_count="53">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> backtest_janelas.empty:</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">"Sem backtest por janela ainda"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> backtest_janelas.copy()</span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"dias_antes_eleicao"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"dias_antes_eleicao"</span>])</span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"mae"</span>])</span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"modelo"</span>] <span class="op">=</span> tmp.get(<span class="st">"modelo"</span>, <span class="st">"baseline_pesquisa"</span>)</span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>    summary <span class="op">=</span> tmp.groupby([<span class="st">"modelo"</span>, <span class="st">"dias_antes_eleicao"</span>], as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"mae"</span>].mean().sort_values(<span class="st">"dias_antes_eleicao"</span>)</span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> model, group <span class="kw">in</span> summary.groupby(<span class="st">"modelo"</span>):</span>
-<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>        ax.plot(group[<span class="st">"dias_antes_eleicao"</span>], group[<span class="st">"mae"</span>], marker<span class="op">=</span><span class="st">"o"</span>, label<span class="op">=</span>model)</span>
-<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>    ax.invert_xaxis()</span>
-<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Dias antes da eleicao"</span>)</span>
-<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Erro medio absoluto"</span>)</span>
-<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="st">"Quanto mais perto da eleicao, menor tende a ser o erro"</span>)</span>
-<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
-<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> backtest_janelas.empty:</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">"Sem backtest por janela ainda"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> backtest_janelas.copy()</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"dias_antes_eleicao"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"dias_antes_eleicao"</span>])</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"mae"</span>])</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"modelo"</span>] <span class="op">=</span> tmp.get(<span class="st">"modelo"</span>, <span class="st">"baseline_pesquisa"</span>)</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>    summary <span class="op">=</span> tmp.groupby([<span class="st">"modelo"</span>, <span class="st">"dias_antes_eleicao"</span>], as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"mae"</span>].mean().sort_values(<span class="st">"dias_antes_eleicao"</span>)</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> model, group <span class="kw">in</span> summary.groupby(<span class="st">"modelo"</span>):</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>        ax.plot(group[<span class="st">"dias_antes_eleicao"</span>], group[<span class="st">"mae"</span>], marker<span class="op">=</span><span class="st">"o"</span>, label<span class="op">=</span>model)</span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>    ax.invert_xaxis()</span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Dias antes da eleicao"</span>)</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Erro medio absoluto"</span>)</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="st">"Quanto mais perto da eleicao, menor tende a ser o erro"</span>)</span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="backtest-janelas" class="quarto-figure quarto-figure-center anchored">
@@ -6694,28 +6924,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-backtest-previsao-viva" class="cell" data-execution_count="52">
+<div id="cell-backtest-previsao-viva" class="cell" data-execution_count="54">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> backtest_vivo.empty:</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">"Sem backtest de previsao viva ainda"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> backtest_vivo.copy()</span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"dias_antes_eleicao"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"dias_antes_eleicao"</span>])</span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"mae"</span>])</span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"modelo"</span>] <span class="op">=</span> tmp.get(<span class="st">"modelo"</span>, <span class="st">"baseline_pesquisa"</span>)</span>
-<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>    summary <span class="op">=</span> tmp.groupby([<span class="st">"modelo"</span>, <span class="st">"dias_antes_eleicao"</span>], as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"mae"</span>].mean().sort_values(<span class="st">"dias_antes_eleicao"</span>)</span>
-<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> model, group <span class="kw">in</span> summary.groupby(<span class="st">"modelo"</span>):</span>
-<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>        ax.plot(group[<span class="st">"dias_antes_eleicao"</span>], group[<span class="st">"mae"</span>], marker<span class="op">=</span><span class="st">"o"</span>, label<span class="op">=</span>model)</span>
-<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>    ax.invert_xaxis()</span>
-<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Dias antes da eleicao"</span>)</span>
-<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Erro medio absoluto"</span>)</span>
-<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="st">"Previsao viva melhora conforme novas pesquisas ficam disponiveis"</span>)</span>
-<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
-<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> backtest_vivo.empty:</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    ax.text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">"Sem backtest de previsao viva ainda"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    tmp <span class="op">=</span> backtest_vivo.copy()</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"dias_antes_eleicao"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"dias_antes_eleicao"</span>])</span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"mae"</span>] <span class="op">=</span> pd.to_numeric(tmp[<span class="st">"mae"</span>])</span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>    tmp[<span class="st">"modelo"</span>] <span class="op">=</span> tmp.get(<span class="st">"modelo"</span>, <span class="st">"baseline_pesquisa"</span>)</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>    summary <span class="op">=</span> tmp.groupby([<span class="st">"modelo"</span>, <span class="st">"dias_antes_eleicao"</span>], as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"mae"</span>].mean().sort_values(<span class="st">"dias_antes_eleicao"</span>)</span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> model, group <span class="kw">in</span> summary.groupby(<span class="st">"modelo"</span>):</span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>        ax.plot(group[<span class="st">"dias_antes_eleicao"</span>], group[<span class="st">"mae"</span>], marker<span class="op">=</span><span class="st">"o"</span>, label<span class="op">=</span>model)</span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a>    ax.invert_xaxis()</span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Dias antes da eleicao"</span>)</span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Erro medio absoluto"</span>)</span>
+<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="st">"Previsao viva melhora conforme novas pesquisas ficam disponiveis"</span>)</span>
+<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
+<span id="cb55-19"><a href="#cb55-19" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="backtest-previsao-viva" class="quarto-figure quarto-figure-center anchored">
