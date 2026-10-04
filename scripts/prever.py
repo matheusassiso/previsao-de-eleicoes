@@ -17,6 +17,7 @@ PESQUISAS_VALIDOS = PROCESSED / "pesquisas_validos.csv"
 PREVISOES = PROCESSED / "previsoes.csv"
 BACKTEST = PROCESSED / "backtest_modelos.csv"
 DEFAULT_INTERVAL = 6.0
+FINAL_WINDOW_INTERVAL = 2.0
 SIMULATIONS = 5000
 
 def parse_date(value: str) -> date:
@@ -36,7 +37,9 @@ def load_calibration(path: Path = BACKTEST) -> dict[str, float]:
     return df.groupby("modelo")["mae"].mean().to_dict()
 
 
-def interval_width(model: str, calibration: dict[str, float]) -> float:
+def interval_width(model: str, calibration: dict[str, float], final_window: bool = False) -> float:
+    if final_window:
+        return FINAL_WINDOW_INTERVAL
     mae = float(calibration.get(model, DEFAULT_INTERVAL / 1.96))
     return round(max(4.0, min(18.0, 1.96 * mae)), 4)
 
@@ -99,9 +102,10 @@ def forecast(rows: list[dict[str, str]], forecast_date: date, year: str = "2026"
             by_scenario[(scenario, "baseline_temporal")].append((candidate, temporal_projection(group, f"{year}-10-04")))
 
     output: list[dict[str, str]] = []
+    final_window = year == "2026" and abs((parse_date("2026-10-04") - forecast_date).days) <= 2
     for (scenario, model), candidates in by_scenario.items():
         ordered = sorted(candidates, key=lambda item: item[1], reverse=True)
-        width = interval_width(model, calibration)
+        width = interval_width(model, calibration, final_window=final_window)
         probabilities = rank_probabilities(ordered, width)
         for candidate, estimate in ordered:
             lead_prob, top2_prob = probabilities[candidate]
@@ -164,6 +168,8 @@ def demo() -> None:
     result = forecast(rows, date(2026, 9, 2))
     assert result[0]["candidato"] == "A"
     assert float(result[0]["probabilidade_liderar"]) > 0.9
+    final = forecast(rows, date(2026, 10, 3))
+    assert float(final[0]["intervalo_alto"]) - float(final[0]["voto_valido_estimado"]) == FINAL_WINDOW_INTERVAL
 
 
 def main() -> None:

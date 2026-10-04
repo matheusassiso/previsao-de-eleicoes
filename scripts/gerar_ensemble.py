@@ -11,6 +11,7 @@ BACKTEST_VIVO = PROCESSED / "backtest_previsao_viva.csv"
 PREVISOES_MODELOS = PROCESSED / "previsoes_modelos.csv"
 PREVISOES = PROCESSED / "previsoes.csv"
 BAYESIAN = PROCESSED / "previsao_bayesiana_dinamica.csv"
+ROLLING_2026 = PROCESSED / "rolling_previsao_2026.csv"
 OUT = PROCESSED / "ensemble_pesos.csv"
 OUT_PREVISAO = PROCESSED / "previsao_ensemble.csv"
 
@@ -44,18 +45,54 @@ def combine_forecasts(forecasts: pd.DataFrame, weights: pd.DataFrame) -> pd.Data
     if data.empty:
         return pd.DataFrame()
     for col in cols:
-        data[col] = pd.to_numeric(data[col], errors="coerce").fillna(0)
-        data[col] = data[col] * data["peso"]
+        data[col] = pd.to_numeric(data[col], errors="coerce")
+        data[f"_{col}_valor"] = data[col].fillna(0) * data["peso"]
+        data[f"_{col}_peso"] = data["peso"].where(data[col].notna(), 0)
     grouped = data.groupby(["data_previsao", "ano_eleicao", "cenario", "candidato"], as_index=False).agg(
-        voto_valido_estimado=("voto_valido_estimado", "sum"),
-        probabilidade_liderar=("probabilidade_liderar", "sum"),
-        probabilidade_ir_ao_segundo_turno=("probabilidade_ir_ao_segundo_turno", "sum"),
+        voto_valido_estimado=("_voto_valido_estimado_valor", "sum"),
+        voto_peso=("_voto_valido_estimado_peso", "sum"),
+        probabilidade_liderar=("_probabilidade_liderar_valor", "sum"),
+        liderar_peso=("_probabilidade_liderar_peso", "sum"),
+        probabilidade_ir_ao_segundo_turno=("_probabilidade_ir_ao_segundo_turno_valor", "sum"),
+        segundo_turno_peso=("_probabilidade_ir_ao_segundo_turno_peso", "sum"),
         fonte_dados_ate=("fonte_dados_ate", "max"),
     )
+    grouped["voto_valido_estimado"] = grouped["voto_valido_estimado"] / grouped["voto_peso"].replace(0, pd.NA)
+    grouped["probabilidade_liderar"] = grouped["probabilidade_liderar"] / grouped["liderar_peso"].replace(0, pd.NA)
+    grouped["probabilidade_ir_ao_segundo_turno"] = grouped["probabilidade_ir_ao_segundo_turno"] / grouped["segundo_turno_peso"].replace(0, pd.NA)
+    grouped = grouped.drop(columns=["voto_peso", "liderar_peso", "segundo_turno_peso"])
     grouped["modelo"] = "ensemble_disciplinado"
     for col in ["voto_valido_estimado", "probabilidade_liderar", "probabilidade_ir_ao_segundo_turno"]:
-        grouped[col] = grouped[col].round(4)
+        grouped[col] = pd.to_numeric(grouped[col], errors="coerce").round(4)
     return grouped.sort_values(["cenario", "voto_valido_estimado"], ascending=[True, False])
+
+
+def rolling_forecasts(path: Path, reference: pd.DataFrame) -> pd.DataFrame:
+    if not path.exists():
+        return pd.DataFrame()
+    rolling = pd.read_csv(path)
+    if rolling.empty:
+        return pd.DataFrame()
+    data_previsao = str(reference["data_previsao"].max()) if "data_previsao" in reference else ""
+    fonte_dados_ate = str(reference["fonte_dados_ate"].max()) if "fonte_dados_ate" in reference else data_previsao
+    out = rolling.rename(columns={"cenario_rotulo": "cenario", "previsto": "voto_valido_estimado"}).copy()
+    out["data_previsao"] = data_previsao
+    out["fonte_dados_ate"] = fonte_dados_ate
+    out["probabilidade_liderar"] = pd.NA
+    out["probabilidade_ir_ao_segundo_turno"] = pd.NA
+    return out[
+        [
+            "data_previsao",
+            "ano_eleicao",
+            "cenario",
+            "modelo",
+            "candidato",
+            "voto_valido_estimado",
+            "probabilidade_liderar",
+            "probabilidade_ir_ao_segundo_turno",
+            "fonte_dados_ate",
+        ]
+    ]
 
 
 def demo() -> None:
@@ -87,6 +124,9 @@ def main() -> None:
         forecasts = [pd.read_csv(PREVISOES)]
         if BAYESIAN.exists():
             forecasts.append(pd.read_csv(BAYESIAN))
+        rolling = rolling_forecasts(ROLLING_2026, forecasts[0])
+        if not rolling.empty:
+            forecasts.append(rolling)
         combine_forecasts(pd.concat(forecasts, ignore_index=True), weights).to_csv(OUT_PREVISAO, index=False)
     print(weights.to_string(index=False))
     print(f"pesos gravados em {OUT}")

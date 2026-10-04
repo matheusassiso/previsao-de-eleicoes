@@ -1,13 +1,13 @@
 data_previsao,ano_eleicao,cenario,modelo,candidato,voto_valido_estimado,intervalo_baixo,intervalo_alto,probabilidade_liderar,probabilidade_ir_ao_segundo_turno,fonte_dados_ate,metodo_estado_latente
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Lula,44.3306,41.9753,46.6859,0.7372,1.0,2026-09-24,kalman_local_level
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Flávio Bolsonaro,41.7736,34.3245,49.2226,0.2628,1.0,2026-09-24,kalman_local_level
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Renan Santos,6.287,2.4317,10.1423,0.0,0.0,2026-09-24,kalman_local_level
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Augusto Cury,4.1849,0.0,11.6343,0.0,0.0,2026-09-24,kalman_local_level
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Ronaldo Caiado,2.246,0.0,7.9869,0.0,0.0,2026-09-24,kalman_local_level
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Samara Martins,1.0753,0.7671,1.3835,0.0,0.0,2026-09-24,kalman_local_level
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Romeu Zema,1.0479,0.0,2.3038,0.0,0.0,2026-09-24,kalman_local_level
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Rui Costa Pimenta,0.4254,0.0,1.3489,0.0,0.0,2026-09-24,kalman_local_level
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Clariana Barão,0.0,0.0,1.4965,0.0,0.0,2026-09-24,kalman_local_level
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Edmilson Costa,0.0,0.0,1.4965,0.0,0.0,2026-09-24,kalman_local_level
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Hertz Dias,0.0,0.0,10.0,0.0,0.0,2026-09-24,fallback_poucos_pontos
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Wilson Grassi,0.0,0.0,10.0,0.0,0.0,2026-09-24,fallback_poucos_pontos
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Lula,44.6404,42.6655,46.6153,0.6704,1.0,2026-10-03,kalman_local_level
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Flávio Bolsonaro,43.8157,40.8852,46.7462,0.3296,1.0,2026-10-03,kalman_local_level
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Augusto Cury,3.1843,1.3681,5.0005,0.0,0.0,2026-10-03,kalman_local_level
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Ronaldo Caiado,3.025,1.6252,4.4247,0.0,0.0,2026-10-03,kalman_local_level
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Renan Santos,2.9909,1.9473,4.0345,0.0,0.0,2026-10-03,kalman_local_level
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Samara Martins,0.7137,0.6234,0.8039,0.0,0.0,2026-10-03,kalman_local_level
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Romeu Zema,0.6524,0.3422,0.9626,0.0,0.0,2026-10-03,kalman_local_level
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Rui Costa Pimenta,0.4254,0.0,1.3489,0.0,0.0,2026-10-03,kalman_local_level
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Clariana Barão,0.0,0.0,1.4965,0.0,0.0,2026-10-03,kalman_local_level
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Edmilson Costa,0.0,0.0,1.4965,0.0,0.0,2026-10-03,kalman_local_level
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Hertz Dias,0.0,0.0,10.0,0.0,0.0,2026-10-03,fallback_poucos_pontos
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,bayesiano_dinamico_kalman,Wilson Grassi,0.0,0.0,10.0,0.0,0.0,2026-10-03,fallback_poucos_pontos

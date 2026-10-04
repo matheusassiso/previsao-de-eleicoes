@@ -1,13 +1,66 @@
 data_previsao,ano_eleicao,cenario,candidato,voto_valido_estimado,probabilidade_liderar,probabilidade_ir_ao_segundo_turno,fonte_dados_ate,modelo
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,Lula,28.3806,0.4485,0.6409,2026-09-24,ensemble_disciplinado
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,26.334,0.1924,0.6409,2026-09-24,ensemble_disciplinado
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,3.4577,0.0,0.0,2026-09-24,ensemble_disciplinado
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,2.9816,0.0,0.0,2026-09-24,ensemble_disciplinado
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,1.7745,0.0,0.0,2026-09-24,ensemble_disciplinado
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,0.7243,0.0,0.0,2026-09-24,ensemble_disciplinado
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,0.6714,0.0,0.0,2026-09-24,ensemble_disciplinado
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,0.3266,0.0,0.0,2026-09-24,ensemble_disciplinado
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,0.1249,0.0,0.0,2026-09-24,ensemble_disciplinado
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,0.1249,0.0,0.0,2026-09-24,ensemble_disciplinado
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,0.0,0.0,0.0,2026-09-24,ensemble_disciplinado
-2026-09-24,2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,0.0,0.0,0.0,2026-09-24,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,40.4857,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,27.5897,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,6.0088,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,4.4149,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - Lula vs Flavio,Lula,42.8226,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,33.0392,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,6.3191,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,4.5037,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,2.7966,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,44.5232,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,32.8697,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,4.5851,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,3.2283,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,3.2283,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,45.0604,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,33.927,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,7.8232,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,5.0101,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,2.7271,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,2.6706,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,2.6425,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,2.4333,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,2.4333,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,2.1941,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,2.1376,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,1.9976,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,1.9134,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,46.0673,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,36.1384,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,6.2247,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,4.4103,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,3.1111,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,2.4687,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,2.4651,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,2.1333,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,1.927,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,1.927,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,1.927,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,1.927,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,44.8239,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,35.5905,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,4.0752,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,3.7196,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - cenario reduzido,Lula,44.5577,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,4.9178,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,3.0828,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,Lula,45.9651,0.8282,1.0,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,40.1505,0.1718,1.0,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,3.6314,0.0,0.0,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,3.4666,0.0,0.0,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,3.2993,0.0,0.0,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,1.5939,0.0,0.0,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,1.5824,0.0,0.0,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,1.3598,0.0,0.0,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,1.0981,0.0,0.0,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,1.0981,0.0,0.0,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,1.0055,0.0,0.0,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,1.0055,0.0,0.0,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - reta final em votos validos,Lula,47.0403,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,37.6138,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,3.5834,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,3.5031,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,3.493,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,2.2885,,,2026-10-03,ensemble_disciplinado
+2026-10-03,2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,2.2649,,,2026-10-03,ensemble_disciplinado

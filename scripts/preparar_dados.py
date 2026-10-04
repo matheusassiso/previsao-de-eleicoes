@@ -185,7 +185,7 @@ def append_official_2026_scenario(rows: list[dict[str, str]]) -> list[dict[str, 
     for row in rows:
         if row.get("ano_eleicao") != "2026":
             continue
-        if row.get("cenario") != "agosto_setembro_2026_sem_marcal":
+        if row.get("cenario") not in {"agosto_setembro_2026_sem_marcal", "outubro_2026_validos"}:
             continue
         if parse_date(row["data_publicacao"]) < parse_date("2026-09-11"):
             continue

@@ -45,18 +45,25 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - cenario reduzido,Lula,46.6173,baseline_pesquisa,2022
 2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,1.4799,baseline_pesquisa,2022
 2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,4.9683,baseline_pesquisa,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,4.184893239286235,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,3.1842563701880393,baseline_pesquisa,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,0.0,baseline_pesquisa,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,0.0,baseline_pesquisa,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,41.173144274073096,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,43.969902416548365,baseline_pesquisa,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,0.0,baseline_pesquisa,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,43.5627069064885,baseline_pesquisa,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,6.286988990890069,baseline_pesquisa,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,1.0478531998438694,baseline_pesquisa,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,2.2459954052008944,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,45.51411064439567,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,2.9908914812233838,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,0.6523963103431757,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,3.0249729095184716,baseline_pesquisa,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,0.425404095827591,baseline_pesquisa,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,1.0753,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,0.7136646549690033,baseline_pesquisa,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,0.0,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,3.1842563701880393,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,43.969902416548365,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,45.51411064439567,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,2.9908914812233838,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,0.6523963103431757,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,3.0249729095184716,baseline_pesquisa,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,0.7136646549690033,baseline_pesquisa,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,28.409099999999995,baseline_ajustado,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,38.6364,baseline_ajustado,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,4.5455,baseline_ajustado,2022
@@ -103,18 +110,25 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - cenario reduzido,Lula,46.6173,baseline_ajustado,2022
 2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,1.4799,baseline_ajustado,2022
 2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,4.9683,baseline_ajustado,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,5.070688553143966,baseline_ajustado,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,3.597984160346476,baseline_ajustado,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,0.0,baseline_ajustado,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,0.0,baseline_ajustado,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,42.05893958793082,baseline_ajustado,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,44.3836302067068,baseline_ajustado,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,0.0,baseline_ajustado,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,44.448502220346235,baseline_ajustado,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,7.1727843047477995,baseline_ajustado,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,1.9336485137016006,baseline_ajustado,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,3.131790719058625,baseline_ajustado,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,45.92783843455411,baseline_ajustado,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,3.4046192713818204,baseline_ajustado,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,1.297912401207185,baseline_ajustado,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,3.4387006996769083,baseline_ajustado,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,0.7246937490858902,baseline_ajustado,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,1.8484223163841804,baseline_ajustado,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,0.7136646549690033,baseline_ajustado,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,0.0,baseline_ajustado,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,3.597984160346476,baseline_ajustado,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,44.3836302067068,baseline_ajustado,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,45.92783843455411,baseline_ajustado,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,3.4046192713818204,baseline_ajustado,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,1.297912401207185,baseline_ajustado,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,3.4387006996769083,baseline_ajustado,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,0.7136646549690033,baseline_ajustado,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,28.409099999999995,baseline_efeito_casa,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,38.6364,baseline_efeito_casa,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,4.5455,baseline_efeito_casa,2022
@@ -161,18 +175,25 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - cenario reduzido,Lula,46.6173,baseline_efeito_casa,2022
 2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,1.4799,baseline_efeito_casa,2022
 2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,4.9683,baseline_efeito_casa,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,5.070688553143966,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,3.597984160346476,baseline_efeito_casa,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,0.0,baseline_efeito_casa,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,0.0,baseline_efeito_casa,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,42.05893958793082,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,44.3836302067068,baseline_efeito_casa,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,0.0,baseline_efeito_casa,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,44.60779954360731,baseline_efeito_casa,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,7.1727843047477995,baseline_efeito_casa,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,1.9336485137016006,baseline_efeito_casa,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,3.131790719058625,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,46.48752665819545,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,3.4046192713818204,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,1.297912401207185,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,3.4387006996769083,baseline_efeito_casa,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,0.7246937490858902,baseline_efeito_casa,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,1.8484223163841804,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,0.7136646549690033,baseline_efeito_casa,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,0.0,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,3.597984160346476,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,44.3836302067068,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,46.48752665819545,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,3.4046192713818204,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,1.297912401207185,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,3.4387006996769083,baseline_efeito_casa,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,0.7136646549690033,baseline_efeito_casa,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,30.004370973211106,inferencial_ols,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,48.31080725458319,inferencial_ols,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,10.366076314170641,inferencial_ols,2022
@@ -219,18 +240,25 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - cenario reduzido,Lula,58.92290738339319,inferencial_ols,2022
 2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,11.887577289831475,inferencial_ols,2022
 2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,14.758318799435926,inferencial_ols,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,3.5188381118548744,inferencial_ols,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,2.470650800415482,inferencial_ols,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,0.0,inferencial_ols,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,0.0,inferencial_ols,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,33.95792411496013,inferencial_ols,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,36.03476245656764,inferencial_ols,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,0.0,inferencial_ols,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,45.81437816880584,inferencial_ols,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,5.2487353516474125,inferencial_ols,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,0.9372445278282776,inferencial_ols,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,1.9232428546621934,inferencial_ols,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,47.19554113502045,inferencial_ols,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,2.3115232309707814,inferencial_ols,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,0.49471757525117815,inferencial_ols,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,2.3395701782570204,inferencial_ols,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,0.5139843629635397,inferencial_ols,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,1.1758780048321107,inferencial_ols,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,0.6352881898751813,inferencial_ols,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,0.0,inferencial_ols,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,2.470650800415482,inferencial_ols,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,36.03476245656764,inferencial_ols,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,47.19554113502045,inferencial_ols,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,2.3115232309707814,inferencial_ols,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,0.49471757525117815,inferencial_ols,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,2.3395701782570204,inferencial_ols,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,0.6352881898751813,inferencial_ols,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,19.794249670280497,ridge,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,45.33413984514827,ridge,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,3.5239608270919547,ridge,2022
@@ -277,18 +305,25 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - cenario reduzido,Lula,54.10295864179683,ridge,2022
 2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,4.761235946077367,ridge,2022
 2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,7.139639690716852,ridge,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,0.4304443731311891,ridge,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,0.0,ridge,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,0.0,ridge,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,0.0,ridge,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,24.831018472085688,ridge,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,26.796460276058134,ridge,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,0.0,ridge,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,45.02711094469338,ridge,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,1.3830524216849884,ridge,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,46.416187056264654,ridge,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,0.0,ridge,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,0.0,ridge,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,0.0,ridge,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,0.0,ridge,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,0.0,ridge,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,0.0,ridge,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,0.0,ridge,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,26.722644117674733,ridge,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,46.34237089788126,ridge,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,0.0,ridge,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,0.0,ridge,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,0.0,ridge,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,0.0,ridge,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,17.731795482842216,huber,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,45.94211789648962,huber,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,3.969034802351246,huber,2022
@@ -335,18 +370,25 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - cenario reduzido,Lula,50.2422694643501,huber,2022
 2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,1.898381635928395,huber,2022
 2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,3.910232922315391,huber,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,1.3930619573299954,huber,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,0.029647435792771765,huber,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,0.0,huber,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,0.0,huber,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,22.195300566559556,huber,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,23.268959394961325,huber,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,0.0,huber,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,45.88539536716417,huber,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,2.0755446946503007,huber,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,0.09755207239837393,huber,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,0.6172396059291309,huber,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,46.47151625660159,huber,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,0.08089545377263378,huber,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,0.0,huber,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,0.1130393753945524,huber,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,0.14049414112802422,huber,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,0.34922171104466315,huber,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,0.0,huber,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,0.0,huber,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,0.021914786331746525,huber,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,23.18769048865492,huber,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,46.39024735029518,huber,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,0.05848589252645032,huber,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,0.0,huber,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,0.07611394461350345,huber,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,0.0,huber,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,38.448799999999935,random_forest_07_600,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,41.30881666666688,random_forest_07_600,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,6.574549999999963,random_forest_07_600,2022
@@ -354,21 +396,21 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,7.918473011409841,random_forest_07_600,2022
 2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,33.92197083541664,random_forest_07_600,2022
 2026,Primeiro turno 2026 - Lula vs Flavio,Lula,42.5975167374648,random_forest_07_600,2022
-2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,7.0382697380472905,random_forest_07_600,2022
-2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,7.178006702898442,random_forest_07_600,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,7.03826973804729,random_forest_07_600,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,7.178006702898439,random_forest_07_600,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,6.995383333333306,random_forest_07_600,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,33.218066666666736,random_forest_07_600,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,43.434583333333514,random_forest_07_600,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,6.995383333333306,random_forest_07_600,2022
-2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,7.17836666666666,random_forest_07_600,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,9.994281626668515,random_forest_07_600,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,7.178366666666658,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,9.994281626668519,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,6.776064033087157,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,6.783549999999973,random_forest_07_600,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,34.082481332413614,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,34.08248133241362,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,6.783549999999973,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,45.2783520768703,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,6.761863503988849,random_forest_07_600,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,7.229107540822873,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,7.2291075408228735,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,6.752857579795021,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,6.7479636319254075,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,6.767508796294324,random_forest_07_600,2022
@@ -380,31 +422,38 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,34.42629833075327,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,6.699099999999969,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,45.56107883586023,random_forest_07_600,2022
-2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,7.754106135173529,random_forest_07_600,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,7.754106135173531,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,6.7193050869214765,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,6.769154587800449,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,6.7189010915475,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,6.744466666666637,random_forest_07_600,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,6.699099999999969,random_forest_07_600,2022
 2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,33.58358333333341,random_forest_07_600,2022
-2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,43.07518333333353,random_forest_07_600,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,43.07518333333352,random_forest_07_600,2022
 2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,6.5561166666666315,random_forest_07_600,2022
 2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,6.544749999999966,random_forest_07_600,2022
 2026,Primeiro turno 2026 - cenario reduzido,Lula,39.8698166666669,random_forest_07_600,2022
-2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,10.904383333333364,random_forest_07_600,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,10.904383333333366,random_forest_07_600,2022
 2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,10.948766666666701,random_forest_07_600,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,7.101554190066831,random_forest_07_600,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,6.593783612837039,random_forest_07_600,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,6.654183333333305,random_forest_07_600,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,6.654183333333305,random_forest_07_600,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,34.4219652865131,random_forest_07_600,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,35.134689901441526,random_forest_07_600,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,6.654183333333305,random_forest_07_600,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,45.57819302942579,random_forest_07_600,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,7.820943802028862,random_forest_07_600,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,6.68006882547981,random_forest_07_600,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,6.7386469254914685,random_forest_07_600,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,45.93494569586804,random_forest_07_600,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,6.685917767504006,random_forest_07_600,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,6.595571329937682,random_forest_07_600,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,6.585551800155113,random_forest_07_600,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,6.682894593478795,random_forest_07_600,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,6.721166666666639,random_forest_07_600,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,6.580898951125007,random_forest_07_600,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,6.654183333333305,random_forest_07_600,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,6.58791800348395,random_forest_07_600,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,35.13349284338332,random_forest_07_600,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,45.93789296090299,random_forest_07_600,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,6.6820520867310735,random_forest_07_600,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,6.588221604693167,random_forest_07_600,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,6.582947827656735,random_forest_07_600,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,6.576214186729917,random_forest_07_600,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,36.337482287747,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,41.307829722221506,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,9.4118653525641,random_forest_05_1200,2022
@@ -412,22 +461,22 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,9.504938505404924,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,35.03298197877182,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - Lula vs Flavio,Lula,42.706999629120595,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,8.569872943973047,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,8.56987294397305,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,8.683920700816365,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,8.603604469627586,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,33.8691290873017,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,8.603604469627584,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,33.86912908730171,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,42.970991267360255,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,8.603604469627586,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,8.603604469627584,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,8.704651850579973,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,11.468387806956798,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,11.468387806956802,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,8.451306478235416,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,8.45265288385225,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,8.452652883852249,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,35.55362331697713,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,8.45265288385225,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,8.452652883852249,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,44.9799406092156,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,8.451235548338538,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,8.941607890659315,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,8.451214908132297,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,8.941607890659316,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,8.451214908132295,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,8.451235548338538,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,8.451306478235416,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,8.451306478235416,random_forest_05_1200,2022
@@ -447,40 +496,47 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,33.955133591269984,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,42.746827222221334,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,8.309250402167287,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,8.308940541056174,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,8.308940541056176,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - cenario reduzido,Lula,41.57259166666597,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,10.854482675796389,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,10.91548241785988,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,8.726779366662454,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,10.854482675796387,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,10.915482417859883,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,8.280613620426823,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,8.336459787087897,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,8.336459787087897,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,36.254735938242945,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,36.66713436161267,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,8.336459787087897,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,45.4801258943792,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,9.65050454887861,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,8.417730124154046,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,8.44685698661549,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,45.567357779133516,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,8.320939607911894,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,8.267593084473223,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,8.27713590680213,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,8.359631552747961,random_forest_05_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,8.378258388278372,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,8.263645505671676,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,8.336459787087897,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,8.283650494723275,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,36.6946153391596,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,45.57507068203707,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,8.324445068826481,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,8.272974484766753,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,8.28017752771409,random_forest_05_1200,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,8.255414882072166,random_forest_05_1200,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,28.54887984671063,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,42.3562529025116,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,42.356252902511606,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,16.41341698914964,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,16.412940061448563,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,14.53483869861308,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,29.053012238977647,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,14.534838698613083,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,29.053012238977644,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - Lula vs Flavio,Lula,42.53621112737932,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,14.468703048047487,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,14.467972058715802,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,14.468703048047491,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,14.467972058715805,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,14.87633964309111,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,28.29523048176761,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,42.58397639062917,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,42.58397639062916,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,14.87633964309111,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,14.87156742086889,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,14.78190081300355,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,14.335968914325942,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,14.208515311482682,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,29.65391852768355,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,29.653918527683555,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,14.208515311482682,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,43.279593545404516,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,14.335787042795483,random_forest_sqrt_1200,2022
@@ -491,36 +547,43 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,14.335968914325942,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,14.335968914325942,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,13.9120460640881,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,14.196700512883533,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,14.196700512883533,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,14.19670051288353,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,14.19670051288353,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,29.484669530000357,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,14.196700512883533,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,14.19670051288353,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,43.2408382407717,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,13.996382616308876,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,13.894197401846668,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,13.8942319121019,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,13.998646746663873,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,13.622696944431137,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,14.196700512883533,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,28.996508363579967,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,42.89715053018378,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,13.894231912101903,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,13.998646746663871,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,13.62269694443114,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,14.19670051288353,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,28.99650836357996,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,42.89715053018377,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,14.75118217633395,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,14.75118217633395,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - cenario reduzido,Lula,42.485924623192176,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - cenario reduzido,Lula,42.48592462319218,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,18.04072554767307,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,18.03674332545085,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,14.153338850171197,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,14.692284794700713,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,14.461844879899418,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,14.461844879899418,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,30.14677844435445,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,30.247010331212106,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,14.461844879899418,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,43.35225848279798,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,14.260220062854975,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,14.13425989077283,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,14.134294401028065,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,14.217840872729708,random_forest_sqrt_1200,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,13.825319928454974,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,43.3503061315743,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,14.6949144309873,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,14.679118336117524,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,14.692838141773017,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,14.217840872729706,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,14.529273833996442,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,14.461844879899418,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,14.700289168573706,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,30.50344860981471,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,43.4555106359811,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,14.703332784726207,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,14.695694575094828,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,14.70071119261695,random_forest_sqrt_1200,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,14.547995717814484,random_forest_sqrt_1200,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,29.91167999999997,extra_trees,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,41.73900000000008,extra_trees,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,2.7876399999999952,extra_trees,2022
@@ -567,76 +630,90 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - cenario reduzido,Lula,41.9144800000001,extra_trees,2022
 2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,3.866159999999992,extra_trees,2022
 2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,3.907679999999992,extra_trees,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,3.3133125568214568,extra_trees,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,2.751689174229249,extra_trees,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,2.729679999999994,extra_trees,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,2.729679999999994,extra_trees,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,32.977040529941135,extra_trees,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,33.4089247333014,extra_trees,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,2.729679999999994,extra_trees,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,47.862959897529656,extra_trees,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,5.0967737261785455,extra_trees,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,2.72588031531751,extra_trees,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,2.778017426652526,extra_trees,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,47.85602360455072,extra_trees,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,2.7804853027193,extra_trees,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,2.710048020160901,extra_trees,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,2.7415154251071425,extra_trees,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,2.7226344503193474,extra_trees,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,2.7114799999999937,extra_trees,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,2.709820827989083,extra_trees,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,2.729679999999994,extra_trees,2022
-2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,26.792449500000107,extra_trees_1000,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,2.750474301762899,extra_trees,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,33.40235611899624,extra_trees,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,47.85602360455072,extra_trees,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,2.7819785998615902,extra_trees,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,2.710048020160901,extra_trees,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,2.743231801274914,extra_trees,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,2.709820827989083,extra_trees,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,26.79244950000011,extra_trees_1000,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,42.284948333332835,extra_trees_1000,2022
-2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,4.287927809523787,extra_trees_1000,2022
+2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,4.2879278095237865,extra_trees_1000,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Ronaldo Caiado,5.221313809523824,extra_trees_1000,2022
 2026,Primeiro turno 2026 - Lula vs Flavio,Augusto Cury,5.828897373697825,extra_trees_1000,2022
 2026,Primeiro turno 2026 - Lula vs Flavio,Flávio Bolsonaro,28.44088418587671,extra_trees_1000,2022
 2026,Primeiro turno 2026 - Lula vs Flavio,Lula,42.61026505288981,extra_trees_1000,2022
 2026,Primeiro turno 2026 - Lula vs Flavio,Romeu Zema,4.064966412909313,extra_trees_1000,2022
-2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,4.389349252634716,extra_trees_1000,2022
+2026,Primeiro turno 2026 - Lula vs Flavio,Ronaldo Caiado,4.389349252634718,extra_trees_1000,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Augusto Cury,3.9961854761904543,extra_trees_1000,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Flávio Bolsonaro,28.068039166666814,extra_trees_1000,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Lula,42.754026666666135,extra_trees_1000,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Romeu Zema,3.9961854761904543,extra_trees_1000,2022
 2026,Primeiro turno 2026 - Lula vs Flavio ampliado,Ronaldo Caiado,4.300131785714273,extra_trees_1000,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Augusto Cury,7.355814383069172,extra_trees_1000,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,3.7749645034598807,extra_trees_1000,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,3.787173380952361,extra_trees_1000,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,30.29825114320588,extra_trees_1000,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,3.787173380952361,extra_trees_1000,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Clariana Barão,3.774964503459881,extra_trees_1000,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Edmilson Costa,3.7871733809523613,extra_trees_1000,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Flávio Bolsonaro,30.298251143205885,extra_trees_1000,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Hertz Dias,3.7871733809523613,extra_trees_1000,2022
 2026,Primeiro turno 2026 - agosto/setembro com Marcal,Lula,48.27808051826926,extra_trees_1000,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,3.7749666859182462,extra_trees_1000,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,4.957847940384245,extra_trees_1000,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,3.7749673210015153,extra_trees_1000,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,3.7749666859182462,extra_trees_1000,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,3.7749645034598807,extra_trees_1000,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,3.7749645034598807,extra_trees_1000,2022
-2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,3.7749645034598807,extra_trees_1000,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Pablo Marçal,3.774966685918247,extra_trees_1000,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Renan Santos,4.9578479403842435,extra_trees_1000,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Romeu Zema,3.7749673210015158,extra_trees_1000,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Ronaldo Caiado,3.774966685918247,extra_trees_1000,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Rui Costa Pimenta,3.774964503459881,extra_trees_1000,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Samara Martins,3.774964503459881,extra_trees_1000,2022
+2026,Primeiro turno 2026 - agosto/setembro com Marcal,Wilson Grassi,3.774964503459881,extra_trees_1000,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Augusto Cury,4.629566751352533,extra_trees_1000,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Clariana Barão,3.801884214285695,extra_trees_1000,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Edmilson Costa,3.801884214285695,extra_trees_1000,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Flávio Bolsonaro,31.239757761753665,extra_trees_1000,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Hertz Dias,3.801884214285695,extra_trees_1000,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Lula,48.50413565029736,extra_trees_1000,2022
-2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,6.164043905279198,extra_trees_1000,2022
+2026,Primeiro turno 2026 - agosto/setembro com Renan,Renan Santos,6.164043905279197,extra_trees_1000,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Romeu Zema,3.8511495037559986,extra_trees_1000,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Ronaldo Caiado,3.9527884335630943,extra_trees_1000,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Rui Costa Pimenta,3.794975446338775,extra_trees_1000,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Samara Martins,3.817360047619029,extra_trees_1000,2022
 2026,Primeiro turno 2026 - agosto/setembro com Renan,Wilson Grassi,3.801884214285695,extra_trees_1000,2022
-2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,28.425745166666868,extra_trees_1000,2022
+2026,Primeiro turno 2026 - alternativa com Tarcisio,Flávio Bolsonaro,28.42574516666687,extra_trees_1000,2022
 2026,Primeiro turno 2026 - alternativa com Tarcisio,Lula,42.773096666666135,extra_trees_1000,2022
 2026,Primeiro turno 2026 - alternativa com Tarcisio,Romeu Zema,4.021781142857117,extra_trees_1000,2022
 2026,Primeiro turno 2026 - alternativa com Tarcisio,Ronaldo Caiado,4.06001697619045,extra_trees_1000,2022
 2026,Primeiro turno 2026 - cenario reduzido,Lula,42.553761999999494,extra_trees_1000,2022
 2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,4.642402095238093,extra_trees_1000,2022
 2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,4.86867435714286,extra_trees_1000,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,4.621811869749504,extra_trees_1000,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,3.9737212498255965,extra_trees_1000,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,3.778495047619029,extra_trees_1000,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,3.778495047619029,extra_trees_1000,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,31.0596972657035,extra_trees_1000,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,31.397929560226775,extra_trees_1000,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,3.778495047619029,extra_trees_1000,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,48.508016487623046,extra_trees_1000,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,6.224853063552411,extra_trees_1000,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,3.8319799346866965,extra_trees_1000,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,3.9266079998179246,extra_trees_1000,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,48.52813744643249,extra_trees_1000,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,3.982762100294412,extra_trees_1000,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,3.8346077289393157,extra_trees_1000,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,3.969404440895867,extra_trees_1000,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,3.786154179510875,extra_trees_1000,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,3.82001754761903,extra_trees_1000,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,3.8275625994685716,extra_trees_1000,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,3.778495047619029,extra_trees_1000,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,3.9717888171272766,extra_trees_1000,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,31.429573664381813,extra_trees_1000,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,48.525226188920776,extra_trees_1000,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,3.9814437870091903,extra_trees_1000,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,3.833714356208653,extra_trees_1000,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,3.9683927863302038,extra_trees_1000,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,3.820741707588386,extra_trees_1000,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,31.343907434774316,gradient_boosting,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,36.98548594342311,gradient_boosting,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,5.187344232225587,gradient_boosting,2022
@@ -683,18 +760,25 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - cenario reduzido,Lula,38.317022469258525,gradient_boosting,2022
 2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,11.519865045869812,gradient_boosting,2022
 2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,11.626423953626508,gradient_boosting,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,6.066825271859719,gradient_boosting,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,5.799816040982684,gradient_boosting,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,5.799816040982684,gradient_boosting,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,5.799816040982684,gradient_boosting,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,35.13663527916271,gradient_boosting,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,35.466964263226174,gradient_boosting,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,5.799816040982684,gradient_boosting,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,41.25823617225551,gradient_boosting,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,6.245483936584483,gradient_boosting,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,5.799816040982684,gradient_boosting,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,5.894161992222312,gradient_boosting,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,41.84190622178159,gradient_boosting,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,5.871457030922986,gradient_boosting,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,5.799816040982683,gradient_boosting,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,5.799816040982684,gradient_boosting,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,5.799816040982684,gradient_boosting,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,5.799816040982683,gradient_boosting,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,5.799816040982685,gradient_boosting,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,5.799816040982684,gradient_boosting,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,5.799816040982684,gradient_boosting,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,35.466964263226174,gradient_boosting,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,41.84190622178159,gradient_boosting,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,5.871457030922986,gradient_boosting,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,5.799816040982683,gradient_boosting,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,5.799816040982684,gradient_boosting,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,5.799816040982685,gradient_boosting,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,5.872841386041452,mlp_pequena,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,24.486299780564394,mlp_pequena,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,0.0,mlp_pequena,2022
@@ -744,15 +828,22 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,0.0,mlp_pequena,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,0.0,mlp_pequena,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,0.0,mlp_pequena,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,16.303305597952917,mlp_pequena,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,14.55490174705886,mlp_pequena,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,0.0,mlp_pequena,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,31.826691942154422,mlp_pequena,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,29.581603906148302,mlp_pequena,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,0.0,mlp_pequena,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,0.0,mlp_pequena,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,0.0,mlp_pequena,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,0.0,mlp_pequena,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,0.0,mlp_pequena,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,14.419217720814567,mlp_pequena,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,29.977084585308873,mlp_pequena,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,0.0,mlp_pequena,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,0.0,mlp_pequena,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,31.630474590573822,voting_ia,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,41.49587526285714,voting_ia,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,3.7641461308836233,voting_ia,2022
@@ -799,18 +890,25 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - cenario reduzido,Lula,43.19788259257401,voting_ia,2022
 2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,7.528478108426834,voting_ia,2022
 2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,8.386910103670006,voting_ia,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,3.0602396431484746,voting_ia,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,2.5875809233405134,voting_ia,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,1.895315299188139,voting_ia,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,1.895315299188139,voting_ia,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,31.167447366140834,voting_ia,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,32.4951742711389,voting_ia,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,1.895315299188139,voting_ia,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,43.588032897601046,voting_ia,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,3.7288718669236376,voting_ia,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,2.1212853998422254,voting_ia,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,2.4408502101549767,voting_ia,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,44.39669778724866,voting_ia,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,2.602228457326032,voting_ia,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,2.059460171764344,voting_ia,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,2.5505783205285746,voting_ia,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,1.9640203669822325,voting_ia,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,2.0543284159191146,voting_ia,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,1.9552255074355915,voting_ia,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,1.895315299188139,voting_ia,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,2.5622440113279166,voting_ia,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,32.470568885011104,voting_ia,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,44.37209240112086,voting_ia,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,2.5790088961977062,voting_ia,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,2.031880729795495,voting_ia,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,2.5259729344007744,voting_ia,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,1.956043978946473,voting_ia,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Flávio Bolsonaro,38.90371349714219,stacking_ia,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Lula,42.73618038682005,stacking_ia,2022
 2026,Primeiro turno 2026 - 2025 com Freitas/Gomes,Romeu Zema,2.790992791020706,stacking_ia,2022
@@ -857,15 +955,22 @@ ano_eleicao,cenario_rotulo,candidato,previsto,modelo,ano_treino_max
 2026,Primeiro turno 2026 - cenario reduzido,Lula,40.5525896648831,stacking_ia,2022
 2026,Primeiro turno 2026 - cenario reduzido,Romeu Zema,6.1296727519534855,stacking_ia,2022
 2026,Primeiro turno 2026 - cenario reduzido,Ronaldo Caiado,6.660284362225487,stacking_ia,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,2.7860162383403786,stacking_ia,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Augusto Cury,2.245759639759085,stacking_ia,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Clariana Barão,1.894408219888003,stacking_ia,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Edmilson Costa,1.894408219888003,stacking_ia,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,31.98945852830857,stacking_ia,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Flávio Bolsonaro,33.696859804384424,stacking_ia,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Hertz Dias,1.894408219888003,stacking_ia,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Lula,44.612030351875994,stacking_ia,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,3.374833547955822,stacking_ia,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,2.0457667432259807,stacking_ia,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,2.2425794314534997,stacking_ia,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Lula,45.250747533644464,stacking_ia,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Renan Santos,2.3040413772922914,stacking_ia,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Romeu Zema,1.9736683605469587,stacking_ia,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Ronaldo Caiado,2.223019315763957,stacking_ia,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Rui Costa Pimenta,1.9326368407542198,stacking_ia,2022
-2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,1.9759888563595935,stacking_ia,2022
+2026,Primeiro turno 2026 - oficial pos-TSE,Samara Martins,1.907040218381334,stacking_ia,2022
 2026,Primeiro turno 2026 - oficial pos-TSE,Wilson Grassi,1.894408219888003,stacking_ia,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Augusto Cury,2.229866349449775,stacking_ia,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Flávio Bolsonaro,33.682683404852575,stacking_ia,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Lula,45.23657113411261,stacking_ia,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Renan Santos,2.293117508135944,stacking_ia,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Romeu Zema,1.9577784579790736,stacking_ia,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Ronaldo Caiado,2.208842916232105,stacking_ia,2022
+2026,Primeiro turno 2026 - reta final em votos validos,Samara Martins,1.907511780952367,stacking_ia,2022
