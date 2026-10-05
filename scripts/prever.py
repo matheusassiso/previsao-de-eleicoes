@@ -56,6 +56,13 @@ def rank_probabilities(candidates: list[tuple[str, float]], width: float) -> dic
     return {candidate: (lead / SIMULATIONS, top2 / SIMULATIONS) for candidate, (lead, top2) in counts.items()}
 
 
+def normalize_valid_votes(candidates: list[tuple[str, float]]) -> list[tuple[str, float]]:
+    total = sum(max(value, 0) for _, value in candidates)
+    if len(candidates) <= 1 or total <= 0:
+        return candidates
+    return [(candidate, max(value, 0) / total * 100) for candidate, value in candidates]
+
+
 def forecast(rows: list[dict[str, str]], forecast_date: date, year: str = "2026", calibration: dict[str, float] | None = None) -> list[dict[str, str]]:
     eligible = [
         row
@@ -104,7 +111,7 @@ def forecast(rows: list[dict[str, str]], forecast_date: date, year: str = "2026"
     output: list[dict[str, str]] = []
     final_window = year == "2026" and abs((parse_date("2026-10-04") - forecast_date).days) <= 2
     for (scenario, model), candidates in by_scenario.items():
-        ordered = sorted(candidates, key=lambda item: item[1], reverse=True)
+        ordered = sorted(normalize_valid_votes(candidates), key=lambda item: item[1], reverse=True)
         width = interval_width(model, calibration, final_window=final_window)
         probabilities = rank_probabilities(ordered, width)
         for candidate, estimate in ordered:

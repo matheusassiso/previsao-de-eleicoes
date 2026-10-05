@@ -1,21 +1,47 @@
 modelo,status,detalhe
 inferencial_ols,treinado,r2=0.3573; n=1397
 ridge,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+ridge_fraco,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+ridge_forte,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 elastic_net,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+elastic_net_l1_05,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+elastic_net_l1_08,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 huber,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+huber_fino,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 svr_rbf,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+svr_rbf_fino,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 random_forest,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 random_forest_sqrt_600,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 random_forest_07_600,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 random_forest_05_1200,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 random_forest_sqrt_1200,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+random_forest_03_1600_leaf1,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+random_forest_05_1600_leaf1,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+random_forest_07_1600_leaf1,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+random_forest_sqrt_1600_leaf1,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+random_forest_log2_1600_leaf1,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+random_forest_05_2000_leaf3,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 extra_trees,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 extra_trees_1000,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+extra_trees_03_1600_leaf1,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+extra_trees_05_1600_leaf1,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+extra_trees_sqrt_1600_leaf1,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+extra_trees_log2_1600_leaf1,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+extra_trees_05_2000_leaf3,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 gradient_boosting,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+gradient_boosting_slow,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+gradient_boosting_deep,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+hist_gradient_boosting,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+hist_gradient_boosting_l2,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 ada_boost,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
+ada_boost_lento,treinado,familia=machine_learning; n=1397; validacao fora da amostra ainda pendente
 mlp_pequena,treinado,familia=deep_learning; n=1397; validacao fora da amostra ainda pendente
 mlp_media,treinado,familia=deep_learning; n=1397; validacao fora da amostra ainda pendente
 mlp_profunda,treinado,familia=deep_learning; n=1397; validacao fora da amostra ainda pendente
+mlp_larga,treinado,familia=deep_learning; n=1397; validacao fora da amostra ainda pendente
+mlp_larga_regularizada,treinado,familia=deep_learning; n=1397; validacao fora da amostra ainda pendente
 voting_ia,treinado,familia=ia_ensemble; n=1397; validacao fora da amostra ainda pendente
 stacking_ia,treinado,familia=ia_ensemble; n=1397; validacao fora da amostra ainda pendente
+voting_arvores_ia,treinado,familia=ia_ensemble; n=1397; validacao fora da amostra ainda pendente
+stacking_arvores_ia,treinado,familia=ia_ensemble; n=1397; validacao fora da amostra ainda pendente
 ensemble_ia,parcial,usa baseline por enquanto; modelos treinados entram quando passarem no backtest

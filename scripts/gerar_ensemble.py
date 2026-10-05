@@ -61,6 +61,11 @@ def combine_forecasts(forecasts: pd.DataFrame, weights: pd.DataFrame) -> pd.Data
     grouped["probabilidade_liderar"] = grouped["probabilidade_liderar"] / grouped["liderar_peso"].replace(0, pd.NA)
     grouped["probabilidade_ir_ao_segundo_turno"] = grouped["probabilidade_ir_ao_segundo_turno"] / grouped["segundo_turno_peso"].replace(0, pd.NA)
     grouped = grouped.drop(columns=["voto_peso", "liderar_peso", "segundo_turno_peso"])
+    group_cols = ["data_previsao", "ano_eleicao", "cenario"]
+    totals = grouped.groupby(group_cols)["voto_valido_estimado"].transform("sum")
+    counts = grouped.groupby(group_cols)["candidato"].transform("count")
+    normalize = (counts > 1) & (totals > 0)
+    grouped.loc[normalize, "voto_valido_estimado"] = grouped.loc[normalize, "voto_valido_estimado"] / totals[normalize] * 100
     grouped["modelo"] = "ensemble_disciplinado"
     for col in ["voto_valido_estimado", "probabilidade_liderar", "probabilidade_ir_ao_segundo_turno"]:
         grouped[col] = pd.to_numeric(grouped[col], errors="coerce").round(4)

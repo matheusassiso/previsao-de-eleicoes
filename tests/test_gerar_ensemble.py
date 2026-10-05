@@ -25,6 +25,21 @@ def test_combine_forecasts_uses_accepted_model_weights():
     assert round(float(out.iloc[0]["probabilidade_liderar"]), 2) == 0.65
 
 
+def test_combine_forecasts_normalizes_valid_votes_by_scenario():
+    forecasts = pd.DataFrame(
+        [
+            {"data_previsao": "2026-01-01", "ano_eleicao": 2026, "cenario": "A", "candidato": "X", "modelo": "m1", "voto_valido_estimado": 66, "probabilidade_liderar": 0.8, "probabilidade_ir_ao_segundo_turno": 1, "fonte_dados_ate": "2026-01-01"},
+            {"data_previsao": "2026-01-01", "ano_eleicao": 2026, "cenario": "A", "candidato": "Y", "modelo": "m1", "voto_valido_estimado": 44, "probabilidade_liderar": 0.2, "probabilidade_ir_ao_segundo_turno": 1, "fonte_dados_ate": "2026-01-01"},
+        ]
+    )
+    weights = pd.DataFrame({"modelo": ["m1"], "peso": [1]})
+
+    out = combine_forecasts(forecasts, weights)
+
+    assert round(float(out["voto_valido_estimado"].sum()), 4) == 100.0
+    assert round(float(out.loc[out["candidato"].eq("X"), "voto_valido_estimado"].iloc[0]), 4) == 60.0
+
+
 def test_weights_can_promote_bayesian_from_live_backtest():
     backtest = pd.DataFrame({"modelo": ["baseline_pesquisa"], "mae": [6]})
     live = pd.DataFrame({"modelo": ["baseline_pesquisa", "bayesiano_dinamico_kalman"], "mae": [8, 7]})

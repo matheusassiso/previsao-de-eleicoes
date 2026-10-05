@@ -13,6 +13,8 @@ def test_catalog_has_multiple_models_per_requested_family():
     for name, spec in catalog.items():
         families.setdefault(spec["familia"], []).append(name)
 
+    assert len(catalog) >= 35
+    assert len(EVAL_MODELS_INTENSIVE) >= 25
     assert len(families["machine_learning"]) >= 3
     assert len(families["deep_learning"]) >= 2
     assert len(families["ia_ensemble"]) >= 2
@@ -24,5 +26,9 @@ def test_catalog_has_multiple_models_per_requested_family():
     assert "qualidade_fonte" in FEATURES
     assert "random_forest_05_1200" in catalog
     assert "extra_trees_1000" in catalog
+    assert "random_forest_03_1600_leaf1" in catalog
+    assert "extra_trees_sqrt_1600_leaf1" in catalog
+    assert "gradient_boosting_deep" in catalog
+    assert "mlp_larga" in catalog
     assert "random_forest_05_1200" in EVAL_MODELS_INTENSIVE
     assert "extra_trees_1000" in EVAL_MODELS_INTENSIVE
